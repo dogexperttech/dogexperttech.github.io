@@ -1,0 +1,5 @@
+::::::::::::::::::::::::::::::::::::::::::
+::      Installation Instructions       ::
+::::::::::::::::::::::::::::::::::::::::::
+
+- To install this theme, simply copy the contents of the "Themes" folder into "%UserProfile%\AppData\Local\Microsoft\Windows\Themes".
