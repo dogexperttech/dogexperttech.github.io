@@ -1,0 +1,114 @@
+* { margin: 0px; padding: 0px; }
+body
+{
+ background-color: #f1f1f1;
+ font-family: 'Poppins', sans-serif;
+}
+
+
+.odometer {
+  font-size: 60px;
+  margin:0 auto; 
+  margin-top:-25px;
+  text-align: center;
+  width: 100%;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+}
+
+.subscribe-btn{
+  font-family: 'Poppins', sans-serif;
+  font-weight:bold;
+  font-size:22px;
+  background:#e30000;
+  letter-spacing: .1em;
+  text-decoration: none;
+  color: #fff;
+  padding: 15px 30px;
+  border: 0;
+  border-radius: 10px;
+  transition: all 0.3s linear;
+}
+.subscribe-btn:hover{
+   background: #ff2b2b;
+     cursor:pointer;
+}
+
+.product-card-container{
+  display:table;
+  margin:0 auto;	         
+  overflow: hidden;
+  min-width: 350px;
+ box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  padding: 0;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.product-card {
+  padding: 30px;
+  margin-bottom: 30px;
+  background-color: #fff;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.product-card .picture {
+  display: inline-block;
+  height: 130px;
+  width: 130px;
+  margin-bottom: 50px;
+  z-index: 1;
+  position: relative;
+}
+
+.product-card .picture::before {
+  content: "";
+  width: 100%;
+  height: 0;
+  border-radius: 50%;
+  background-color: #1369ce;
+  position: absolute;
+  bottom: 135%;
+  right: 0;
+  left: 0;
+  opacity: 0.9;
+  transform: scale(3);
+  transition: all 0.3s linear 0s;
+}
+ 
+
+.product-card .picture::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #1369ce;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.product-card .picture img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  transform: scale(1);
+  transition: all 0.9s ease 0s;
+}
+
+ 
+
+.product-card .title {
+  display: block;
+  font-size: 15px;
+  font-weight:bold;
+  color: #4e5052;
+  text-transform: capitalize;
+}
