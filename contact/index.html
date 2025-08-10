@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact</title>
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.jpg">
+  <link rel="stylesheet" href="style.css">
+    <style>
+    .social-media {
+      padding: 40px 20px;
+      background: #121212;
+      color: #fff;
+      text-align: center;
+    }
+    .social-media h2 {
+      font-size: 2em;
+      margin-bottom: 30px;
+      font-weight: 700;
+    }
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+    }
+    .icon-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: #fff;
+      background: #222;
+      padding: 20px;
+      border-radius: 15px;
+      width: 180px;
+      height: 180px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 0 10px rgba(255,255,255,0.1);
+    }
+    .icon-link:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 25px #ff0000;
+    }
+    .icon-link img {
+      max-width: 120px;
+      max-height: 120px;
+      margin-bottom: 15px;
+      border-radius: 50%;
+      background: #000;
+      padding: 10px;
+      object-fit: contain;
+    }
+  </style>
+  </head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="nav-left">Dog Expert Tech</div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about" aria-current="page">About</a></li>
+        <li><a href="/files">Files</a></li>
+        <li><a href="/software">Software</a></li>
+        <li><a href="/gallery">Gallery</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+      <button id="theme-toggle">🌙</button>
+    </nav>
+  </header>
+</head>
+<body>
+  <main>
+    <h1>Kontakt</h1>
+    <form action="https://formspree.io/f/xwpqnbre" method="POST" novalidate>
+      <label for="email">Meil *</label>
+      <input type="email" name="_replyto" id="email" required />
+
+      <label for="link">Kas on mingi link?</label>
+      <input type="url" name="link" id="link" placeholder="https://..." />
+
+      <label>Mis on probleem *</label>
+      <div class="radio-group" role="radiogroup" aria-required="true">
+        <label><input type="radio" name="problem" value="Veebileht" required /> Veebileht</label>
+
+        <label><input type="radio" name="problem" value="Tarkvara" /> Tarkvara</label>
+
+        <label><input type="radio" name="problem" value="Discord" /> Discord</label>
+
+        <label><input type="radio" name="problem" value="YouTube" /> YouTube</label>
+
+        <label><input type="radio" name="problem" value="Pahavara" /> Pahavara</label>
+
+        <label><input type="radio" name="problem" value="Taustapildid" /> Taustapildid</label>
+
+        <label><input type="radio" name="problem" value="Muu" /> Muu</label></div>
+
+
+
+      <label for="details">Kirjuta rohkem</label>
+      <textarea name="details" id="details" rows="5"></textarea>
+
+      <label for="name">Sinu nimi (päris) *</label>
+      <input type="text" name="name" id="name" required />
+
+      <button type="submit">Saada</button>
+      <p>Võta ühendust, kui sul on küsimusi või vajad abi. Vastame esimesel võimalusel.</p>
+      <p>Võid ka kirjutada <a href="mailto:dog.expert900@gmail.com">dog.expert900@gmail.com</a>.</p>
+
+</form>
+
+ <section class="social-media">
+    <h2>Liitu minu kanalitega</h2>
+    <div class="social-links">
+      <a href="/go/youtubemain/" target="_blank" class="icon-link" aria-label="YouTube kanal Dog Expert Tech">
+        <img src="/assets/expertyoutube.jpg" alt="YouTube logo" />
+        <span>Dog Expert</span>
+      </a>
+
+      <a href="/go/youtubeextra/" target="_blank" class="icon-link" aria-label="YouTube kanal Dog Expert Extra">
+        <img src="/assets/expertextrayoutube.jpg" alt="YouTube logo" />
+        <span>Dog Expert Extra</span>
+
+      <a href="/go/discord/" target="_blank" class="icon-link" aria-label="Discord server Dog Expert Tech">
+        <img src="/assets/discord.png" alt="Discord logo" />
+        <span>Discord Server</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Google Translate keelevalik -->
+<div id="google_translate_element" style="position: fixed; top: 10px; right: 10px; z-index: 1000;"></div>
+
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'et',
+      includedLanguages: 'en,et,ru',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+  }
+</script>
+
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  </main>
+  <script src="/script.js"></script>
+</body>
+</html>

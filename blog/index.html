@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dog Expert Blog</title>
+   <link rel="icon" type="image/x-icon" href="/assets/favicon.jpg">
+    <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 40px 20px;
+      background-image: url('/gallery/assets/wallpapers/Mountain.png');
+      background-size: cover;
+      background-position: center;
+      color: #f0f0f0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-shadow: 1px 1px 4px #000;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 0.3em;
+      font-weight: 900;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    p.subtitle {
+      font-size: 1.3rem;
+      margin-bottom: 2em;
+      max-width: 600px;
+      text-align: center;
+      font-weight: 600;
+      text-shadow: 1px 1px 5px #111;
+    }
+
+    ul.blog-posts {
+      list-style: none;
+      padding: 0;
+      width: 100%;
+      max-width: 700px;
+    }
+
+    ul.blog-posts li {
+      margin: 15px 0;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 12px;
+      transition: background 0.3s ease;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    ul.blog-posts li:hover {
+      background: rgba(255, 0, 0, 0.7);
+      box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+    }
+
+    ul.blog-posts a {
+      color: #fff;
+      text-decoration: none;
+      display: block;
+      padding: 20px 30px;
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-shadow: 1px 1px 4px #000;
+      border-radius: 12px;
+    }
+
+    ul.blog-posts a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 20px 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      ul.blog-posts a {
+        font-size: 1.1rem;
+        padding: 15px 20px;
+      }
+    }
+  </style>
+ 
+</head>
+<body>
+  <header>
+
+    <nav class="navbar">
+      <div class="nav-left">Dog Expert Tech</div>
+      <ul class="nav-links">
+        <li><a href="/" aria-current="page">Home</a></li>  <li><a href="/about">About</a></li>  <li><a href="/files">Files</a></li>  <li><a href="/software">Software</a></li>  <li><a href="/gallery">Gallery</a></li>  <li><a href="/contact">Contact</a></li>  <li><a href="/blog">Blog</a></li>
+      </ul>
+    </nav>
+  </header>
+  <h1>Dog Expert Blog</h1>
+  <p class="subtitle">Tere tulemast minu blogisse, kus jagan kasulikke näpunäiteid, õpetusi ja uudiseid koerte tehnoloogiast!</p>
+
+  <ul class="blog-posts">
+
+    <li>
+      <a href="b7891085/index.html">Minu esimene blogipostitus</a>
+    </li>
+  </ul>
+
+  <!-- Google Translate keelevalik -->
+<div id="google_translate_element" style="position: fixed; top: 10px; right: 10px; z-index: 1000;"></div>
+
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'et',
+      includedLanguages: 'en,et,ru',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+  }
+</script>
+
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <footer>
+        <p>&copy; 2025 Dog Expert. Kõik õigused kaitstud.</p>
+    </footer>
+    
+    <script>
+        // Teema lüliti
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-theme');
+        themeToggle.textContent = document.body.classList.contains('dark-theme') ? '☀️' : '🌙';
+        });
+    </script>
+</body>
+</html>
