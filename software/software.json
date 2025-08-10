@@ -1,0 +1,125 @@
+{
+  "malwarewatch": [
+    {
+      "name": "en-us_windows_10_iot_enterprise_version_22h2_x64_dvd_51cc370f.iso",
+      "size": "5.2 GiB",
+      "date": "November 11, 2024",
+      "url": "https://dl.malwarewatch.org/windows/en-us_windows_10_iot_enterprise_version_22h2_x64_dvd_51cc370f.iso"
+    },
+    {
+      "name": "Windows-XP.iso",
+      "size": "591.8 MiB",
+      "date": "April 7, 2022",
+      "url": "https://dl.malwarewatch.org/windows/windows-xp.iso"
+    },
+    {
+      "name": "Windows-XP-x64.iso",
+      "size": "599.1 MiB",
+      "date": "April 8, 2022",
+      "url": "https://dl.malwarewatch.org/windows/windows-xp-x64.iso"
+    },
+    {
+      "name": "Windows-XP-ru_RU.iso",
+      "size": "501.5 MiB",
+      "date": "March 5, 2021",
+      "url": "https://dl.malwarewatch.org/windows/windows-xp-ru_RU.iso"
+    },
+    {
+      "name": "Windows-Vista.iso",
+      "size": "2.5 GiB",
+      "date": "September 20, 2018",
+      "url": "https://dl.malwarewatch.org/windows/windows-vista.iso"
+    },
+    {
+      "name": "Windows-Vista-x64.iso",
+      "size": "3.3 GiB",
+      "date": "September 20, 2018",
+      "url": "https://dl.malwarewatch.org/windows/windows-vista-x64.iso"
+    },
+    {
+      "name": "Windows-7.iso",
+      "size": "2.4 GiB",
+      "date": "December 28, 2018",
+      "url": "https://dl.malwarewatch.org/windows/windows-7.iso"
+    },
+    {
+      "name": "Windows-7-x64.iso",
+      "size": "3.1 GiB",
+      "date": "December 28, 2018",
+      "url": "https://dl.malwarewatch.org/windows/windows-7-x64.iso"
+    },
+    {
+      "name": "Windows-8.iso",
+      "size": "2.3 GiB",
+      "date": "March 27, 2020",
+      "url": "https://dl.malwarewatch.org/windows/windows-8.iso"
+    },
+    {
+      "name": "Windows-8.1.iso",
+      "size": "3.0 GiB",
+      "date": "December 28, 2018",
+      "url": "https://dl.malwarewatch.org/windows/windows-8.1.iso"
+    },
+    {
+      "name": "Windows-8.1-x64.iso",
+      "size": "4.0 GiB",
+      "date": "December 28, 2018",
+      "url": "https://dl.malwarewatch.org/windows/windows-8.1-x64.iso"
+    },
+    {
+      "name": "Windows-8-x64.iso",
+      "size": "3.2 GiB",
+      "date": "March 27, 2020",
+      "url": "https://dl.malwarewatch.org/windows/windows-8-x64.iso"
+    },
+    {
+      "name": "Windows-10-1507.iso",
+      "size": "2.5 GiB",
+      "date": "March 31, 2021",
+      "url": "https://dl.malwarewatch.org/windows/windows-10-1507.iso"
+    },
+    {
+      "name": "Windows-10-1607.iso",
+      "size": "3.0 GiB",
+      "date": "October 16, 2020",
+      "url": "https://dl.malwarewatch.org/windows/windows-10-1607.iso"
+    },
+    {
+      "name": "Windows-10-PE-Bobomb.iso",
+      "size": "2.9 GiB",
+      "date": "February 4, 2019",
+      "url": "https://dl.malwarewatch.org/windows/windows-10-pe-bobomb.iso"
+    },
+    {
+      "name": "Windows-2000.iso",
+      "size": "372.2 MiB",
+      "date": "April 8, 2022",
+      "url": "https://dl.malwarewatch.org/windows/windows-2000.iso"
+    },
+    {
+      "name": "Windows-1.01.zip",
+      "size": "609.9 KiB",
+      "date": "April 7, 2022",
+      "url": "https://dl.malwarewatch.org/windows/windows-1.01.zip"
+    },
+    {
+      "name": "Windows-2.03.zip",
+      "size": "1.1 MiB",
+      "date": "April 7, 2022",
+      "url": "https://dl.malwarewatch.org/windows/windows-2.03.zip"
+    },
+    {
+      "name": "Windows-95.iso",
+      "size": "597.3 MiB",
+      "date": "September 20, 2018",
+      "url": "https://dl.malwarewatch.org/windows/windows-95.iso"
+    },
+    {
+      "name": "Windows-95-Image.iso",
+      "size": "83.8 MiB",
+      "date": "May 1, 2019",
+      "url": "https://dl.malwarewatch.org/windows/windows-95-image.iso"
+      
+    }
+  ]
+}
