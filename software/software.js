@@ -4,15 +4,23 @@ async function fetchSoftwareList() {
     if (!response.ok) throw new Error('Ei saanud JSON-i laadida');
     const data = await response.json();
 
-    const list = document.getElementById('software-list');
+    const tbody = document.getElementById('software-body');
+    tbody.innerHTML = ""; // tühjenda enne
+
     data.malwarewatch.forEach(item => {
-      const li = document.createElement('li');
-      li.innerHTML = `<a href="${item.url}" target="_blank" rel="noopener noreferrer">${item.name}</a> — ${item.size}, ${item.date}`;
-      list.appendChild(li);
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${item.name}</td>
+        <td>${item.size}</td>
+        <td>${item.date}</td>
+        <td><a href="${item.url}" target="_blank" rel="noopener noreferrer">Laadi alla</a></td>
+      `;
+      tbody.appendChild(row);
     });
   } catch (err) {
     console.error('Tõrge:', err);
-    document.getElementById('software-list').textContent = 'Failide laadimisel tekkis viga.';
+    const tbody = document.getElementById('software-body');
+    tbody.innerHTML = `<tr><td colspan="4">❌ Failide laadimisel tekkis viga.</td></tr>`;
   }
 }
 
