@@ -22,7 +22,8 @@
       "name": "Windows-XP-ru_RU.iso",
       "size": "501.5 MiB",
       "date": "March 5, 2021",
-      "url": "https://dl.malwarewatch.org/windows/Windows-XP-ru_RU.iso
+      "url": "https://dl.malwarewatch.org/windows/Windows-XP-ru_RU.iso"
+    },
     {
       "name": "Windows-Vista.iso",
       "size": "2.5 GiB",
@@ -45,7 +46,7 @@
       "name": "Windows-7-x64.iso",
       "size": "3.1 GiB",
       "date": "December 28, 2018",
-      "url": "https://dl.malwarewatch.org/windows/Windows-7.iso"
+      "url": "https://dl.malwarewatch.org/windows/Windows-7-x64.iso"
     },
     {
       "name": "Windows-8.iso",
@@ -118,7 +119,6 @@
       "size": "83.8 MiB",
       "date": "May 1, 2019",
       "url": "https://dl.malwarewatch.org/windows/Windows-95-image.iso"
-      
     }
   ]
 }
