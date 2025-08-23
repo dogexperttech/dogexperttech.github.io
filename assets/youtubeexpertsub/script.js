@@ -9,7 +9,7 @@ const channels=['UCCdit1D68jqUOKne5tKBALA'];
       "<div class='product-card-container'>"+
     "<div class='product-card' style='position:flex;align-items:center;'>"+
             "<div class='picture'>"+
-                "<img class='img-fluid' src='https://dogexpert90.github.io/assets/expertyoutube.jpg'>"+
+                "<img class='img-fluid' src='https://dogexperttech.github.io/assets/expertyoutube.jpg'>"+
             "</div>"+
                         
             "<div class='team-content'>"+
