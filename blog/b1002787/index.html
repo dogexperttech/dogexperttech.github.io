@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>What happens if you delete Windows System32?</title>
+  <title>Fix amd Driver crash</title>
   <style>
   body {
   font-family: Arial, sans-serif;
@@ -83,7 +83,7 @@
     <p>If you have an AMD system then you have probably seen this before, the picture stops then goes black and then this</p>
 
     <p> </p>
-<p><img class="post__image" src="https://dogexperttech.github.io/blog/b1002787/assets/amd.png" alt="" width="360" height="216"><img class="post__image" src="https://dogexperttech.github.io/blog/b1002787/assets/amdview.png" alt="" width="398" height="447"></p>
+<p><img class="post__image" src="/blog/b1002787/assets/amd.png" alt="" width="360" height="216"><img class="post__image" src="https://dogexperttech.github.io/blog/b1002787/assets/amdview.png" alt="" width="398" height="447"></p>
 <p> </p>
 <ul data-start="982" data-end="1110">
 <li data-start="568" data-end="760">
@@ -92,9 +92,9 @@
 <li data-start="762" data-end="944"> </li>
 </ul>
 <p>and hypervisor crash</p>
-<p><img class="post__image" src="https://dogexperttech.github.io/blog/b1002787/assets/crashview.png" alt="" width="487" height="692"></p>
+<p><img class="post__image" src="blog/b1002787/assets/crashview.png" alt="" width="487" height="692"></p>
 <p> Windows Hyper-V and VBS Removal (Fix for VMware / VirtualBox / GPU BSOD)<br><br>Some newer versions of Windows 10/11 enable **Hyper-V, VBS (Virtualization Based Security), Credential Guard and Memory Integrity** by default.<br>This can cause problems with VMware Workstation, VirtualBox or even AMD/NVIDIA drivers (e.g. *Hypervisor Error BSOD*).<br><br>If you want **bare metal virtualization** or a stable GPU driver, you need to disable these features.<br><br>---<br><br>## Quick fix: BAT script<br><br>1. Download or copy the following script into a file named `disable-hyperv-vbs.bat`.<br>2. **Right-click → Run as Administrator**.<br>3. Wait for the script to finish and the computer to restart.<br>4. Check under `msinfo32` that **“Hyper-V - A hypervisor has been detected”** is **NO**.</p>
-<p><a href="dogexperttech.github.io/blog/b1002787/assets/help.cmd">Script Downloud</a></p>
+<p><a href="/blog/b1002787/assets/help.cmd">Script Downloud</a></p>
 <p> </p>
 <p><br>```bat<br>@echo off<br>echo ===========================<br>echo Hyper-V / VBS Killer Script<br>echo ===========================<br><br>:: 1. Disable Hyper-V and Virtual Platforms<br>dism /Online /Disable-Feature:Microsoft-Hyper-V-All /NoRestart<br>dism /Online /Disable-Feature:HypervisorPlatform /NoRestart<br>dism /Online /Disable-Feature:VirtualMachinePlatform /NoRestart<br>dism /Online /Disable-Feature:WindowsSubsystemForLinux /NoRestart<br>dism /Online /Disable-Feature:Windows-Defender-ApplicationGuard /NoRestart<br><br>:: 2. Disable VBS<br>reg add "HKLM\System\CurrentControlSet\Control\DeviceGuard" /v EnableVirtualizationBasedSecurity /t REG_DWORD /d 0 /f<br>reg add "HKLM\System\CurrentControlSet\Control\DeviceGuard" /v RequirePlatformSecurityFeatures /t REG_DWORD /d 0 /f<br><br>:: 3. Disable Credential Guard<br>reg add "HKLM\System\CurrentControlSet\Control\Lsa" /v LsaCfgFlags /t REG_DWORD /d 0 /f<br><br>:: 4. Disable Memory Integrity<br>reg add "HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity" /v Enabled /t REG_DWORD /d 0 /f<br><br>:: 5. Disable hypervisor startup<br>bcdedit /set hypervisorlaunchtype off</p>
 <p> </p>
