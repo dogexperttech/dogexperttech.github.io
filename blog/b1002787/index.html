@@ -3,124 +3,200 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fix amd Driver crash</title>
+  <title>Fix AMD Driver Crash</title>
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.jpg">
   <style>
   body {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  margin: 0;                  /* eemaldab ääremarginaali */
-  min-height: 100vh;          /* alati vähemalt ekraani kõrgune */
-  background-image: url('/gallery/assets/wallpapers/Waves.jpg');
-  background-size: cover;     /* katab kogu ekraani */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed; /* taust jääb “lukku” kerides */
-  color: #e2dddd;
-}
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    min-height: 100vh;
+    background-image: url('/gallery/assets/wallpapers/Waves.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #e2dddd;
+  }
 
-    }
-    header {
-      background: rgba(0,0,0,0.7);
-      padding: 20px;
-      text-align: center;
-      border-radius: 10px;
-      box-shadow: 0 0 10px #000;
-      margin-bottom: 30px;
-    }
-    h1 {
-      margin: 0;
-      color: #fff;
-    }
-    p.date {
-      color: #bbb;
-      font-size: 0.9em;
-      margin-top: 5px;
-    }
-    main {
-      max-width: 700px;
-      margin: 0 auto;
-      background: rgba(0,0,0,0.6);
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.8);
-    }
-    img.post-image {
-      max-width: 100%;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.7);
-    }
-    a.back-link {
-      display: inline-block;
-      margin-bottom: 20px;
-      color: #aaf;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    a.back-link:hover {
-      color: #ffd700;
-      text-decoration: underline;
-    }
-    footer {
-      text-align: center;
-      color: #999;
-      margin-top: 50px;
-      font-size: 0.9em;
-    }
+  header {
+    background: rgba(0,0,0,0.7);
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #000;
+    margin-bottom: 30px;
+  }
+  h1 {
+    margin: 0;
+    color: #fff;
+  }
+  h2 {
+    color: #fff;
+    margin-top: 20px;
+  }
+  p.date {
+    color: #bbb;
+    font-size: 0.9em;
+    margin-top: 5px;
+  }
+  main {
+    max-width: 700px;
+    margin: 0 auto;
+    background: rgba(0,0,0,0.6);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.8);
+  }
+  img.post-image {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.7);
+  }
+  a.back-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #aaf;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  a.back-link:hover {
+    color: #ffd700;
+    text-decoration: underline;
+  }
+  footer {
+    text-align: center;
+    color: #999;
+    margin-top: 50px;
+    font-size: 0.9em;
+  }
+  pre {
+    background: #111;
+    color: #0f0;
+    padding: 15px;
+    border-radius: 8px;
+    overflow-x: auto;
+  }
   </style>
 </head>
 <body>
   <header>
     <a href="../index.html" class="back-link">&larr; Tagasi blogisse</a>
-    <h1>AMD systems crash</h1>
+    <h1>AMD Systems Crash</h1>
     <p class="date">Kuupäev: 2025-08-24</p>
-	<p class="Author">Autor: Dog Expert Tech</p>
+    <p class="Author">Autor: Dog Expert Tech</p>
   </header>
+
   <main>
-    <img src="/blog/b1002787/assets/amdtheme.jpg" alt="Blogi postituse pilt" class="post-image" />
-    <h1>AMD systems crash</h1>
-   
-    <p>If you have an AMD system then you have probably seen this before, the picture stops then goes black and then this</p>
+    <img src="assets/amdtheme.jpg" alt="Blogi postituse pilt" class="post-image" />
 
-    <p> </p>
-<p><img class="post__image" src="/blog/b1002787/assets/amd.png" alt="" width="360" height="216"><img class="post__image" src="blog/b1002787/assets/amdview.png" alt="" width="398" height="447"></p>
-<p> </p>
-<ul data-start="982" data-end="1110">
-<li data-start="568" data-end="760">
-<p data-start="571" data-end="594">Clean up drivers<br><br>Use DDU (Display Driver Uninstaller) in safe mode to remove any AMD GPU driver remnants.<br><br><a href="dogexperttech.github.io/go/HvUTdUi">DDU Downloud Link</a><br><br>Install AMD official driver<br><br>Go to <a href="https://www.amd.com/en/support/download/drivers.html">AMD Drivers &amp; Support</a><br><br>Download the driver for the appropriate model (e.g. RX 5500/5600/5700) and install it.</p>
-</li>
-<li data-start="762" data-end="944"> </li>
-</ul>
-<p>and hypervisor crash</p>
-<p><img class="post__image" src="blog/b1002787/assets/crashview.png" alt="" width="487" height="692"></p>
-<p> Windows Hyper-V and VBS Removal (Fix for VMware / VirtualBox / GPU BSOD)<br><br>Some newer versions of Windows 10/11 enable **Hyper-V, VBS (Virtualization Based Security), Credential Guard and Memory Integrity** by default.<br>This can cause problems with VMware Workstation, VirtualBox or even AMD/NVIDIA drivers (e.g. *Hypervisor Error BSOD*).<br><br>If you want **bare metal virtualization** or a stable GPU driver, you need to disable these features.<br><br>---<br><br>## Quick fix: BAT script<br><br>1. Download or copy the following script into a file named `disable-hyperv-vbs.bat`.<br>2. **Right-click → Run as Administrator**.<br>3. Wait for the script to finish and the computer to restart.<br>4. Check under `msinfo32` that **“Hyper-V - A hypervisor has been detected”** is **NO**.</p>
-<p><a href="/blog/b1002787/assets/help.cmd">Script Downloud</a></p>
-<p> </p>
-<p><br>```bat<br>@echo off<br>echo ===========================<br>echo Hyper-V / VBS Killer Script<br>echo ===========================<br><br>:: 1. Disable Hyper-V and Virtual Platforms<br>dism /Online /Disable-Feature:Microsoft-Hyper-V-All /NoRestart<br>dism /Online /Disable-Feature:HypervisorPlatform /NoRestart<br>dism /Online /Disable-Feature:VirtualMachinePlatform /NoRestart<br>dism /Online /Disable-Feature:WindowsSubsystemForLinux /NoRestart<br>dism /Online /Disable-Feature:Windows-Defender-ApplicationGuard /NoRestart<br><br>:: 2. Disable VBS<br>reg add "HKLM\System\CurrentControlSet\Control\DeviceGuard" /v EnableVirtualizationBasedSecurity /t REG_DWORD /d 0 /f<br>reg add "HKLM\System\CurrentControlSet\Control\DeviceGuard" /v RequirePlatformSecurityFeatures /t REG_DWORD /d 0 /f<br><br>:: 3. Disable Credential Guard<br>reg add "HKLM\System\CurrentControlSet\Control\Lsa" /v LsaCfgFlags /t REG_DWORD /d 0 /f<br><br>:: 4. Disable Memory Integrity<br>reg add "HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity" /v Enabled /t REG_DWORD /d 0 /f<br><br>:: 5. Disable hypervisor startup<br>bcdedit /set hypervisorlaunchtype off</p>
-<p> </p>
-<p> </p>
+    <p>If you have an AMD system then you have probably seen this before, the picture stops then goes black and then this:</p>
 
-    
+    <p>
+      <img class="post__image" src="assets/amd.png" alt="AMD error" width="360" height="216">
+      <img class="post__image" src="assets/amdview.png" alt="AMD view" width="398" height="447">
+    </p>
+
+    <h2>Driver Cleanup & Reinstall</h2>
+    <ul>
+      <li>
+        Clean up drivers<br><br>
+        Use DDU (Display Driver Uninstaller) in safe mode to remove any AMD GPU driver remnants.<br><br>
+        <a href="https://dogexperttech.github.io/go/HvUTdUi">DDU Download Link</a><br><br>
+
+        Install AMD official driver<br><br>
+        Go to <a href="https://www.amd.com/en/support/download/drivers.html">AMD Drivers &amp; Support</a><br><br>
+        Download the driver for the appropriate model (e.g. RX 5500/5600/5700) and install it.
+      </li>
+    </ul>
+
+    <h2>Hypervisor Crash</h2>
+    <p>
+      <img class="post__image" src="assets/crashview.png" alt="Hypervisor crash" width="487" height="692">
+    </p>
+
+    <p>
+      Windows Hyper-V and VBS Removal (Fix for VMware / VirtualBox / GPU BSOD)<br><br>
+      Some newer versions of Windows 10/11 enable <strong>Hyper-V, VBS (Virtualization Based Security), Credential Guard and Memory Integrity</strong> by default.<br>
+      This can cause problems with VMware Workstation, VirtualBox or even AMD/NVIDIA drivers (e.g. <em>Hypervisor Error BSOD</em>).<br><br>
+      If you want <strong>bare metal virtualization</strong> or a stable GPU driver, you need to disable these features.
+    </p>
+
+    <h2>Quick Fix: BAT Script</h2>
+    <p>
+      1. Download or copy the following script into a file named <code>disable-hyperv-vbs.bat</code>.<br>
+      2. <strong>Right-click → Run as Administrator</strong>.<br>
+      3. Wait for the script to finish and the computer to restart.<br>
+      4. Check under <code>msinfo32</code> that <strong>“Hyper-V - A hypervisor has been detected”</strong> is <strong>NO</strong>.
+    </p>
+
+    <p><a href="assets/help.cmd">Script Download</a></p>
+
+    <pre><code>@echo off
+echo ===========================
+echo Hyper-V / VBS Killer Script
+echo ===========================
+
+:: 1. Disable Hyper-V and Virtual Platforms
+dism /Online /Disable-Feature:Microsoft-Hyper-V-All /NoRestart
+dism /Online /Disable-Feature:HypervisorPlatform /NoRestart
+dism /Online /Disable-Feature:VirtualMachinePlatform /NoRestart
+dism /Online /Disable-Feature:WindowsSubsystemForLinux /NoRestart
+dism /Online /Disable-Feature:Windows-Defender-ApplicationGuard /NoRestart
+
+:: 2. Disable VBS
+reg add "HKLM\System\CurrentControlSet\Control\DeviceGuard" /v EnableVirtualizationBasedSecurity /t REG_DWORD /d 0 /f
+reg add "HKLM\System\CurrentControlSet\Control\DeviceGuard" /v RequirePlatformSecurityFeatures /t REG_DWORD /d 0 /f
+
+:: 3. Disable Credential Guard
+reg add "HKLM\System\CurrentControlSet\Control\Lsa" /v LsaCfgFlags /t REG_DWORD /d 0 /f
+
+:: 4. Disable Memory Integrity
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity" /v Enabled /t REG_DWORD /d 0 /f
+
+:: 5. Disable hypervisor startup
+bcdedit /set hypervisorlaunchtype off
+</code>
+      <button class="copy-btn">📋 Copy</button>
+    </pre>
   </main>
+
   <footer>
     &copy; 2025 Dog Expert Blog
 
-<!-- Google Translate keelevalik -->
-<div id="google_translate_element" style="position: fixed; top: 10px; right: 10px; z-index: 1000;"></div>
+    <!-- Google Translate keelevalik -->
+    <div id="google_translate_element" style="position: fixed; top: 10px; right: 10px; z-index: 1000;"></div>
 
-<script type="text/javascript">
-  function googleTranslateElementInit() {
-    new google.translate.TranslateElement({
-      pageLanguage: 'et',
-      includedLanguages: 'en,et,ru',
-      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-    }, 'google_translate_element');
-  }
-</script>
-
-<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+          pageLanguage: 'et',
+          includedLanguages: 'en,et,ru',
+          layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+        }, 'google_translate_element');
+      }
+    </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   </footer>
+
+
+  <!-- Copy nupu JS -->
+  <script>
+  document.querySelectorAll("pre").forEach(block => {
+    const btn = block.querySelector(".copy-btn");
+    const code = block.querySelector("code").innerText;
+    btn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(code);
+        btn.textContent = "✔ Copied!";
+        setTimeout(() => btn.textContent = "📋 Copy", 2000);
+      } catch (err) {
+        btn.textContent = "❌ Error";
+      }
+    });
+  });
+  </script>
+
 </body>
 </html>
-    
