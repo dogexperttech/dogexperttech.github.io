@@ -7,22 +7,129 @@
   <link rel="icon" type="image/x-icon" href="/assets/favicon.jpg">
   <link rel="stylesheet" href="/style.css" />
   <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #121212;
+      color: #fff;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background: #1a1a1a;
+    }
+
+    .nav-left {
+      font-weight: bold;
+      font-size: 1.5em;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #ff0000;
+    }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    /* --- TABS SECTION --- */
+    .video-section {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .tab-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .tab-buttons button {
+      background: #1a1a1a;
+      color: #fff;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 8px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.1s ease;
+    }
+
+    .tab-buttons button:hover {
+      background: #ff0000;
+      transform: scale(1.05);
+    }
+
+    .tab-buttons button.active {
+      background: #ff0000;
+      font-weight: bold;
+    }
+
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    iframe {
+      width: 100%;
+      max-width: 560px;
+      height: 315px;
+      border: none;
+      border-radius: 10px;
+      margin: 10px;
+    }
+
+    /* --- SOCIAL MEDIA SECTION --- */
     .social-media {
       padding: 40px 20px;
       background: #121212;
       color: #fff;
       text-align: center;
     }
+
     .social-media h2 {
       font-size: 2em;
       margin-bottom: 30px;
       font-weight: 700;
     }
+
     .social-links {
       display: flex;
       justify-content: center;
       gap: 50px;
+      flex-wrap: wrap;
     }
+
     .icon-link {
       display: flex;
       flex-direction: column;
@@ -37,10 +144,12 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       box-shadow: 0 0 10px rgba(255,255,255,0.1);
     }
+
     .icon-link:hover {
       transform: scale(1.1);
       box-shadow: 0 0 25px #ff0000;
     }
+
     .icon-link img {
       max-width: 120px;
       max-height: 120px;
@@ -53,9 +162,10 @@
   </style>
 </head>
 <body>
+
   <header>
     <nav class="navbar">
-      <div class="nav-left">Koer</div>
+      <div class="nav-left">Dog Expert Tech</div>
       <ul class="nav-links">
         <li><a href="/" aria-current="page">Home</a></li>
         <li><a href="/about">About</a></li>
@@ -68,19 +178,46 @@
       <button id="theme-toggle">🌙</button>
     </nav>
   </header>
+
   <main class="hero">
     <h1>Tere tulemast!</h1>
     <p>See on minu isiklik veebileht, kus jagan oma projekte, faile ja mõtteid.</p>
   </main>
-  
+
+  <!-- 🎬 VIDEO / STREAM TABS SECTION -->
   <section class="video-section">
-    <h2>Vaata minu viimaseid videoid</h2>
-    
+    <h2>Vaata minu sisu</h2>
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/ux272IvbQtw?si=nuT4OgnikH5enIth" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen&cc_lang_pref=fr&cc_load_policy=1></iframe>      <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/f7qaCa6JG-s?si=gknV1yvCiaerZ-F9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Lcrd4yJMMPk?si=QT_2y5G9-5xzs3TP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/XYor-ML__iE?si=zXuWf1eDwwYji0Xd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/zMhClDw1rus?si=bI54lKBxzMbUXNGb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <div class="tab-buttons">
+      <button class="tab-btn active" data-tab="streams">🎥 Streamid</button>
+      <button class="tab-btn" data-tab="videos">📺 Videod</button>
+    </div>
+
+    <!-- STREAM TAB -->
+    <div id="streams" class="tab-content active">
+      <p>Otseülekanded ja reaalajas sisu:</p>
+<p>Youtube and Twitch:</p>
+
+      <iframe src="https://www.youtube-nocookie.com/embed/JbIVOdN9xzY?si=M0_F2Qc3cx8b0PzG" allowfullscreen></iframe>
+<iframe src="https://www.youtube-nocookie.com/embed/7t_W-dX-STo?si=HwGZ3QmxfWH4a6EW" allowfullscreen></iframe>
+<iframe src="https://www.youtube-nocookie.com/embed/SGjgBzc8Pug?si=OEtfTeuE1VOjf0D8" allowfullscreen></iframe>
+<iframe src="https://www.youtube-nocookie.com/embed/rIVG1XZuC4Y?si=5oBhZjj1TheP8mPq" allowfullscreen></iframe>
 
 
+    </div>
 
+    <!-- VIDEOS TAB -->
+    <div id="videos" class="tab-content">
+      <p>Minu viimased YouTube videod:</p>
+      <iframe src="https://www.youtube-nocookie.com/embed/ux272IvbQtw" title="Windows 7 Upgrading to Windows 11 2025" allowfullscreen></iframe>
+      <iframe src="https://www.youtube-nocookie.com/embed/f7qaCa6JG-s" title="How to remove Green Petya Ransomware" allowfullscreen></iframe>
+      <iframe src="https://www.youtube-nocookie.com/embed/Lcrd4yJMMPk" title="Windows 11 Installing on VMWare" allowfullscreen></iframe>
+      <iframe src="https://www.youtube-nocookie.com/embed/XYor-ML__iE" title="What happens if you delete Windows System32?" allowfullscreen></iframe>
+      <iframe src="hhttps://www.youtube.com/embed/zMhClDw1rus?si=BIMiDagNIel8LbK_" title="How to remove MEMZ Trojan?" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <!-- 🌐 SOCIAL LINKS -->
   <section class="social-media">
     <h2>Liitu minu kanalitega</h2>
     <div class="social-links">
@@ -92,6 +229,7 @@
       <a href="/go/youtubeextra/" target="_blank" class="icon-link" aria-label="YouTube kanal Dog Expert Extra">
         <img src="/assets/expertextrayoutube.jpg" alt="YouTube logo" />
         <span>Dog Expert Extra</span>
+      </a>
 
       <a href="/go/discord/" target="_blank" class="icon-link" aria-label="Discord server Dog Expert Tech">
         <img src="/assets/discord.png" alt="Discord logo" />
@@ -99,20 +237,35 @@
       </a>
     </div>
   </section>
-  <!-- Google Translate keelevalik -->
-<div id="google_translate_element" style="position: fixed; top: 10px; right: 10px; z-index: 1000;"></div>
 
-<script type="text/javascript">
-  function googleTranslateElementInit() {
-    new google.translate.TranslateElement({
-      pageLanguage: 'et',
-      includedLanguages: 'en,et,ru',
-      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-    }, 'google_translate_element');
-  }
-</script>
+  <!-- Google Translate -->
+  <div id="google_translate_element" style="position: fixed; top: 10px; right: 10px; z-index: 1000;"></div>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'et',
+        includedLanguages: 'en,et,ru',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <!-- TABS LOGIC -->
+  <script>
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        tabContents.forEach(content => content.classList.remove('active'));
+        document.getElementById(button.dataset.tab).classList.add('active');
+      });
+    });
+  </script>
 
   <script src="/script.js"></script>
 </body>
