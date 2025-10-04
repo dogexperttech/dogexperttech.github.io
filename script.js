@@ -16,4 +16,5 @@ themeToggleBtn.addEventListener('click', () => {
     localStorage.setItem('theme', 'light');
     themeToggleBtn.textContent = '🌙';
   }
-});
+
+document.addEventListener("DOMContentLoaded", loadVideos);
