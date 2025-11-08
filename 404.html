@@ -4,34 +4,91 @@
   <title>404 Not Found </title>
   <style>
     body {
-      background: #fafafa;
-      color: #333;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding-top: 100px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 40px 20px;
+      background-image: url('/assets/404.png');
+      background-size: cover;
+      background-position: center;
+      color: #f0f0f0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-shadow: 1px 1px 4px #000;
     }
+
     h1 {
-      font-size: 5em;
-      margin-bottom: 0;
+      font-size: 3rem;
+      margin-bottom: 0.3em;
+      font-weight: 900;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
-    p {
-      font-size: 1.5em;
-      margin-top: 0.5em;
+
+    p.subtitle {
+      font-size: 1.3rem;
+      margin-bottom: 2em;
+      max-width: 600px;
+      text-align: center;
+      font-weight: 600;
+      text-shadow: 1px 1px 5px #111;
     }
-    a {
-      display: inline-block;
-      margin-top: 2em;
-      padding: 0.8em 2em;
-      background: #007acc;
+
+    ul.blog-posts {
+      list-style: none;
+      padding: 0;
+      width: 100%;
+      max-width: 700px;
+    }
+
+    ul.blog-posts li {
+      margin: 15px 0;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 12px;
+      transition: background 0.3s ease;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    ul.blog-posts li:hover {
+      background: rgba(255, 0, 0, 0.7);
+      box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+    }
+
+    ul.blog-posts a {
       color: #fff;
       text-decoration: none;
-      border-radius: 0.3em;
-      transition: background 0.2s;
+      display: block;
+      padding: 20px 30px;
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-shadow: 1px 1px 4px #000;
+      border-radius: 12px;
     }
-    a:hover {
-      background: #005fa3;
+
+    ul.blog-posts a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 20px 10px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      ul.blog-posts a {
+        font-size: 1.1rem;
+        padding: 15px 20px;
+      }
     }
   </style>
+ 
+
 <body>
   <h1>404</h1>
   <p>Vabandust, seda lehte ei leitud.</p>
