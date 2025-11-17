@@ -159,6 +159,32 @@
       padding: 10px;
       object-fit: contain;
     }
+
+
+    /* The alert message box */
+.alert {
+  padding: 20px;
+  background-color: #f44336; /* Red */
+  color: white;
+  margin-bottom: 15px;
+}
+
+/* The close button */
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+  color: black;
+}
   </style>
 </head>
 <body>
@@ -179,6 +205,16 @@
     </nav>
   </header>
 
+<div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  As of November 17th I have decided that I will not be streaming!!!!!!!!!!!!!! Maybe someday we will see each other on the streams but right now is not the time. Thank you for reading!!!!!!!!
+</div>
+
+<div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  Alates 17 november olen otsustanud et ma streeme ei tee!!!!!!!!!!! Kunagi äkki näeme striimides aga preagu pole aeg. Äitäh et lugesite!!!!!!!!
+</div>
+
   <main class="hero">
     <h1>Tere tulemast!</h1>
     <p>See on minu isiklik veebileht, kus jagan oma projekte, faile ja mõtteid.</p>
@@ -196,10 +232,15 @@
     <!-- STREAM TAB -->
     <div id="streams" class="tab-content active">
       <p>Otseülekanded ja reaalajas sisu:</p>
-<p>Youtube and Twitch:</p>
 
-      <iframe src="https://www.youtube-nocookie.com/embed/JbIVOdN9xzY?si=M0_F2Qc3cx8b0PzG" allowfullscreen></iframe>
-<iframe src="https://www.youtube-nocookie.com/embed/rIVG1XZuC4Y?si=5oBhZjj1TheP8mPq" allowfullscreen></iframe>
+
+      <p>Alates 17 november olen otsustanud et ma streeme ei tee!!!!!!!!!!! Kunagi äkki näeme striimides aga preagu pole aeg. Äitäh et lugesite!!!!!!!!:</p>
+
+      <p>As of November 17th I have decided that I will not be streaming!!!!!!!!!!!!!! Maybe someday we will see each other on the streams but right now is not the time. Thank you for reading!!!!!!!!:</p>
+
+
+      <iframe src="https://dogexperttech.github.io/404.html" allowfullscreen></iframe>
+<iframe src="https://dogexperttech.github.io/404.html" allowfullscreen></iframe>
 
 
     </div>
@@ -265,6 +306,30 @@
       });
     });
   </script>
+
+
+<script>
+// Get all elements with class="closebtn"
+var close = document.getElementsByClassName("closebtn");
+var i;
+
+// Loop through all close buttons
+for (i = 0; i < close.length; i++) {
+  // When someone clicks on a close button
+  close[i].onclick = function(){
+
+    // Get the parent of <span class="closebtn"> (<div class="alert">)
+    var div = this.parentElement;
+
+    // Set the opacity of div to 0 (transparent)
+    div.style.opacity = "0";
+
+    // Hide the div after 600ms (the same amount of milliseconds it takes to fade out)
+    setTimeout(function(){ div.style.display = "none"; }, 600);
+  }
+}
+</script>
+
 
   <script src="/script.js"></script>
 </body>
