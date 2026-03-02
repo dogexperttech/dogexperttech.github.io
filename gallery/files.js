@@ -1,4 +1,4 @@
-// Automaatselt genereeritud
+// Auto generate
 
 const images = [
   "assets/wallpapers/Angry Sun.png",

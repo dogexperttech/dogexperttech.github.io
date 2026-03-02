@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DogPE10_x64 – Dog Expert Tech</title>
+  <style>
+    :root {
+      --bg: #0b1220; --bg-card: #020617; --text: #e5e7eb;
+      --muted: #94a3b8; --primary: #2563eb; --border: #1e293b;
+      --success: #10b981; --danger: #ef4444;
+    }
+    [data-theme="light"] {
+      --bg: #f8fafc; --bg-card: #ffffff; --text: #020617;
+      --muted: #475569; --primary: #1d4ed8; --border: #e2e8f0;
+      --success: #059669; --danger: #dc2626;
+    }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: var(--bg); color: var(--text); margin: 0;
+      transition: background 0.3s; line-height: 1.6;
+    }
+    header { padding: 40px 20px; background: #020617; border-bottom: 1px solid var(--border); }
+    .topbar { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: auto; }
+    main { max-width: 1200px; margin: auto; padding: 20px; }
+    .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 28px; }
+    h2 { color: var(--primary); margin-top: 0; font-size: 1.8rem; }
+
+    /* Staatuse märgised */
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700;
+      text-transform: uppercase;
+    }
+    .status-online { background: rgba(16, 185, 129, 0.1); color: var(--success); border: 1px solid var(--success); }
+    .status-offline { background: rgba(239, 68, 68, 0.1); color: var(--danger); border: 1px solid var(--danger); }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; animation: pulse 2s infinite; }
+    @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
+
+    /* Video Ruudustik */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 25px; margin-top: 15px;
+    }
+    .video-card { background: rgba(255,255,255,0.03); border-radius: 12px; padding: 15px; border: 1px solid var(--border); }
+    .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; background: #000; }
+    .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+
+    /* Tabeli disain */
+    .table-container { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; min-width: 800px; }
+    th, td { padding: 16px; border-bottom: 1px solid var(--border); text-align: left; }
+    
+    .btn {
+      padding: 10px 20px; background: var(--primary); color: #fff;
+      text-decoration: none; border-radius: 6px; font-weight: 700;
+      border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
+      transition: all 0.2s; min-width: 160px; justify-content: center;
+    }
+    .btn:hover:not(:disabled) { filter: brightness(1.2); transform: translateY(-1px); }
+    .btn:disabled { background: #334155; cursor: not-allowed; opacity: 0.6; }
+    .btn-secondary { background: #334155; min-width: auto; }
+
+    pre { background: #000; padding: 18px; border-radius: 8px; border: 1px solid var(--border); position: relative; }
+    code { color: var(--success); font-family: 'Consolas', monospace; font-size: 0.95rem; }
+    
+    footer { text-align: center; padding: 60px 20px; color: var(--muted); border-top: 1px solid var(--border); }
+  </style>
+</head>
+<body data-theme="dark">
+
+<header>
+  <div class="topbar">
+    <div>
+      <h1 style="margin:0">DogPE10_x64</h1>
+      <p style="margin:5px 0 0 0; color:var(--muted)">WinPE by <strong>Dog Expert Tech</strong></p>
+    </div>
+    <button class="btn btn-secondary" onclick="toggleTheme()">🌓 Theme</button>
+  </div>
+</header>
+
+<main>
+  <section class="card">
+    <h2>Demonstrations</h2>
+    <div id="videoGrid" class="video-grid"></div>
+  </section>
+
+  <section class="card">
+    <h2>Available Images</h2>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Status</th>
+            <th>Version</th>
+            <th>Size</th>
+            <th>Stats</th>
+            <th>Action</th>
+            <th>Verify</th>
+          </tr>
+        </thead>
+        <tbody id="isoTable"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card" id="checksumCard" style="display:none">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <h2 style="margin:0">SHA256 Integrity Hash</h2>
+      <button class="btn btn-secondary" onclick="copyHash()">Copy</button>
+    </div>
+    <pre style="margin-top:15px"><code id="checksumValue"></code></pre>
+  </section>
+</main>
+
+<footer>&copy; 2026 Dog Expert Tech</footer>
+
+<script>
+// SUNNIME SESSIOONI TÜHJENDAMISE IGAL LEHE LAADIMISEL (Ctrl+R)
+sessionStorage.clear();
+
+async function loadPortal() {
+  try {
+    const response = await fetch('isos.json');
+    const data = await response.json();
+
+    const tbody = document.getElementById('isoTable');
+    tbody.innerHTML = ''; 
+    data.isos.forEach((iso, index) => {
+      const isOnline = iso.status.toLowerCase() === 'online';
+      
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>
+          <span class="badge ${isOnline ? 'status-online' : 'status-offline'}">
+            <span class="dot"></span> ${iso.status}
+          </span>
+        </td>
+        <td><strong>${iso.version}</strong><br><small>${iso.arch}</small></td>
+        <td>${iso.size}</td>
+        <td><span style="color:var(--muted)">📊 ${iso.downloads.toLocaleString()}</span></td>
+        <td>
+          <button class="btn" 
+                  id="dl-btn-${index}" 
+                  onclick="handleDownload('${iso.url}', 'dl-btn-${index}', ${isOnline})"
+                  ${!isOnline ? 'disabled' : ''}>
+            ${isOnline ? 'MEGA Download' : 'Offline'}
+          </button>
+        </td>
+        <td><button class="btn btn-secondary" onclick='showHash("${iso.sha256}")'>Verify</button></td>
+      `;
+      tbody.appendChild(row);
+    });
+
+    const vGrid = document.getElementById('videoGrid');
+    data.videos.forEach(vid => {
+      const div = document.createElement('div');
+      div.className = 'video-card';
+      div.innerHTML = `
+        <h4 style="margin:0 0 10px 0">${vid.title}</h4>
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/${vid.id}" allowfullscreen></iframe>
+        </div>
+      `;
+      vGrid.appendChild(div);
+    });
+  } catch (e) { console.error("Viga andmete laadimisel:", e); }
+}
+
+function handleDownload(url, btnId, isOnline) {
+  if (!isOnline) return; // Kui pole online, ei tee midagi
+
+  const btn = document.getElementById(btnId);
+  const isUnlocked = sessionStorage.getItem('dogpe_unlocked');
+
+  // Kui on juba selles sessioonis oodanud, ava kohe
+  if (isUnlocked === 'true') {
+    window.open(url, '_blank');
+    return;
+  }
+
+  // Alusta 20s loendurit
+  let timeLeft = 20;
+  btn.disabled = true;
+  
+  const timer = setInterval(() => {
+    btn.innerText = `Preparing: ${timeLeft}s`;
+    timeLeft--;
+    
+    if (timeLeft < 0) {
+      clearInterval(timer);
+      btn.innerText = "MEGA Download";
+      btn.disabled = false;
+      sessionStorage.setItem('dogpe_unlocked', 'true'); // Märgi sessioon avatuks
+      window.open(url, '_blank');
+    }
+  }, 1000);
+}
+
+function showHash(hash) {
+  const card = document.getElementById('checksumCard');
+  card.style.display = 'block';
+  document.getElementById('checksumValue').innerText = hash;
+  card.scrollIntoView({ behavior: 'smooth' });
+}
+
+function copyHash() {
+  const hash = document.getElementById('checksumValue').innerText;
+  navigator.clipboard.writeText(hash);
+  alert("Hash copyed!");
+}
+
+function toggleTheme() {
+  document.body.dataset.theme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+}
+
+loadPortal();
+</script>
+</body>
+</html>

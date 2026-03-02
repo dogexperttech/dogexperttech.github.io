@@ -1,0 +1,20 @@
+{
+  "isos": [
+    {
+      "version": "DogPE10_x64 v1.0.0",
+      "arch": "x64",
+      "size": "2,28 GB",
+      "status": "Online",
+      "downloads": 0,
+      "sha256": "214d7943314dfcd26fb1475eb1e79ce3617fe415b59845cbb6fa61cc1008eb8e",
+      "url": "https://mega.nz/file/DwRVBCzS#g0PqqkG3PmJ0qpGNwDMQdOsE2EuPK0SFcCLPLHU1XXU"
+    }
+  ],
+  "videos": [
+    {
+      "title": "Checking my Windows 10 PE. Dog10PE",
+      "id": "_JmN_8R7TUs",
+      "author": "Dog Expert Tech"
+    }
+  ]
+}
