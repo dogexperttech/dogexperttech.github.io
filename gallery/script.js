@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Ensure `images` array exists globally
   if (!Array.isArray(images)) {
-    console.error('❌ images massiiv puudub või on vigane!');
+    console.error('❌ images array is missing or invalid!');
     return;
   }
 
@@ -44,16 +44,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const src = images[index];
     let sizeText = '';
 
-    // 🌀 Show loading popup while preloading
-    Swal.fire({
-      title: 'Laen pilti...',
-      text: 'Palun oota, pilt on teel!',
-      allowOutsideClick: false,
-      background: getComputedStyle(document.body).backgroundColor,
-      didOpen: () => {
-        Swal.showLoading();
-      }
-    });
+    // 🌀 Show loading popup while preloading 
+  swal.fire({ 
+  title: 'Louding a picture...', 
+  text: 'Please wait, the picture is on its way!', 
+  allowOutsideClick: false, 
+  background: getComputedStyle(document.body).backgroundColor, 
+  didOpen: () => { 
+  Swal.showLoading(); 
+  } 
+  });
 
     // ✅ Preload image before showing
     const preload = new Image();
@@ -83,12 +83,39 @@ document.addEventListener('DOMContentLoaded', () => {
               ${sizeText}
               <br>
               <a href="${src}" download class="download-btn">⬇️ Laadi alla</a>
+
+<style>
+.download-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #4f46e5, #6366f1); /* ilus gradient */
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 12px; /* ümarad nurgad */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* kerge vari */
+    transition: all 0.3s ease;
+}
+
+.download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+}
+
+.download-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+</style>
+
               <div style="margin-top: 1em;">
                 <button id="prev" class="nav-btn"${index === 0 ? ' style="display:none;"' : ''}>⬅️</button>
                 <button id="next" class="nav-btn"${index === images.length - 1 ? ' style="display:none;"' : ''}>➡️</button>
               </div>
             `,
-            showConfirmButton: false,
+            showConfirmButton: true,
             showCloseButton: true,
             width: 'auto',
             background: getComputedStyle(document.body).backgroundColor || '#121212',
@@ -117,8 +144,8 @@ document.addEventListener('DOMContentLoaded', () => {
       Swal.close();
       Swal.fire({
         icon: 'error',
-        title: 'Pilt ei laadunud!',
-        text: 'Pildi allalaadimine ebaõnnestus.',
+        title: 'The image did not load!',
+        text: 'Image download failed.',
         background: getComputedStyle(document.body).backgroundColor || '#121212'
       });
     };
