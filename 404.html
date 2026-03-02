@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<html lang="et">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="20">
+  
   <title>404 Not Found</title>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 40px 20px;
-      background: url('/assets/404.jpg') center/cover no-repeat;
+      background: #1a1a1a url('/assets/404.jpg') center/cover no-repeat;
       color: #f0f0f0;
       min-height: 100vh;
       display: flex;
@@ -21,20 +23,34 @@
 
     h1 {
       font-size: 5rem;
-      margin-bottom: 0.3em;
+      margin-bottom: 0.1em;
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: 3px;
+      color: #ff3b3b;
+    }
+
+    .error-msg {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      text-transform: uppercase;
     }
 
     p {
-      font-size: 1.3rem;
-      font-weight: 600;
+      font-size: 1.1rem;
+      font-weight: 400;
       margin: 0.5em 0;
-      text-shadow: 1px 1px 5px #111;
+      opacity: 0.8;
     }
 
-    /* Hoverable nupp */
+    .timer {
+      font-size: 0.9rem;
+      margin-top: 20px;
+      color: #aaa;
+      font-style: italic;
+    }
+
     .hover-btn {
       position: relative;
       display: inline-block;
@@ -54,46 +70,50 @@
     .hover-btn::before {
       content: "";
       position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
       background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
       transition: all 0.5s ease;
     }
 
-    .hover-btn:hover::before {
-      left: 100%;
-    }
-
+    .hover-btn:hover::before { left: 100%; }
     .hover-btn:hover {
       transform: translateY(-4px) scale(1.05);
       box-shadow: 0 0 30px rgba(255, 0, 0, 0.8);
-      background: linear-gradient(90deg, #ff0000, #ff5c5c);
-    }
-
-    .hover-btn:active {
-      transform: scale(0.97);
     }
 
     @media (max-width: 480px) {
-      h1 { font-size: 3rem; }
-      p { font-size: 1rem; }
-      .hover-btn {
-        font-size: 1rem;
-        padding: 0.8em 1.5em;
-      }
+      h1 { font-size: 3.5rem; }
+      .error-msg { font-size: 1.2rem; }
     }
   </style>
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
 <body>
+
   <h1>404</h1>
-  <p>Vabandust, seda lehte ei leitud.</p>
-  <p>Sorry, this page was not found.</p>
+  <div class="error-msg">Error: Page Not Found</div>
+  <p>The requested URL was not found on this server.</p>
+  <p>Please check the address or return to the homepage.</p>
 
   <a href="https://dogexperttech.github.io/" class="hover-btn">
-    ⬅ Tagasi avalehele︱Back to homepage
+    Back to Homepage
   </a>
+
+  <div class="timer" id="countdown">Page will auto-refresh in 20 seconds...</div>
+
+  <script>
+    // See osa on valikuline: see näitab sekundite jooksmist ekraanil
+    let timeLeft = 20;
+    const timerElement = document.getElementById('countdown');
+    
+    setInterval(() => {
+      timeLeft--;
+      if (timeLeft >= 0) {
+        timerElement.textContent = `Page will auto-refresh in ${timeLeft} seconds...`;
+      }
+    }, 1000);
+  </script>
+
 </body>
 </html>
