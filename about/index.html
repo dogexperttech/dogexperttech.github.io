@@ -3,10 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>About</title>
+  <title>About - Dog Expert Tech</title>
   <link rel="icon" type="image/x-icon" href="/assets/favicon.jpg">
   <link rel="stylesheet" href="/style.css" />
-<style>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lightgallery-bundle.min.css">
+
+  <style>
     .social-media {
       padding: 40px 20px;
       background: #121212;
@@ -22,6 +25,7 @@
       display: flex;
       justify-content: center;
       gap: 50px;
+      flex-wrap: wrap;
     }
     .icon-link {
       display: flex;
@@ -50,7 +54,53 @@
       padding: 10px;
       object-fit: contain;
     }
-  </style>
+
+    /* Galerii stiil */
+    #lightgallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+      margin-bottom: 40px;
+    }
+    #lightgallery a {
+      display: block;
+      overflow: hidden;
+      border-radius: 10px;
+      border: 2px solid #333;
+      transition: border-color 0.3s;
+      text-decoration: none; /* Eemaldab võimaliku joone pildi alt */
+    }
+    #lightgallery a:hover {
+      border-color: #ff0000;
+    }
+    #lightgallery img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s;
+    }
+    #lightgallery a:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Tehnilised andmed stiil */
+    .specs-list {
+      margin-top: 40px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+    }
+    .specs-list h2 {
+      border-bottom: 2px solid #ff0000;
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+    .specs-list p {
+        margin: 10px 0;
+        line-height: 1.6;
+    }
   </style>
 </head>
 <body>
@@ -58,8 +108,8 @@
     <nav class="navbar">
       <div class="nav-left">Dog Expert Tech</div>
       <ul class="nav-links">
-        <li><a href="/" aria-current="page">Home</a></li>
-        <li><a href="/about">About</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about" aria-current="page">About</a></li>
         <li><a href="/files">Files</a></li>
         <li><a href="/software">Software</a></li>
         <li><a href="/gallery">Gallery</a></li>
@@ -69,133 +119,125 @@
       <button id="theme-toggle">🌙</button>
     </nav>
   </header>
+
   <main class="hero">
     <h1>Tere tulemast!</h1>
     <p>See on minu isiklik veebileht, kus jagan oma projekte, faile ja mõtteid.</p>
   </main>
 
-  <h2>Mida teen</h2>
-  <ul>
-    <li>Ma teen mänge</li>
-    <li>Ma teen tarkvara</li>
-    <li>Ma teen videosi </li>
+  <section style="padding: 20px; max-width: 1000px; margin: auto;">
+    <h2>Mida teen</h2>
+    <ul>
+      <li>Ma teen mänge</li>
+      <li>Ma teen tarkvara</li>
+      <li>Ma teen videosid</li>
+    </ul>
 
-  <section class="computer-specs" style="padding: 20px; max-width: 800px; margin: auto;">
-  <h2>Minu pea arvuti specs</h2>
-  <ul>
-    <img src="/about/assets/mainpc.png" alt="Minu Main Arvuti">
-    <li><strong>Arvuti:</strong> Lenovo IdeaCentre 5 14ACN6  </li>
-    <li><strong>Protsessor:</strong> AMD Ryzen 5 Intergrated</li>
-    <li><strong>RAM:</strong> 16GB DDR4</li>
-    <li><strong>Graafikakaart:</strong>  Intergrated Graafika</li>
-    <li><strong>Salvestus:</strong> 477 GB NVMe SSD + 60 GB HDD</li>
-	<li><strong>Partitsionid:</strong> C: 232 GB Data D: 245 GB G: Archive 60 GB</li>
-  <li><strong>Operatsioonisüsteem:</strong> Windows 11 Pro 25H2 64-bit</li>
-  </ul>
+    <h2>Minu Seadmete Galerii</h2>
+    <div id="lightgallery">
+      <a href="/about/assets/mainpc.png" data-src="/about/assets/mainpc.png" data-sub-html="<h4>Peaarvuti</h4>">
+        <img src="/about/assets/mainpc.png" alt="Main PC">
+      </a>
+      <a href="/about/assets/full setup.jpeg" data-src="/about/assets/full setup.jpeg" data-sub-html="<h4>Täielik Setup</h4>">
+        <img src="/about/assets/full setup.jpeg" alt="Full Setup">
+      </a>
+      <a href="/about/assets/laptop2.jpg" data-src="/about/assets/laptop2.jpg" data-sub-html="<h4>Laptop HP ProBook</h4>">
+        <img src="/about/assets/laptop2.jpg" alt="Laptop 2">
+      </a>
+      <a href="/about/assets/laptop3.jpg" data-src="/about/assets/laptop3.jpg" data-sub-html="<h4>Laptop MSI</h4>">
+        <img src="/about/assets/laptop3.jpg" alt="Laptop 3">
+      </a>
+      <a href="/about/assets/rpi5.jpg" data-src="/about/assets/rpi5.jpg" data-sub-html="<h4>Raspberry Pi 5</h4>">
+        <img src="/about/assets/rpi5.jpg" alt="RPI 5">
+      </a>
+      <a href="/about/assets/rpir.jpeg" data-src="/about/assets/rpir.jpeg" data-sub-html="<h4>RPI Projekt</h4>">
+        <img src="/about/assets/rpir.jpeg" alt="RPI Projekt">
+      </a>
+      <a href="/about/assets/ipad 4.jpg" data-src="/about/assets/ipad 4.jpg" data-sub-html="<h4>iPad 4</h4>">
+        <img src="/about/assets/ipad 4.jpg" alt="iPad 4">
+      </a>
+      <a href="/about/assets/mainphone.jpg" data-src="/about/assets/mainphone.jpg" data-sub-html="<h4>Samsung A56 5G</h4>">
+        <img src="/about/assets/mainphone.jpg" alt="Main Phone">
+      </a>
+      <a href="/about/assets/samsa.jpeg" data-src="/about/assets/samsa.jpeg" data-sub-html="<h4>Samsung seade</h4>">
+        <img src="/about/assets/samsa.jpeg" alt="Samsung">
+      </a>
+      <a href="/about/assets/honora.jpeg" data-src="/about/assets/honora.jpeg" data-sub-html="<h4>Honor telefon</h4>">
+        <img src="/about/assets/honora.jpeg" alt="Honor">
+      </a>
+      <a href="/about/assets/sonycam.jpeg" data-src="/about/assets/sonycam.jpeg" data-sub-html="<h4>Sony kaamera</h4>">
+        <img src="/about/assets/sonycam.jpeg" alt="Sony Camera">
+      </a>
+      <a href="/about/assets/lgta.jpeg" data-src="/about/assets/lgta.jpeg" data-sub-html="<h4>LGTA seade</h4>">
+        <img src="/about/assets/lgta.jpeg" alt="LGTA">
+      </a>
+      <a href="/about/assets/sub31.png" data-src="/about/assets/sub31.png" data-sub-html="<h4>Tellijate arv</h4>">
+        <img src="/about/assets/sub31.png" alt="Subs Count">
+      </a>
+      <a href="/about/assets/viwes.png" data-src="/about/assets/viwes.png" data-sub-html="<h4>Vaatamiste arv</h4>">
+        <img src="/about/assets/viwes.png" alt="Views Count">
+      </a>
+    </div>
 
-   <h2>Minu  teise laptopi specs</h2>
-  <ul>
-    <img src="/about/assets/laptop2.jpg" alt="Minu Teise Laptopi">
-    <li><strong>Arvuti:</strong> HP ProBook 450 G1</li>
-    <li><strong>Protsessor:</strong> Intel i3-4000M 2,40GHz</li>
-    <li><strong>RAM:</strong> 12GB DDR4</li>
-    <li><strong>Graafikakaart:</strong>Intel HD Graphics 4600</li>
-    <li><strong>Salvestus:</strong> 456 GB SSD</li>
-    <li><strong>Operatsioonisüsteem:</strong> Windows 10 Enterprise Iot LTSC 64-bit</li>
-  </ul>
+    <div class="specs-list">
+      <h2>Tehnilised andmed</h2>
+      <p><strong>Peaarvuti:</strong> Lenovo IdeaCentre 5 | Ryzen 5 | 16GB RAM</p>
+      <p><strong>Serverid:</strong> MSI CX623 (Win Server 2022) & Raspberry Pi 5</p>
+      <p><strong>Telefon:</strong> Samsung A56 5G (Android 16)</p>
+    </div>
 
-  <h2>Minu  kolmanda laptopi specs</h2>
-  <ul>
-    <img src="/about/assets/laptop3.jpg" alt="Minu Kolmanda Laptopi">
-    <li><strong>Arvuti:</strong> MSI CX623</li>
-    <li><strong>Protsessor:</strong> Intel® Core™ i3 processor</li>
-    <li><strong>RAM:</strong> DDR3 1066, Max: 4GB</li>
-    <li><strong>Graafikakaart:</strong>NVIDIA® GeForce® G 310M (Support NVIDIA Optimus Technology)</li>
-    <li><strong>Salvestus:</strong> 450 GB SSD</li>
-    <li><strong>Operatsioonisüsteem:</strong> Windows Server "2022" 64-bit</li>
-    <p>Seda kasutan enda serveriks ja teen projekte.</p>
-  </ul>
+    <h2>Kasutan tarkvara</h2>
+    <ul>
+      <li>Wondershare Filmora 14</li>
+      <li>Visual Studio Code</li>
+      <li>VMWare Workstation 17</li>
+      <li>Paint.Net</li>
+      <li>OBS Studio</li>
+    </ul>
+  </section>
 
-  <h2>Minu  Raspberry PI 5 specs</h2>
-  <ul>
-    <img src="/about/assets/rpi5.jpg" alt="Minu Raspberry PI 5">
-    <li><strong>Arvuti:</strong> Raspberry Pi 5</li>
-    <li><strong>Protsessor:</strong> Quad-core Cortex-A76</li>
-    <li><strong>RAM:</strong> 8GB LPDDR4-3200</li>
-    <li><strong>Graafikakaart:</strong> Broadcom VideoCore VII</li>
-    <li><strong>Salvestus:</strong> microSD (support for USB mass storage)</li>
-    <li><strong>Operatsioonisüsteem:</strong> Raspberry Pi OS (64-bit)</li>
-    <p>Seda kasutan enda Teiseks serveriks ja teen projekte.</p>
-  </ul>
-
-  <h2>Minu Ipad 4 specs</h2>
-  <ul>
-    <img src="/about/assets/ipad 4.jpg" alt="Minu Ipad 4">
-    <li><strong>Arvuti:</strong> Ipad 4</li>
-    <li><strong>Protsessor:</strong> Apple A6X</li>
-    <li><strong>RAM:</strong> 1GB</li>
-    <li><strong>Mälu:</strong> 16 GB</li>
-    <li><strong>Operatsioonisüsteem:</strong> iOS 10.3.4</li>
-    <p>Seda kasutan enda Enda Teiseks ekraniks ja teen projekte.</p>
-  </ul>
-
-   <h2>Minu Telefoni specs</h2>
-  <ul>
-    <img src="/about/assets/mainphone.jpg" alt="Minu Telefon">
-    <li><strong>Telefon:</strong> Samsung A56 5G</li>
-    <li><strong>Protsessor:</strong> Octa-core Cortex-A720 & 4x1.9 GHz Cortex-A520</li>
-    <li><strong>RAM:</strong> 8GB RAM</li>
-    <li><strong>Mälu:</strong> 256GB</li>
-    <li><strong>Operatsioonisüsteem:</strong> Android 16 One UI 8</li>
-    <p>Seda kasutan enda pea telefoniks ja ja salvestan.</p>
-  </ul>
-
-  <h2>Kasutan tarkvara</h2>
-  <ul>
-    <li>Wondershere Filmora 14 + Clipchamp vahest (videotöötlus)</li>
-    <li>Visual Studio Code (koodiredaktor)</li>
-    <li>VMWare Workstation 17 (virtualmasinad) </li>
-    <li>Paint.Net Thubnailid</li>
-    <li>OBS Studio (ekraanitalletus)</li>
-  </ul>
-</section>
-
-  
-
-<section class="social-media">
+  <section class="social-media">
     <h2>Liitu minu kanalitega</h2>
     <div class="social-links">
-      <a href="/go/youtube/" target="_blank" class="icon-link" aria-label="YouTube kanal Dog Expert Tech">
-        <img src="/assets/expertyoutube.jpg" alt="YouTube logo" />
-        <span>Dog Expert</span>
+      <a href="/go/youtube/" target="_blank" class="icon-link">
+        <img src="/assets/expertyoutube.jpg" alt="YouTube" />
+        <span>YouTube</span>
       </a>
-
-      <a href="/go/youtubeextra/" target="_blank" class="icon-link" aria-label="YouTube kanal Dog Expert Extra">
-        <img src="/assets/expertextrayoutube.jpg" alt="YouTube logo" />
-        <span>Dog Expert Extra</span>
-
-      <a href="/go/discord/" target="_blank" class="icon-link" aria-label="Discord server Dog Expert Tech">
-        <img src="/assets/discord.png" alt="Discord logo" />
-        <span>Discord Server</span>
+      <a href="/gdord/" target="_blank" class="icon-link">
+        <img src="/assets/dva.jpg" alt="Discord" />
+        <span>Discord</span>
       </a>
     </div>
   </section>
 
-<!-- Google Translate keelevalik -->
-<div id="google_translate_element" style="position: fixed; top: 10px; right: 10px; z-index: 1000;"></div>
+  <div id="google_translate_element" style="position: fixed; top: 10px; right: 10px; z-index: 1000;"></div>
 
-<script type="text/javascript">
-  function googleTranslateElementInit() {
-    new google.translate.TranslateElement({
-      pageLanguage: 'et',
-      includedLanguages: 'en,et,ru',
-      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-    }, 'google_translate_element');
-  }
-</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/lightgallery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/zoom/lg-zoom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/thumbnail/lg-thumbnail.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/share/lg-share.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/fullscreen/lg-fullscreen.min.js"></script>
 
-<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script type="text/javascript">
+    lightGallery(document.getElementById('lightgallery'), {
+      speed: 500,
+      selector: 'a',
+      plugins: [lgZoom, lgThumbnail, lgShare, lgFullscreen],
+      download: true,
+      fullScreen: true,
+      share: true,
+      zoom: true
+    });
 
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'et',
+        includedLanguages: 'en,et,ru',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   <script src="/script.js"></script>
 </body>
 </html>

@@ -17,3 +17,12 @@ themeToggleBtn.addEventListener('click', () => {
     themeToggleBtn.textContent = '🌙';
   }
 });
+
+<script type="text/javascript">
+    lightGallery(document.getElementById('lightgallery'), {
+        speed: 500,
+        plugins: [lgThumbnail, lgZoom],
+        // Valikuline: näitab pisipilte kohe
+        thumbnail: true, 
+    });
+</script>
