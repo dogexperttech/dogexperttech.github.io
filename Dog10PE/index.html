@@ -26,7 +26,6 @@
     .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 28px; }
     h2 { color: var(--primary); margin-top: 0; font-size: 1.8rem; }
 
-    /* Staatuse märgised */
     .badge {
       display: inline-flex; align-items: center; gap: 6px;
       padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700;
@@ -37,7 +36,6 @@
     .dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; animation: pulse 2s infinite; }
     @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
 
-    /* Video Ruudustik */
     .video-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -47,7 +45,6 @@
     .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; background: #000; }
     .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
-    /* Tabeli disain */
     .table-container { overflow-x: auto; }
     table { width: 100%; border-collapse: collapse; min-width: 800px; }
     th, td { padding: 16px; border-bottom: 1px solid var(--border); text-align: left; }
@@ -57,6 +54,7 @@
       text-decoration: none; border-radius: 6px; font-weight: 700;
       border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
       transition: all 0.2s; min-width: 160px; justify-content: center;
+      margin-bottom: 5px;
     }
     .btn:hover:not(:disabled) { filter: brightness(1.2); transform: translateY(-1px); }
     .btn:disabled { background: #334155; cursor: not-allowed; opacity: 0.6; }
@@ -117,7 +115,6 @@
 <footer>&copy; 2026 Dog Expert Tech</footer>
 
 <script>
-// SUNNIME SESSIOONI TÜHJENDAMISE IGAL LEHE LAADIMISEL (Ctrl+R)
 sessionStorage.clear();
 
 async function loadPortal() {
@@ -127,9 +124,26 @@ async function loadPortal() {
 
     const tbody = document.getElementById('isoTable');
     tbody.innerHTML = ''; 
-    data.isos.forEach((iso, index) => {
+    
+    data.isos.forEach((iso, isoIndex) => {
       const isOnline = iso.status.toLowerCase() === 'online';
       
+      // Genereerime nuppude HTML-i vastavalt linkide arvule
+      let actionButtons = '';
+      if (isOnline && iso.links) {
+        iso.links.forEach((link, linkIndex) => {
+          const btnId = `dl-btn-${isoIndex}-${linkIndex}`;
+          actionButtons += `
+            <button class="btn" 
+                    id="${btnId}" 
+                    onclick="handleDownload('${link.url}', '${btnId}', ${isOnline})">
+              ${link.name} Download
+            </button><br>`;
+        });
+      } else {
+        actionButtons = `<button class="btn" disabled>Offline</button>`;
+      }
+
       const row = document.createElement('tr');
       row.innerHTML = `
         <td>
@@ -140,14 +154,7 @@ async function loadPortal() {
         <td><strong>${iso.version}</strong><br><small>${iso.arch}</small></td>
         <td>${iso.size}</td>
         <td><span style="color:var(--muted)">📊 ${iso.downloads.toLocaleString()}</span></td>
-        <td>
-          <button class="btn" 
-                  id="dl-btn-${index}" 
-                  onclick="handleDownload('${iso.url}', 'dl-btn-${index}', ${isOnline})"
-                  ${!isOnline ? 'disabled' : ''}>
-            ${isOnline ? 'MEGA Download' : 'Offline'}
-          </button>
-        </td>
+        <td>${actionButtons}</td>
         <td><button class="btn btn-secondary" onclick='showHash("${iso.sha256}")'>Verify</button></td>
       `;
       tbody.appendChild(row);
@@ -169,19 +176,18 @@ async function loadPortal() {
 }
 
 function handleDownload(url, btnId, isOnline) {
-  if (!isOnline) return; // Kui pole online, ei tee midagi
+  if (!isOnline) return;
 
   const btn = document.getElementById(btnId);
   const isUnlocked = sessionStorage.getItem('dogpe_unlocked');
 
-  // Kui on juba selles sessioonis oodanud, ava kohe
   if (isUnlocked === 'true') {
     window.open(url, '_blank');
     return;
   }
 
-  // Alusta 20s loendurit
   let timeLeft = 20;
+  const originalText = btn.innerText;
   btn.disabled = true;
   
   const timer = setInterval(() => {
@@ -190,9 +196,9 @@ function handleDownload(url, btnId, isOnline) {
     
     if (timeLeft < 0) {
       clearInterval(timer);
-      btn.innerText = "MEGA Download";
+      btn.innerText = originalText;
       btn.disabled = false;
-      sessionStorage.setItem('dogpe_unlocked', 'true'); // Märgi sessioon avatuks
+      sessionStorage.setItem('dogpe_unlocked', 'true');
       window.open(url, '_blank');
     }
   }, 1000);
@@ -208,7 +214,7 @@ function showHash(hash) {
 function copyHash() {
   const hash = document.getElementById('checksumValue').innerText;
   navigator.clipboard.writeText(hash);
-  alert("Hash copyed!");
+  alert("Hash copied!");
 }
 
 function toggleTheme() {
