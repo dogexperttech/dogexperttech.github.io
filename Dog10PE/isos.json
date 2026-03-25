@@ -7,7 +7,10 @@
       "status": "Online",
       "downloads": 0,
       "sha256": "214d7943314dfcd26fb1475eb1e79ce3617fe415b59845cbb6fa61cc1008eb8e",
-      "url": "https://mega.nz/file/DwRVBCzS#g0PqqkG3PmJ0qpGNwDMQdOsE2EuPK0SFcCLPLHU1XXU"
+      "links": [
+        { "name": "MEGA", "url": "https://mega.nz/file/DwRVBCzS#g0PqqkG3PmJ0qpGNwDMQdOsE2EuPK0SFcCLPLHU1XXU" },
+        { "name": "Google Drive", "url": "https://drive.usercontent.google.com/download?id=1lIqBCFn2YGlcGA0FMBTdP1lIa0TPFvtT&export=download&authuser=0&confirm=t&uuid=e9342bbc-cf73-4d0a-a179-222c549930da&at=AGN2oQ1ADK3ENB0c1vtgKskkaqyF%3A1774452201994" }
+      ]
     }
   ],
   "videos": [
