@@ -1,18 +1,17 @@
-/* Põhistilistika */
 body {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f9f9f9;
-  color: #222;
-  transition: background 0.3s, color 0.3s;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background: #121212;
+  color: #ddd;
 }
 
 .navbar {
   display: flex;
   justify-content: space-between;
-  background: #005f73;
+  background: #1e1e1e;
   padding: 1em 2em;
   align-items: center;
+  border-bottom: 2px solid #ff0000;
 }
 
 .nav-left {
@@ -31,125 +30,150 @@ body {
 
 .nav-links a {
   text-decoration: none;
-  color: #e0e0e0;
+  color: #aaa;
   font-weight: 600;
   transition: color 0.2s;
 }
 
 .nav-links a:hover,
 .nav-links a[aria-current="page"] {
-  color: #94d2bd;
-}
-
-#theme-toggle {
-  font-size: 1.3em;
-  background: transparent;
-  border: none;
-  color: #e0e0e0;
-  cursor: pointer;
+  color: #79c2b0;
 }
 
 .hero {
   max-width: 900px;
   margin: 3em auto;
-  padding: 0 1em;
   text-align: center;
-}
-
-.card {
-  background: #fff;
-  padding: 1.2em 1.5em;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgb(0 0 0 / 0.1);
-  margin: 1em 0;
 }
 
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
-  gap: 1em;
-  max-width: 900px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5em;
+  max-width: 1200px;
   margin: 2em auto;
+  padding: 0 20px;
 }
 
-.gallery-grid img {
+.gallery-thumb {
   width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
   border-radius: 8px;
   cursor: pointer;
-  box-shadow: 0 2px 6px rgb(0 0 0 / 0.15);
-  transition: transform 0.3s ease;
-}
-
-.gallery-grid img:hover {
-  transform: scale(1.05);
-}
-
-/* Dark mode */
-
-body.dark {
-  background: #121212;
-  color: #ddd;
-}
-
-body.dark .navbar {
-  background: #1e1e1e;
-}
-
-body.dark .nav-links a {
-  color: #aaa;
-}
-
-body.dark .nav-links a:hover,
-body.dark .nav-links a[aria-current="page"] {
-  color: #79c2b0;
-}
-
-body.dark .card {
   background: #222;
-  box-shadow: 0 4px 10px rgb(0 0 0 / 0.7);
+  transition: transform 0.3s ease, opacity 0.5s ease;
+  opacity: 0;
 }
 
-/* Vorm */
-
-form {
-  max-width: 600px;
-  margin: 1em auto;
-  text-align: left;
+.gallery-thumb.loaded {
+  opacity: 1;
 }
 
-label {
-  font-weight: 600;
+.gallery-thumb:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
 }
 
-input, textarea {
-  width: 100%;
-  padding: 0.5em;
-  margin-top: 0.3em;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-  font-size: 1em;
-  font-family: inherit;
-}
-
-input:focus, textarea:focus {
-  outline-color: #005f73;
-  border-color: #005f73;
-}
-
-button {
-  background-color: #005f73;
-  border: none;
+.download-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
   color: #fff;
-  font-weight: 700;
-  padding: 0.6em 1.2em;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 1em;
-  margin-top: 1em;
-  transition: background-color 0.3s;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 12px;
+  transition: all 0.3s ease;
 }
 
-button:hover {
-  background-color: #0a9396;
+.nav-btn {
+  padding: 10px 20px;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+/* Pildi vaade */
+.swal-img-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+.swal-compact-img {
+    max-width: 100%;
+    max-height: 65vh; /* Pilt ei võta tervet ekraani, on kompaktne */
+    border-radius: 8px;
+    object-fit: contain;
+}
+
+/* X-nupp punane ja selge */
+.swal2-close {
+    color: #ff4444 !important;
+    outline: none !important;
+    font-size: 30px !important;
+}
+
+/* Faili suurus tekst */
+.file-size {
+    color: #888;
+    font-size: 0.85em;
+    margin: 10px 0;
+}
+
+/* Allalaadimise nupp */
+.download-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #4f46e5, #6366f1);
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+}
+
+/* Navigatsiooni nupud */
+.nav-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.nav-btn {
+    background: #333;
+    color: white;
+    border: 1px solid #444;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Mobiili optimeerimine */
+@media (max-width: 768px) {
+    .swal-compact-img {
+        max-height: 50vh; /* Mobiilis veelgi kompaktsem */
+    }
+    
+    .swal2-popup {
+        width: 95% !important;
+        padding: 10px !important;
+    }
+
+    .nav-btn {
+        padding: 10px;
+        font-size: 13px;
+    }
 }

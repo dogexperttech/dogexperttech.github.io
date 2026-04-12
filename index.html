@@ -1,20 +1,18 @@
 <!DOCTYPE html>
-<html lang="et">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Home Dog Expert Tech</title>
+  <title>Home - Dog Expert Tech</title>
   <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
   <link rel="stylesheet" href="/style.css" />
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Arial, sans-serif;
       background: #121212;
       color: #fff;
     }
-
-    /* NAVBAR */
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -22,12 +20,10 @@
       padding: 15px 30px;
       background: #1a1a1a;
     }
-
     .nav-left {
       font-weight: bold;
       font-size: 1.5em;
     }
-
     .nav-links {
       display: flex;
       list-style: none;
@@ -35,36 +31,49 @@
       padding: 0;
       margin: 0;
     }
-
     .nav-links a {
       color: #fff;
       text-decoration: none;
       transition: color 0.3s ease;
     }
-
     .nav-links a:hover {
       color: #ff0000;
     }
-
-    /* HERO */
+    .alert {
+      padding: 20px;
+      background-color: #f44336;
+      color: white;
+      margin-bottom: 15px;
+      position: relative;
+      transition: opacity 0.6s ease;
+    }
+    .closebtn {
+      margin-left: 15px;
+      color: white;
+      font-weight: bold;
+      float: right;
+      font-size: 22px;
+      line-height: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .closebtn:hover {
+      color: black;
+    }
     .hero {
       text-align: center;
       padding: 60px 20px;
     }
-
-    /* --- TABS SECTION --- */
     .video-section {
       padding: 40px 20px;
       text-align: center;
     }
-
     .tab-buttons {
       display: flex;
       justify-content: center;
       gap: 10px;
       margin-bottom: 30px;
     }
-
     .tab-buttons button {
       background: #1a1a1a;
       color: #fff;
@@ -73,33 +82,27 @@
       border-radius: 8px;
       font-size: 1em;
       cursor: pointer;
-      transition: background 0.3s ease, transform 0.1s ease;
+      transition: all 0.3s ease;
     }
-
     .tab-buttons button:hover {
       background: #ff0000;
       transform: scale(1.05);
     }
-
     .tab-buttons button.active {
       background: #ff0000;
       font-weight: bold;
     }
-
     .tab-content {
       display: none;
-      animation: fadeIn 0.3s ease;
+      animation: fadeIn 0.4s ease;
     }
-
     .tab-content.active {
       display: block;
     }
-
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
     iframe {
       width: 100%;
       max-width: 560px;
@@ -108,28 +111,16 @@
       border-radius: 10px;
       margin: 10px;
     }
-
-    /* --- SOCIAL MEDIA SECTION --- */
     .social-media {
       padding: 40px 20px;
-      background: #121212;
-      color: #fff;
       text-align: center;
     }
-
-    .social-media h2 {
-      font-size: 2em;
-      margin-bottom: 30px;
-      font-weight: 700;
-    }
-
     .social-links {
       display: flex;
       justify-content: center;
-      gap: 50px;
+      gap: 30px;
       flex-wrap: wrap;
     }
-
     .icon-link {
       display: flex;
       flex-direction: column;
@@ -139,56 +130,28 @@
       background: #222;
       padding: 20px;
       border-radius: 15px;
-      width: 180px;
-      height: 180px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 0 10px rgba(255,255,255,0.1);
+      width: 150px;
+      transition: all 0.3s ease;
     }
-
     .icon-link:hover {
       transform: scale(1.1);
-      box-shadow: 0 0 25px #ff0000;
+      box-shadow: 0 0 20px #ff0000;
     }
-
     .icon-link img {
-      max-width: 120px;
-      max-height: 120px;
-      margin-bottom: 15px;
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
-      background: #000;
-      padding: 10px;
-      object-fit: contain;
+      margin-bottom: 15px;
     }
-
-
-    /* The alert message box */
-.alert {
-  padding: 20px;
-  background-color: #f44336; /* Red */
-  color: white;
-  margin-bottom: 15px;
-}
-
-/* The close button */
-.closebtn {
-  margin-left: 15px;
-  color: white;
-  font-weight: bold;
-  float: right;
-  font-size: 22px;
-  line-height: 20px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-/* When moving the mouse over the close button */
-.closebtn:hover {
-  color: black;
-}
+    #google_translate_element {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 1000;
+    }
   </style>
 </head>
 <body>
-
   <header>
     <nav class="navbar">
       <div class="nav-left">Dog Expert Tech</div>
@@ -205,124 +168,60 @@
     </nav>
   </header>
 
-<div class="alert">
-  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-  As of November 17th I have decided that I will not be streaming!!!!!!!!!!!!!! Maybe someday we will see each other on the streams but right now is not the time. Thank you for reading!!!!!!!!
-</div>
+  <div class="alert" id="streaming-alert">
+    <span class="closebtn">&times;</span>
+    <strong>Notice:</strong> As of November 17th, I have decided that I will not be streaming! Maybe someday we will see each other on streams again, but right now is not the time. Thank you for reading!
+  </div>
 
   <main class="hero">
     <h1>Welcome!</h1>
     <p>This is my personal website where I share my projects, files, and thoughts.</p>
   </main>
 
-  <!-- 🎬 VIDEO / STREAM TABS SECTION -->
   <section class="video-section">
     <h2>Watch my content</h2>
+   <div class="tab-buttons">
+  <button class="tab-btn" data-tab="streams">🎥 Streams</button>
+  <button class="tab-btn active" data-tab="videos">📺 Videos</button>
+</div>
 
-    <div class="tab-buttons">
-      <button class="tab-btn active" data-tab="streams">🎥 Streams</button>
-      <button class="tab-btn" data-tab="videos">📺 Videos</button>
-    </div>
+<div id="streams" class="tab-content">
+  <p>Live streams and real-time content:</p>
+  <p><em>No active streams at the moment.</em></p>
+</div>
 
-    <!-- STREAM TAB -->
-    <div id="streams" class="tab-content active">
-      <p>Live streams and real-time content:</p>
+<div id="videos" class="tab-content active">
+  <p>My latest YouTube videos:</p>
+  <iframe src="https://www.youtube-nocookie.com/embed/ux272IvbQtw" title="Windows 7 Upgrading to Windows 11 2025" allowfullscreen></iframe>
+  <iframe src="https://www.youtube-nocookie.com/embed/f7qaCa6JG-s" title="How to remove Green Petya Ransomware" allowfullscreen></iframe>
+  <iframe src="https://www.youtube-nocookie.com/embed/Lcrd4yJMMPk" title="Windows 11 Installing on VMWare" allowfullscreen></iframe>
+  <iframe src="https://www.youtube-nocookie.com/embed/XYor-ML__iE" title="What happens if you delete Windows System32?" allowfullscreen></iframe>
+  <iframe src="https://www.youtube.com/embed/zMhClDw1rus?si=LAyI3970gvygbD2_" title="How to remove MEMZ Trojan?" allowfullscreen></iframe>
+  <iframe src="https://www.youtube-nocookie.com/embed/_JmN_8R7TUs" title="Checking my Windows 10 PE. Dog10PE" allowfullscreen></iframe>
+  <iframe src="https://www.youtube-nocookie.com/embed/nERXMlLxlak" title="How to Dualboot Windows 8.1 and Windows 7" allowfullscreen></iframe>
+  <iframe src="https://www.youtube-nocookie.com/embed/h10CaAq7fTU" title="Destroying Windows 7 Installer and fixing it" allowfullscreen></iframe>
+</div>
 
-      <!-- <iframe src="https://dogexperttech.github.io/404.html" allowfullscreen></iframe>
-<iframe src="https://dogexperttech.github.io/404.html" allowfullscreen></iframe>
-
-
-    </div>
-
-    <!-- VIDEOS TAB -->
-    <div id="videos" class="tab-content">
-      <p>My latest YouTube videos:</p>
-      <iframe src="https://www.youtube-nocookie.com/embed/ux272IvbQtw" title="Windows 7 Upgrading to Windows 11 2025" allowfullscreen></iframe>
-      <iframe src="https://www.youtube-nocookie.com/embed/f7qaCa6JG-s" title="How to remove Green Petya Ransomware" allowfullscreen></iframe>
-      <iframe src="https://www.youtube-nocookie.com/embed/Lcrd4yJMMPk" title="Windows 11 Installing on VMWare" allowfullscreen></iframe>
-      <iframe src="https://www.youtube-nocookie.com/embed/XYor-ML__iE" title="What happens if you delete Windows System32?" allowfullscreen></iframe>
-      <iframe src="https://www.youtube.com/embed/zMhClDw1rus?si=BIMiDagNIel8LbK_" title="How to remove MEMZ Trojan?" allowfullscreen></iframe>
-	    <iframe src="https://www.youtube.com/embed/_JmN_8R7TUs" title="Checking my Windows 10 PE. Dog10PE" allowfullscreen></iframe>
-      <iframe src="https://www.youtube.com/embed/nERXMlLxlak" title="How to Dualboot Windows 8.1 and Windows 7" allowfullscreen></iframe>
-      <iframe src="https://www.youtube.com/embed/h10CaAq7fTU" title="Destroying Windows 7 Installer and fixing it" allowfullscreen></iframe>
-
-    </div>
-  </section>
-
-  <!-- 🌐 SOCIAL LINKS -->
   <section class="social-media">
     <h2>Join my channels</h2>
     <div class="social-links">
-      <a href="/go/youtube/" target="_blank" class="icon-link" aria-label="YouTube channel Dog Expert Tech">
+      <a href="/go/youtube/" target="_blank" class="icon-link">
         <img src="/assets/expertyoutube.jpg" alt="YouTube" />
         <span>Dog Expert</span>
       </a>
-
-      <a href="/go/youtubeextra/" target="_blank" class="icon-link" aria-label="YouTube channel Dog Expert Extra">
-        <img src="/assets/expertextrayoutube.jpg" alt="YouTube" />
-        <span>Dog Expert Extra</span>
+      <a href="/go/youtubeextra/" target="_blank" class="icon-link">
+        <img src="/assets/expertextrayoutube.jpg" alt="YouTube Extra" />
+        <span>Expert Extra</span>
       </a>
-
-      <a href="/go/discord/" target="_blank" class="icon-link" aria-label="Discord server Dog Expert Tech">
+      <a href="/go/discord/" target="_blank" class="icon-link">
         <img src="/assets/discord.png" alt="Discord" />
         <span>Discord Server</span>
       </a>
     </div>
   </section>
 
-  <!-- Google Translate -->
-  <div id="google_translate_element" style="position: fixed; top: 10px; right: 10px; z-index: 1000;"></div>
-  <script type="text/javascript">
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'et',
-        includedLanguages: 'en,et,ru',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-      }, 'google_translate_element');
-    }
-  </script>
+  <div id="google_translate_element"></div>
   <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-  <!-- TABS LOGIC -->
-  <script>
-    const tabButtons = document.querySelectorAll('.tab-btn');
-    const tabContents = document.querySelectorAll('.tab-content');
-
-    tabButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        tabButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-
-        tabContents.forEach(content => content.classList.remove('active'));
-        document.getElementById(button.dataset.tab).classList.add('active');
-      });
-    });
-  </script>
-
-
-<script>
-// Get all elements with class="closebtn"
-var close = document.getElementsByClassName("closebtn");
-var i;
-
-// Loop through all close buttons
-for (i = 0; i < close.length; i++) {
-  // When someone clicks on a close button
-  close[i].onclick = function(){
-
-    // Get the parent of <span class="closebtn"> (<div class="alert">)
-    var div = this.parentElement;
-
-    // Set the opacity of div to 0 (transparent)
-    div.style.opacity = "0";
-
-    // Hide the div after 600ms (the same amount of milliseconds it takes to fade out)
-    setTimeout(function(){ div.style.display = "none"; }, 600);
-  }
-}
-</script>
-
-
   <script src="/script.js"></script>
 </body>
 </html>

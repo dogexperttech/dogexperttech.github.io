@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="et">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -55,7 +55,7 @@
       object-fit: contain;
     }
 
-    /* Galerii stiil */
+    /* Gallery Style */
     #lightgallery {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -69,7 +69,7 @@
       border-radius: 10px;
       border: 2px solid #333;
       transition: border-color 0.3s;
-      text-decoration: none; /* Eemaldab võimaliku joone pildi alt */
+      text-decoration: none;
     }
     #lightgallery a:hover {
       border-color: #ff0000;
@@ -85,7 +85,7 @@
       transform: scale(1.05);
     }
 
-    /* Tehnilised andmed stiil */
+    /* Technical Specs Style */
     .specs-list {
       margin-top: 40px;
       padding: 20px;
@@ -120,38 +120,40 @@
     </nav>
   </header>
 
+  <div id="google_translate_element" style="position: fixed; top: 10px; right: 10px; z-index: 1000;"></div>
+
   <main class="hero">
-    <h1>Tere tulemast!</h1>
-    <p>See on minu isiklik veebileht, kus jagan oma projekte, faile ja mõtteid.</p>
+    <h1>Welcome!</h1>
+    <p>This is my personal website where I share my projects, files, and thoughts.</p>
   </main>
 
   <section style="padding: 20px; max-width: 1000px; margin: auto;">
-    <h2>Mida teen</h2>
+    <h2>What I do</h2>
     <ul>
-      <li>Ma teen mänge</li>
-      <li>Ma teen tarkvara</li>
-      <li>Ma teen videosid</li>
+      <li>I create games</li>
+      <li>I develop software</li>
+      <li>I make videos</li>
     </ul>
 
-    <h2>Minu Seadmete Galerii</h2>
+    <h2>My Device Gallery</h2>
     <div id="lightgallery">
-      <a href="/about/assets/mainpc.png" data-src="/about/assets/mainpc.png" data-sub-html="<h4>Peaarvuti</h4>">
+      <a href="/about/assets/mainpc.png" data-src="/about/assets/mainpc.png" data-sub-html="<h4>Main PC</h4>">
         <img src="/about/assets/mainpc.png" alt="Main PC">
       </a>
-      <a href="/about/assets/full setup.jpeg" data-src="/about/assets/full setup.jpeg" data-sub-html="<h4>Täielik Setup</h4>">
+      <a href="/about/assets/full setup.jpeg" data-src="/about/assets/full setup.jpeg" data-sub-html="<h4>Full Setup</h4>">
         <img src="/about/assets/full setup.jpeg" alt="Full Setup">
       </a>
-      <a href="/about/assets/laptop2.jpg" data-src="/about/assets/laptop2.jpg" data-sub-html="<h4>Laptop HP ProBook</h4>">
+      <a href="/about/assets/laptop2.jpg" data-src="/about/assets/laptop2.jpg" data-sub-html="<h4>HP ProBook Laptop</h4>">
         <img src="/about/assets/laptop2.jpg" alt="Laptop 2">
       </a>
-      <a href="/about/assets/laptop3.jpg" data-src="/about/assets/laptop3.jpg" data-sub-html="<h4>Laptop MSI</h4>">
+      <a href="/about/assets/laptop3.jpg" data-src="/about/assets/laptop3.jpg" data-sub-html="<h4>MSI Laptop</h4>">
         <img src="/about/assets/laptop3.jpg" alt="Laptop 3">
       </a>
       <a href="/about/assets/rpi5.jpg" data-src="/about/assets/rpi5.jpg" data-sub-html="<h4>Raspberry Pi 5</h4>">
         <img src="/about/assets/rpi5.jpg" alt="RPI 5">
       </a>
-      <a href="/about/assets/rpir.jpeg" data-src="/about/assets/rpir.jpeg" data-sub-html="<h4>RPI Projekt</h4>">
-        <img src="/about/assets/rpir.jpeg" alt="RPI Projekt">
+      <a href="/about/assets/rpir.jpeg" data-src="/about/assets/rpir.jpeg" data-sub-html="<h4>RPI Project</h4>">
+        <img src="/about/assets/rpir.jpeg" alt="RPI Project">
       </a>
       <a href="/about/assets/ipad 4.jpg" data-src="/about/assets/ipad 4.jpg" data-sub-html="<h4>iPad 4</h4>">
         <img src="/about/assets/ipad 4.jpg" alt="iPad 4">
@@ -159,58 +161,8 @@
       <a href="/about/assets/mainphone.jpg" data-src="/about/assets/mainphone.jpg" data-sub-html="<h4>Samsung A56 5G</h4>">
         <img src="/about/assets/mainphone.jpg" alt="Main Phone">
       </a>
-      <a href="/about/assets/samsa.jpeg" data-src="/about/assets/samsa.jpeg" data-sub-html="<h4>Samsung seade</h4>">
-        <img src="/about/assets/samsa.jpeg" alt="Samsung">
-      </a>
-      <a href="/about/assets/honora.jpeg" data-src="/about/assets/honora.jpeg" data-sub-html="<h4>Honor telefon</h4>">
-        <img src="/about/assets/honora.jpeg" alt="Honor">
-      </a>
-      <a href="/about/assets/sonycam.jpeg" data-src="/about/assets/sonycam.jpeg" data-sub-html="<h4>Sony kaamera</h4>">
-        <img src="/about/assets/sonycam.jpeg" alt="Sony Camera">
-      </a>
-      <a href="/about/assets/lgta.jpeg" data-src="/about/assets/lgta.jpeg" data-sub-html="<h4>LGTA seade</h4>">
-        <img src="/about/assets/lgta.jpeg" alt="LGTA">
-      </a>
-      <a href="/about/assets/sub31.png" data-src="/about/assets/sub31.png" data-sub-html="<h4>Tellijate arv</h4>">
-        <img src="/about/assets/sub31.png" alt="Subs Count">
-      </a>
-      <a href="/about/assets/viwes.png" data-src="/about/assets/viwes.png" data-sub-html="<h4>Vaatamiste arv</h4>">
-        <img src="/about/assets/viwes.png" alt="Views Count">
-      </a>
-    </div>
-
-    <div class="specs-list">
-      <h2>Tehnilised andmed</h2>
-      <p><strong>Peaarvuti:</strong> Lenovo IdeaCentre 5 | Ryzen 5 | 16GB RAM</p>
-      <p><strong>Serverid:</strong> MSI CX623 (Win Server 2022) & Raspberry Pi 5</p>
-      <p><strong>Telefon:</strong> Samsung A56 5G (Android 16)</p>
-    </div>
-
-    <h2>Kasutan tarkvara</h2>
-    <ul>
-      <li>Wondershare Filmora 14</li>
-      <li>Visual Studio Code</li>
-      <li>VMWare Workstation 17</li>
-      <li>Paint.Net</li>
-      <li>OBS Studio</li>
-    </ul>
-  </section>
-
-  <section class="social-media">
-    <h2>Liitu minu kanalitega</h2>
-    <div class="social-links">
-      <a href="/go/youtube/" target="_blank" class="icon-link">
-        <img src="/assets/expertyoutube.jpg" alt="YouTube" />
-        <span>YouTube</span>
-      </a>
-      <a href="/gdord/" target="_blank" class="icon-link">
-        <img src="/assets/dva.jpg" alt="Discord" />
-        <span>Discord</span>
-      </a>
     </div>
   </section>
-
-  <div id="google_translate_element" style="position: fixed; top: 10px; right: 10px; z-index: 1000;"></div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/lightgallery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/zoom/lg-zoom.min.js"></script>
@@ -219,6 +171,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/plugins/fullscreen/lg-fullscreen.min.js"></script>
 
   <script type="text/javascript">
+    // Initialize LightGallery
     lightGallery(document.getElementById('lightgallery'), {
       speed: 500,
       selector: 'a',
@@ -229,9 +182,10 @@
       zoom: true
     });
 
+    // Google Translate Initialization
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
-        pageLanguage: 'et',
+        pageLanguage: 'en',
         includedLanguages: 'en,et,ru',
         layout: google.translate.TranslateElement.InlineLayout.SIMPLE
       }, 'google_translate_element');
