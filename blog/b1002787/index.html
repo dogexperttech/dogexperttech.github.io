@@ -1,137 +1,246 @@
 <!DOCTYPE html>
-<html lang="et">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fix AMD Driver Crash</title>
+  <title>Fix AMD Driver Crashes - Dog Expert Tech</title>
   <link rel="icon" type="image/x-icon" href="/assets/favicon.jpg">
   <style>
-  body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    min-height: 100vh;
-    background-image: url('/gallery/assets/wallpapers/Waves.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    color: #e2dddd;
-  }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 40px 20px;
+      min-height: 100vh;
+      background-image: url('/gallery/assets/wallpapers/Waves.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-  header {
-    background: rgba(0,0,0,0.7);
-    padding: 20px;
-    text-align: center;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #000;
-    margin-bottom: 30px;
-  }
-  h1 {
-    margin: 0;
-    color: #fff;
-  }
-  h2 {
-    color: #fff;
-    margin-top: 20px;
-  }
-  p.date {
-    color: #bbb;
-    font-size: 0.9em;
-    margin-top: 5px;
-  }
-  main {
-    max-width: 700px;
-    margin: 0 auto;
-    background: rgba(0,0,0,0.6);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.8);
-  }
-  img.post-image {
-    max-width: 100%;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.7);
-  }
-  a.back-link {
-    display: inline-block;
-    margin-bottom: 20px;
-    color: #aaf;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  a.back-link:hover {
-    color: #ffd700;
-    text-decoration: underline;
-  }
-  footer {
-    text-align: center;
-    color: #999;
-    margin-top: 50px;
-    font-size: 0.9em;
-  }
-  pre {
-    background: #111;
-    color: #0f0;
-    padding: 15px;
-    border-radius: 8px;
-    overflow-x: auto;
-  }
+    header {
+      background: rgba(10, 10, 10, 0.85);
+      padding: 30px;
+      text-align: center;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      margin-bottom: 30px;
+      width: 100%;
+      max-width: 800px;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      margin: 10px 0 0 0;
+      color: #fff;
+      font-size: 2.2rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    h2 {
+      color: #ff4444;
+      margin-top: 30px;
+      border-left: 4px solid #ff4444;
+      padding-left: 15px;
+      text-transform: uppercase;
+      font-size: 1.4rem;
+    }
+
+    .date-author {
+      color: #ff4444;
+      font-size: 0.9em;
+      font-weight: bold;
+      margin-top: 10px;
+      text-transform: uppercase;
+    }
+
+    main {
+      max-width: 800px;
+      width: 100%;
+      background: rgba(10, 10, 10, 0.85);
+      padding: 40px;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+      box-sizing: border-box;
+    }
+
+    .info-box-styled {
+      background: linear-gradient(90deg, rgba(80, 10, 10, 1) 0%, rgba(20, 10, 10, 0.9) 100%);
+      border-left: 5px solid #ff0000;
+      padding: 20px;
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      border-radius: 4px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .info-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .info-text {
+      color: #ffffff;
+      font-size: 1.05rem;
+      line-height: 1.5;
+      text-shadow: none;
+    }
+
+    .image-container {
+      display: flex;
+      gap: 15px;
+      margin: 20px 0;
+      justify-content: center;
+    }
+
+    .image-container img {
+      width: calc(50% - 7.5px);
+      border-radius: 10px;
+      border: 1px solid #444;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      object-fit: contain;
+    }
+
+    .post-image-main {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 25px;
+      border-bottom: 4px solid #ff0000;
+    }
+
+    .download-section {
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .btn-download {
+      background: #ff4444;
+      color: #fff;
+      padding: 12px 25px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: 0.3s;
+    }
+
+    .btn-download:hover {
+      background: #cc0000;
+      transform: translateY(-2px);
+    }
+
+    pre {
+      background: #050505;
+      color: #00ff00;
+      padding: 20px;
+      border-radius: 10px;
+      overflow-x: auto;
+      border: 1px solid #333;
+      position: relative;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #ff4444;
+      color: white;
+      border: none;
+      padding: 5px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    a {
+      color: #ff4444;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    a.back-link {
+      display: inline-block;
+      margin-bottom: 10px;
+      color: #ff4444;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+    }
+
+    footer {
+      text-align: center;
+      color: #999;
+      margin-top: 50px;
+      padding: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .image-container {
+        flex-direction: column;
+      }
+      .image-container img {
+        width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
+
   <header>
-    <a href="../index.html" class="back-link">&larr; Tagasi blogisse</a>
-    <h1>AMD Systems Crash</h1>
-    <p class="date">Kuupäev: 2025-08-24</p>
-    <p class="Author">Autor: Dog Expert Tech</p>
+    <a href="../index.html" class="back-link">&larr; Back to Blog</a>
+    <h1>Fixing AMD Driver Crashes</h1>
+    <p class="date-author">August 24, 2025 | By Dog Expert Tech</p>
   </header>
 
   <main>
-    <img src="assets/amdtheme.jpg" alt="Blogi postituse pilt" class="post-image" />
+    <div class="info-box-styled">
+      <span class="info-icon">⚠️</span>
+      <span class="info-text">
+        <strong>UPDATE: DECEMBER 12, 2025</strong><br>
+        If you are still experiencing driver timeouts, please <strong>update your Motherboard BIOS</strong> to the latest version. This is critical for system stability.
+      </span>
+    </div>
 
-    <p>If you have an AMD system then you have probably seen this before, the picture stops then goes black and then this:</p>
+    <img src="assets/amdtheme.jpg" alt="AMD Tech Support" class="post-image-main" />
 
-    <p>
-      <img class="post__image" src="assets/amd.png" alt="AMD error" width="360" height="216">
-      <img class="post__image" src="assets/amdview.png" alt="AMD view" width="398" height="447">
-    </p>
+    <p>If you have an AMD system, you've likely seen this: the screen freezes, goes black, and a driver timeout error appears. This is often followed by the "Code 31" error in Device Manager.</p>
 
-    <h2>Driver Cleanup & Reinstall</h2>
+    <div class="image-container">
+      <img src="assets/amd.png" alt="AMD Error">
+      <img src="assets/amdview.png" alt="Code 31">
+    </div>
+
+    <h2>1. Driver Cleanup & Reinstall</h2>
+    <p>The first step is a complete cleanup of old drivers.</p>
     <ul>
-      <li>
-        Clean up drivers<br><br>
-        Use DDU (Display Driver Uninstaller) in safe mode to remove any AMD GPU driver remnants.<br><br>
-        <a href="https://dogexperttech.github.io/go/HvUTdUi">DDU Download Link</a><br><br>
-
-        Install AMD official driver<br><br>
-        Go to <a href="https://www.amd.com/en/support/download/drivers.html">AMD Drivers &amp; Support</a><br><br>
-        Download the driver for the appropriate model (e.g. RX 5500/5600/5700) and install it.
-      </li>
+      <li>Use <strong>DDU (Display Driver Uninstaller)</strong> in Safe Mode to wipe all GPU driver remnants.</li>
+      <li><a href="/go/HvUTdUi">Download DDU Here</a></li>
+      <li>Reinstall the latest stable drivers from the official <a href="/go/ADBAMD29/">AMD Support Page</a>.</li>
     </ul>
 
-    <h2>Hypervisor Crash</h2>
-    <p>
-      <img class="post__image" src="assets/crashview.png" alt="Hypervisor crash" width="487" height="692">
-    </p>
+    <h2>2. Disable Hyper-V & VBS</h2>
+    <p>Windows features like <strong>VBS</strong> and <strong>Memory Integrity</strong> can conflict with AMD drivers, causing black screens and system hangs.</p>
 
-    <p>
-      Windows Hyper-V and VBS Removal (Fix for VMware / VirtualBox / GPU BSOD)<br><br>
-      Some newer versions of Windows 10/11 enable <strong>Hyper-V, VBS (Virtualization Based Security), Credential Guard and Memory Integrity</strong> by default.<br>
-      This can cause problems with VMware Workstation, VirtualBox or even AMD/NVIDIA drivers (e.g. <em>Hypervisor Error BSOD</em>).<br><br>
-      If you want <strong>bare metal virtualization</strong> or a stable GPU driver, you need to disable these features.
-    </p>
-
-    <h2>Quick Fix: BAT Script</h2>
-    <p>
-      1. Download or copy the following script into a file named <code>disable-hyperv-vbs.bat</code>.<br>
-      2. <strong>Right-click → Run as Administrator</strong>.<br>
-      3. Wait for the script to finish and the computer to restart.<br>
-      4. Check under <code>msinfo32</code> that <strong>“Hyper-V - A hypervisor has been detected”</strong> is <strong>NO</strong>.
-    </p>
-
-    <p><a href="assets/help.cmd">Script Download</a></p>
+    <h2>3. Automated Fix Script</h2>
+    
+    <div class="download-section">
+      <a href="assets/disable-hyperv.bat" class="btn-download" download>
+        📥 Download disable-hyperv.bat
+      </a>
+      <p style="font-size: 0.8rem; margin-top: 10px; color: #888;">Right-click the downloaded file and select "Run as Administrator"</p>
+    </div>
 
     <pre><code>@echo off
 echo ===========================
@@ -139,64 +248,69 @@ echo Hyper-V / VBS Killer Script
 echo ===========================
 
 :: 1. Disable Hyper-V and Virtual Platforms
+echo [1/5] Disable Hyper-V and platforms...
 dism /Online /Disable-Feature:Microsoft-Hyper-V-All /NoRestart
 dism /Online /Disable-Feature:HypervisorPlatform /NoRestart
 dism /Online /Disable-Feature:VirtualMachinePlatform /NoRestart
 dism /Online /Disable-Feature:WindowsSubsystemForLinux /NoRestart
 dism /Online /Disable-Feature:Windows-Defender-ApplicationGuard /NoRestart
 
-:: 2. Disable VBS
+:: 2. Disable VBS (Virtualization Based Security)
+echo [2/5] Disabling VBS...
 reg add "HKLM\System\CurrentControlSet\Control\DeviceGuard" /v EnableVirtualizationBasedSecurity /t REG_DWORD /d 0 /f
 reg add "HKLM\System\CurrentControlSet\Control\DeviceGuard" /v RequirePlatformSecurityFeatures /t REG_DWORD /d 0 /f
 
 :: 3. Disable Credential Guard
+echo [3/5] Disabling Credential Guard...
 reg add "HKLM\System\CurrentControlSet\Control\Lsa" /v LsaCfgFlags /t REG_DWORD /d 0 /f
 
-:: 4. Disable Memory Integrity
+:: 4. Disable Memory Integrity (Core Isolation)
+echo [4/5] Disable Memory Integrity...
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity" /v Enabled /t REG_DWORD /d 0 /f
 
 :: 5. Disable hypervisor startup
+echo [5/5] Disable hypervisor launchtype...
 bcdedit /set hypervisorlaunchtype off
-</code>
-      <button class="copy-btn">📋 Copy</button>
-    </pre>
+
+echo ========================================
+echo Done! Your PC will restart in 10 seconds.
+echo Save your work now!
+echo ========================================
+timeout /t 10
+shutdown /r /t 0
+
+<button class="copy-btn">📋 Copy</button></code></pre>
   </main>
 
   <footer>
-    &copy; 2025 Dog Expert Blog
-
-    <!-- Google Translate keelevalik -->
-    <div id="google_translate_element" style="position: fixed; top: 10px; right: 10px; z-index: 1000;"></div>
-
-    <script type="text/javascript">
-      function googleTranslateElementInit() {
-        new google.translate.TranslateElement({
-          pageLanguage: 'et',
-          includedLanguages: 'en,et,ru',
-          layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-        }, 'google_translate_element');
-      }
-    </script>
-    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <div id="google_translate_element"></div>
+    &copy; 2026 Dog Expert Tech
   </footer>
 
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,et,ru',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
 
-  <!-- Copy nupu JS -->
-  <script>
-  document.querySelectorAll("pre").forEach(block => {
-    const btn = block.querySelector(".copy-btn");
-    const code = block.querySelector("code").innerText;
-    btn.addEventListener("click", async () => {
-      try {
-        await navigator.clipboard.writeText(code);
-        btn.textContent = "✔ Copied!";
-        setTimeout(() => btn.textContent = "📋 Copy", 2000);
-      } catch (err) {
-        btn.textContent = "❌ Error";
-      }
+    document.querySelectorAll("pre").forEach(block => {
+      const btn = block.querySelector(".copy-btn");
+      const code = block.querySelector("code").innerText.replace("📋 Copy", "").trim();
+      btn.addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(code);
+          btn.textContent = "✔ Copied!";
+          setTimeout(() => btn.textContent = "📋 Copy", 2000);
+        } catch (err) {
+          btn.textContent = "❌ Error";
+        }
+      });
     });
-  });
   </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>

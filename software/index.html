@@ -1,26 +1,66 @@
 <!DOCTYPE html>
-<html lang="et">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Failid – Koer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Software - Dog Expert Tech</title>
   <link rel="icon" type="image/x-icon" href="/assets/favicon.jpg">
   <link rel="stylesheet" href="style.css">
   <style>
-    .social-media {
-      padding: 40px 20px;
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
       background: #121212;
       color: #fff;
-      text-align: center;
     }
-    .social-media h2 {
-      font-size: 2em;
+    main {
+      padding: 40px 20px;
+      text-align: center;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h1 {
+      margin-bottom: 10px;
+    }
+    .source-link {
+      color: #aaa;
+      text-decoration: none;
+      font-size: 0.9em;
+      display: block;
       margin-bottom: 30px;
-      font-weight: 700;
+    }
+    .source-link:hover {
+      text-decoration: underline;
+      color: #ff0000;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #1a1a1a;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 15px;
+      border-bottom: 1px solid #333;
+      text-align: left;
+    }
+    th {
+      background: #222;
+      color: #ff0000;
+    }
+    tr:hover {
+      background: #252525;
+    }
+    .social-media {
+      padding: 40px 20px;
+      text-align: center;
     }
     .social-links {
       display: flex;
       justify-content: center;
-      gap: 50px;
+      gap: 30px;
+      flex-wrap: wrap;
     }
     .icon-link {
       display: flex;
@@ -31,97 +71,83 @@
       background: #222;
       padding: 20px;
       border-radius: 15px;
-      width: 180px;
-      height: 180px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 0 10px rgba(255,255,255,0.1);
+      width: 150px;
+      transition: all 0.3s ease;
     }
     .icon-link:hover {
       transform: scale(1.1);
       box-shadow: 0 0 25px #ff0000;
     }
     .icon-link img {
-      max-width: 120px;
-      max-height: 120px;
-      margin-bottom: 15px;
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
+      margin-bottom: 15px;
       background: #000;
-      padding: 10px;
-      object-fit: contain;
+      padding: 5px;
+    }
+    #google_translate_element {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 1000;
     }
   </style>
 </head>
 <body>
   <header>
-    <nav class="navbar">
-      <div class="nav-left">Dog Expert Tech</div>
-      <ul class="nav-links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/files">Files</a></li>
-        <li><a href="/software">Software</a></li>
-        <li><a href="/gallery">Gallery</a></li>
-        <li><a href="/contact">Contact</a></li>
-        <li><a href="/blog">Blog</a></li>
-      </ul>
-      <button id="theme-toggle">🌙</button>
-    </nav>
-  </header>
+  <nav class="navbar">
+    <div class="nav-left">Dog Expert Tech</div>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/files">Files</a></li>
+      <li><a href="/software">Software</a></li>
+      <li><a href="/gallery">Gallery</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/blog">Blog</a></li>
+    </ul>
+    <div style="width: 40px;"></div> 
+  </nav>
+</header>
 
   <main>
-    <h1>Laetavad failid</h1>
-
-    <a href="https://dl.malwarewatch.org/windows/">Need on pärit sellelt lehelt</a>
+    <h1>Download Software</h1>
+    <a href="https://dl.malwarewatch.org/windows/" class="source-link" target="_blank">Sourced from MalwareWatch</a>
   
-    <!-- Tabel failide jaoks -->
     <table id="software-table">
       <thead>
         <tr>
-          <th>Faili nimi</th>
-          <th>Suurus</th>
-          <th>Kuupäev</th>
-          <th>Laadi alla</th>
+          <th>File Name</th>
+          <th>Size</th>
+          <th>Date Added</th>
+          <th>Download</th>
         </tr>
       </thead>
       <tbody id="software-body">
-        <!-- JS paneb siia read -->
-      </tbody>
+        </tbody>
     </table>
   </main>
 
   <section class="social-media">
-    <h2>Liitu minu kanalitega</h2>
+    <h2>Join my channels</h2>
     <div class="social-links">
-      <a href="/go/youtube/" target="_blank" class="icon-link" aria-label="YouTube kanal Dog Expert Tech">
-        <img src="/assets/expertyoutube.jpg" alt="YouTube logo" />
+      <a href="/go/youtube/" target="_blank" class="icon-link">
+        <img src="/assets/expertyoutube.jpg" alt="YouTube" />
         <span>Dog Expert</span>
       </a>
-
-      <a href="/go/youtubeextra/" target="_blank" class="icon-link" aria-label="YouTube kanal Dog Expert Extra">
-        <img src="/assets/expertextrayoutube.jpg" alt="YouTube logo" />
-        <span>Dog Expert Extra</span>
+      <a href="/go/youtubeextra/" target="_blank" class="icon-link">
+        <img src="/assets/expertextrayoutube.jpg" alt="YouTube Extra" />
+        <span>Expert Extra</span>
       </a>
-
-      <a href="/go/discord/" target="_blank" class="icon-link" aria-label="Discord server Dog Expert Tech">
-        <img src="/assets/discord.png" alt="Discord logo" />
+      <a href="/go/discord/" target="_blank" class="icon-link">
+        <img src="/assets/discord.png" alt="Discord" />
         <span>Discord Server</span>
       </a>
     </div>
   </section> 
 
-  <!-- Google Translate keelevalik -->
-  <div id="google_translate_element" style="position: fixed; top: 10px; right: 10px; z-index: 1000;"></div>
 
-  <script type="text/javascript">
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'et',
-        includedLanguages: 'en,et,ru',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-      }, 'google_translate_element');
-    }
-  </script>
-  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
   <script src="software.js"></script>
   <script src="script.js"></script>

@@ -1,153 +1,90 @@
-// 🌙 Dark mode toggle
-const themeToggleBtn = document.getElementById('theme-toggle');
-const currentTheme = localStorage.getItem('theme');
-
-if (currentTheme === 'dark') {
-  document.body.classList.add('dark');
-  themeToggleBtn.textContent = '☀️';
-}
-
-themeToggleBtn.addEventListener('click', () => {
-  document.body.classList.toggle('dark');
-  if (document.body.classList.contains('dark')) {
-    localStorage.setItem('theme', 'dark');
-    themeToggleBtn.textContent = '☀️';
-  } else {
-    localStorage.setItem('theme', 'light');
-    themeToggleBtn.textContent = '🌙';
-  }
-});
-
-// 🖼️ Gallery logic
 document.addEventListener('DOMContentLoaded', () => {
-  const grid = document.getElementById('gallery-grid');
+    const grid = document.getElementById('gallery-grid');
+    if (typeof images === 'undefined' || !Array.isArray(images)) return;
 
-  // Ensure `images` array exists globally
-  if (!Array.isArray(images)) {
-    console.error('❌ images array is missing or invalid!');
-    return;
-  }
+    let currentIndex = 0;
+    const itemsPerLoad = 20; // Mitu pilti laetakse korraga
 
-  // Create thumbnails
-  images.forEach((src, index) => {
-    const img = document.createElement('img');
-    img.src = src;
-    img.alt = 'Wallpaper';
-    img.loading = 'lazy';
-    img.classList.add('gallery-thumb');
-    img.addEventListener('click', () => openGallery(index));
-    grid.appendChild(img);
-  });
-
-  // 🔍 Open full-size image in SweetAlert2 popup
-  function openGallery(index) {
-    const src = images[index];
-    let sizeText = '';
-
-    // 🌀 Show loading popup while preloading 
-  swal.fire({ 
-  title: 'Louding a picture...', 
-  text: 'Please wait, the picture is on its way!', 
-  allowOutsideClick: false, 
-  background: getComputedStyle(document.body).backgroundColor, 
-  didOpen: () => { 
-  Swal.showLoading(); 
-  } 
-  });
-
-    // ✅ Preload image before showing
-    const preload = new Image();
-    preload.src = src;
-
-    preload.onload = () => {
-      // Get image file size
-      fetch(src, { method: 'HEAD' })
-        .then(res => {
-          const size = res.headers.get('Content-Length');
-          if (size) {
-            const sizeMB = (parseInt(size) / (1024 * 1024)).toFixed(2);
-            sizeText = `<div style='margin-top:0.5em;font-size:0.9em;color:gray;'>Failisuurus: ${sizeMB} MB</div>`;
-          }
-        })
-        .catch(() => {
-          sizeText = '';
-        })
-        .finally(() => {
-          Swal.close(); // close loading spinner
-
-          // ✅ Show full-size image
-          Swal.fire({
-            title: src.split('/').pop(),
-            html: `
-              <img src="${src}" style="max-width: 100%; max-height: 70vh; border-radius: 12px; display:block; margin:auto;" />
-              ${sizeText}
-              <br>
-              <a href="${src}" download class="download-btn">⬇️ Laadi alla</a>
-
-<style>
-.download-btn {
-    display: inline-block;
-    padding: 12px 24px;
-    background: linear-gradient(135deg, #4f46e5, #6366f1); /* ilus gradient */
-    color: #fff;
-    font-weight: 600;
-    font-size: 16px;
-    text-decoration: none;
-    border-radius: 12px; /* ümarad nurgad */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* kerge vari */
-    transition: all 0.3s ease;
-}
-
-.download-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.25);
-    background: linear-gradient(135deg, #6366f1, #4f46e5);
-}
-
-.download-btn:active {
-    transform: translateY(0);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-</style>
-
-              <div style="margin-top: 1em;">
-                <button id="prev" class="nav-btn"${index === 0 ? ' style="display:none;"' : ''}>⬅️</button>
-                <button id="next" class="nav-btn"${index === images.length - 1 ? ' style="display:none;"' : ''}>➡️</button>
-              </div>
-            `,
-            showConfirmButton: true,
-            showCloseButton: true,
-            width: 'auto',
-            background: getComputedStyle(document.body).backgroundColor || '#121212',
-            customClass: {
-              popup: 'swal-gallery-popup'
-            },
-            didOpen: () => {
-              document.getElementById('prev')?.addEventListener('click', () => openGallery(index - 1));
-              document.getElementById('next')?.addEventListener('click', () => openGallery(index + 1));
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.onload = () => img.classList.add('loaded');
+                obs.unobserve(img);
             }
-          });
-
-          // ⌨️ Keyboard navigation (once per popup)
-          const keyHandler = (e) => {
-            if (!Swal.isVisible()) return;
-            if (e.key === 'ArrowLeft' && index > 0) openGallery(index - 1);
-            else if (e.key === 'ArrowRight' && index < images.length - 1) openGallery(index + 1);
-            else if (e.key === 'Escape') Swal.close();
-          };
-          document.addEventListener('keydown', keyHandler, { once: true });
         });
-    };
+    }, { rootMargin: '200px' });
 
-    // ❌ Error handling if image fails to load
-    preload.onerror = () => {
-      Swal.close();
-      Swal.fire({
-        icon: 'error',
-        title: 'The image did not load!',
-        text: 'Image download failed.',
-        background: getComputedStyle(document.body).backgroundColor || '#121212'
-      });
-    };
-  }
+    // Funktsioon, mis loob pildid gruppidena
+    function loadMoreImages() {
+        const nextBatch = images.slice(currentIndex, currentIndex + itemsPerLoad);
+        
+        nextBatch.forEach((src, i) => {
+            const absoluteIndex = currentIndex + i;
+            const img = document.createElement('img');
+            img.dataset.src = src;
+            // Tühi placeholder
+            img.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="; 
+            img.alt = 'Wallpaper';
+            img.classList.add('gallery-thumb');
+            img.addEventListener('click', () => openGallery(absoluteIndex));
+            grid.appendChild(img);
+            observer.observe(img);
+        });
+
+        currentIndex += itemsPerLoad;
+    }
+
+    // Algne laadimine
+    loadMoreImages();
+
+    // Lõputu kerimine: kui jõuad lehe lõppu, laadi juurde
+    window.addEventListener('scroll', () => {
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 500) {
+            if (currentIndex < images.length) {
+                loadMoreImages();
+            }
+        }
+    });
+
+    function openGallery(index) {
+        const src = images[index];
+        
+        Swal.fire({
+            title: 'Loading...',
+            background: '#121212',
+            color: '#fff',
+            didOpen: () => { Swal.showLoading(); }
+        });
+
+        const preload = new Image();
+        preload.src = src;
+        preload.onload = () => {
+            // HEAD päring on aeglane, teeme seda ainult vajadusel
+            Swal.fire({
+                title: src.split('/').pop(),
+                background: '#121212',
+                color: '#fff',
+                showCloseButton: true,
+                showConfirmButton: false,
+                width: 'auto',
+                maxWidth: '800px',
+                html: `
+                    <div class="swal-img-container">
+                        <img src="${src}" class="swal-compact-img" />
+                    </div>
+                    <a href="${src}" download class="download-btn">⬇️ Download Wallpaper</a>
+                    <div class="nav-container">
+                        <button id="prev" class="nav-btn">⬅️ Prev</button>
+                        <button id="next" class="nav-btn">Next ➡️</button>
+                    </div>
+                `,
+                didOpen: () => {
+                    document.getElementById('prev')?.addEventListener('click', () => openGallery(index - 1 < 0 ? images.length - 1 : index - 1));
+                    document.getElementById('next')?.addEventListener('click', () => openGallery(index + 1 >= images.length ? 0 : index + 1));
+                }
+            });
+        };
+    }
 });

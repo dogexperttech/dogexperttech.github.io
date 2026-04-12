@@ -1,28 +1,143 @@
 <!DOCTYPE html>
-<html lang="et">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact</title>
+  <title>Contact - Dog Expert Tech</title>
   <link rel="icon" type="image/x-icon" href="/assets/favicon.jpg">
   <link rel="stylesheet" href="style.css">
-    <style>
+  <style>
+    :root {
+      --primary-red: #ff0000;
+      --dark-bg: #121212;
+      --card-bg: #1e1e1e;
+      --input-bg: #2a2a2a;
+      --text-white: #ffffff;
+    }
+
+    body {
+      background-color: var(--dark-bg);
+      color: var(--text-white);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Form Styles */
+    main {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2.5em;
+    }
+
+    form {
+      background: var(--card-bg);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    label {
+      display: block;
+      margin-top: 20px;
+      margin-bottom: 8px;
+      font-weight: 600;
+      font-size: 1.1em;
+    }
+
+    input[type="email"],
+    input[type="url"],
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #444;
+      background: var(--input-bg);
+      color: white;
+      font-size: 1em;
+      box-sizing: border-box;
+      transition: border-color 0.3s;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary-red);
+    }
+
+    /* Modern Large Radio Buttons */
+    .radio-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      margin: 15px 0;
+    }
+
+    .radio-option {
+      background: var(--input-bg);
+      padding: 15px;
+      border-radius: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .radio-option:hover {
+      background: #333;
+    }
+
+    .radio-option input[type="radio"] {
+      width: 20px;
+      height: 20px;
+      accent-color: var(--primary-red);
+      cursor: pointer;
+    }
+
+    .radio-option:has(input:checked) {
+      border-color: var(--primary-red);
+      background: rgba(255, 0, 0, 0.1);
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      padding: 15px;
+      margin-top: 30px;
+      background: var(--primary-red);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.2em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.3s;
+    }
+
+    button[type="submit"]:hover {
+      background: #cc0000;
+      transform: translateY(-2px);
+    }
+
+    /* Social Media Section */
     .social-media {
-      padding: 40px 20px;
-      background: #121212;
-      color: #fff;
+      padding: 60px 20px;
+      background: var(--dark-bg);
       text-align: center;
     }
-    .social-media h2 {
-      font-size: 2em;
-      margin-bottom: 30px;
-      font-weight: 700;
-    }
+
     .social-links {
       display: flex;
       justify-content: center;
-      gap: 50px;
+      gap: 30px;
+      flex-wrap: wrap;
     }
+
     .icon-link {
       display: flex;
       flex-direction: column;
@@ -32,119 +147,115 @@
       background: #222;
       padding: 20px;
       border-radius: 15px;
-      width: 180px;
-      height: 180px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 0 10px rgba(255,255,255,0.1);
+      width: 160px;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
+
     .icon-link:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 25px #ff0000;
+      transform: scale(1.05);
+      box-shadow: 0 0 20px var(--primary-red);
     }
+
     .icon-link img {
-      max-width: 120px;
-      max-height: 120px;
-      margin-bottom: 15px;
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
-      background: #000;
-      padding: 10px;
-      object-fit: contain;
+      margin-bottom: 15px;
+      object-fit: cover;
+    }
+
+    #google_translate_element {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 1000;
     }
   </style>
-  </head>
+</head>
 <body>
   <header>
     <nav class="navbar">
       <div class="nav-left">Dog Expert Tech</div>
-      </div>
       <ul class="nav-links">
         <li><a href="/">Home</a></li>
-        <li><a href="/about" aria-current="page">About</a></li>
+        <li><a href="/about">About</a></li>
         <li><a href="/files">Files</a></li>
         <li><a href="/software">Software</a></li>
         <li><a href="/gallery">Gallery</a></li>
-        <li><a href="/contact">Contact</a></li>
-		<li><a href="/blog">Blog</a></li>
+        <li><a href="/contact" aria-current="page">Contact</a></li>
+        <li><a href="/blog">Blog</a></li>
       </ul>
       <button id="theme-toggle">🌙</button>
     </nav>
   </header>
-</head>
-<body>
-  <main>
-    <h1>Kontakt</h1>
-    <form action="https://formspree.io/f/xwpqnbre" method="POST" novalidate>
-      <label for="email">Meil *</label>
-      <input type="email" name="_replyto" id="email" required />
 
-      <label for="link">Kas on mingi link?</label>
+  <main>
+    <h1>Contact Me</h1>
+    
+    <form action="https://formspree.io/f/xwpqnbre" method="POST" novalidate>
+      <label for="email">Email address *</label>
+      <input type="email" name="_replyto" id="email" placeholder="your@email.com" required />
+
+      <label for="link">Related Link (Optional)</label>
       <input type="url" name="link" id="link" placeholder="https://..." />
 
-      <label>Mis on probleem *</label>
+      <label>What is the issue? *</label>
       <div class="radio-group" role="radiogroup" aria-required="true">
-        <label><input type="radio" name="problem" value="Veebileht" required /> Veebileht</label>
+        <label class="radio-option"><input type="radio" name="problem" value="Website" required /> Website</label>
+        <label class="radio-option"><input type="radio" name="problem" value="Software" /> Software</label>
+        <label class="radio-option"><input type="radio" name="problem" value="Discord" /> Discord</label>
+        <label class="radio-option"><input type="radio" name="problem" value="YouTube" /> YouTube</label>
+        <label class="radio-option"><input type="radio" name="problem" value="Malware" /> Malware</label>
+        <label class="radio-option"><input type="radio" name="problem" value="Wallpapers" /> Wallpapers</label>
+        <label class="radio-option"><input type="radio" name="problem" value="Other" /> Other</label>
+      </div>
 
-        <label><input type="radio" name="problem" value="Tarkvara" /> Tarkvara</label>
+      <label for="details">Additional Details</label>
+      <textarea name="details" id="details" rows="5" placeholder="Describe your issue here..."></textarea>
 
-        <label><input type="radio" name="problem" value="Discord" /> Discord</label>
+      <label for="name">Your Full Name *</label>
+      <input type="text" name="name" id="name" placeholder="Enter your real name" required />
 
-        <label><input type="radio" name="problem" value="YouTube" /> YouTube</label>
+      <button type="submit">Send Message</button>
+      
+      <div style="margin-top: 20px; text-align: center; color: #aaa; font-size: 0.9em;">
+        <p>Feel free to reach out if you have questions or need help. I will reply as soon as possible.</p>
+        <p>Direct email: <a href="mailto:dog.expert900@gmail.com" style="color: var(--primary-red);">dog.expert900@gmail.com</a></p>
+      </div>
+    </form>
 
-        <label><input type="radio" name="problem" value="Pahavara" /> Pahavara</label>
+    <section class="social-media">
+      <h2>Join my channels</h2>
+      <div class="social-links">
+        <a href="/go/youtube/" target="_blank" class="icon-link">
+          <img src="/assets/expertyoutube.jpg" alt="YouTube" />
+          <span>Dog Expert</span>
+        </a>
 
-        <label><input type="radio" name="problem" value="Taustapildid" /> Taustapildid</label>
+        <a href="/go/youtubeextra/" target="_blank" class="icon-link">
+          <img src="/assets/expertextrayoutube.jpg" alt="YouTube Extra" />
+          <span>Expert Extra</span>
+        </a>
 
-        <label><input type="radio" name="problem" value="Muu" /> Muu</label></div>
-
-
-
-      <label for="details">Kirjuta rohkem</label>
-      <textarea name="details" id="details" rows="5"></textarea>
-
-      <label for="name">Sinu nimi (päris) *</label>
-      <input type="text" name="name" id="name" required />
-
-      <button type="submit">Saada</button>
-      <p>Võta ühendust, kui sul on küsimusi või vajad abi. Vastame esimesel võimalusel.</p>
-      <p>Võid ka kirjutada <a href="mailto:dog.expert900@gmail.com">dog.expert900@gmail.com</a>.</p>
-
-</form>
-
- <section class="social-media">
-    <h2>Liitu minu kanalitega</h2>
-    <div class="social-links">
-      <a href="/go/youtube/" target="_blank" class="icon-link" aria-label="YouTube kanal Dog Expert Tech">
-        <img src="/assets/expertyoutube.jpg" alt="YouTube logo" />
-        <span>Dog Expert</span>
-      </a>
-
-      <a href="/go/youtubeextra/" target="_blank" class="icon-link" aria-label="YouTube kanal Dog Expert Extra">
-        <img src="/assets/expertextrayoutube.jpg" alt="YouTube logo" />
-        <span>Dog Expert Extra</span>
-
-      <a href="/go/discord/" target="_blank" class="icon-link" aria-label="Discord server Dog Expert Tech">
-        <img src="/assets/discord.png" alt="Discord logo" />
-        <span>Discord Server</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- Google Translate keelevalik -->
-<div id="google_translate_element" style="position: fixed; top: 10px; right: 10px; z-index: 1000;"></div>
-
-<script type="text/javascript">
-  function googleTranslateElementInit() {
-    new google.translate.TranslateElement({
-      pageLanguage: 'et',
-      includedLanguages: 'en,et,ru',
-      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-    }, 'google_translate_element');
-  }
-</script>
-
-<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
+        <a href="/go/discord/" target="_blank" class="icon-link">
+          <img src="/assets/discord.png" alt="Discord" />
+          <span>Discord Server</span>
+        </a>
+      </div>
+    </section>
   </main>
+
+  <div id="google_translate_element"></div>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,et,ru',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   <script src="/script.js"></script>
 </body>
 </html>

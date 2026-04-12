@@ -1,117 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
-<good> 
-<meta charset="UTF-8" /> 
-<meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
-<title>What happens if you delete Windows System32?</title> 
-<link rel="icon" type="image/x-icon" href="/assets/favicon.jpg"> 
-<style> 
-body { 
-font-family: Arial, sans-serif; 
-line-height: 1.6; 
-margin: 0; /* remove edge margin */ 
-min-height: 100vh; /* always at least screen height */ 
-background-image: url('/blog/b1089010/assets/win10walp.jpg'); 
-background-size: cover; /* covers the entire screen */ 
-background-position: center; 
-background-repeat: no-repeat; 
-background-attachment: fixed; /* the background remains “locked” while scrolling */ 
-color: #e2dddd;
-} 
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What happens if you delete Windows System32? - Dog Expert Tech</title>
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.jpg">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 40px 20px;
+      min-height: 100vh;
+      background-image: url('/blog/b1089010/assets/win10walp.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-header { 
-background: rgba(0,0,0,0.7); 
-padding: 20px; 
-text-align: center; 
-border-radius: 10px; 
-box-shadow: 0 0 10px #000; 
-margin-bottom: 30px; 
-} 
-h1 { 
-margin: 0; 
-color: #fff; 
-} 
-p.date { 
-color: #bbb; 
-font-size: 0.9em; 
-margin-top: 5px; 
-} 
-main { 
-max-width: 700px; 
-margin: 0 car; 
-background: rgba(0,0,0,0.6); 
-padding: 20px; 
-border-radius: 10px; 
-box-shadow: 0 0 15px rgba(0,0,0,0.8); 
-} 
-img.post-image { 
-max-width: 100%; 
-border-radius: 10px; 
-margin-bottom: 20px; 
-box-shadow: 0 0 15px rgba(0,0,0,0.7); 
-} 
-a.back-link { 
-display: inline-block; 
-margin-bottom: 20px; 
-color: #aaf; 
-text-decoration: none; 
-font-weight: bold; 
-} 
-a.back-link:hover { 
-color: #ffd700; 
-text-decoration: underline; 
-} 
-footer { 
-text-align: center; 
-color: #999; 
-margin-top: 50px; 
-font-size: 0.9em; 
-}
-</style>
+    header {
+      background: rgba(10, 10, 10, 0.85);
+      padding: 30px;
+      text-align: center;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      margin-bottom: 30px;
+      width: 100%;
+      max-width: 750px;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      margin: 10px 0 0 0;
+      color: #fff;
+      font-size: 2.2rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .date-author {
+      color: #ff4444;
+      font-size: 0.9em;
+      font-weight: bold;
+      margin-top: 10px;
+      text-transform: uppercase;
+    }
+
+    main {
+      max-width: 750px;
+      width: 100%;
+      background: rgba(10, 10, 10, 0.85);
+      padding: 40px;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+      box-sizing: border-box;
+    }
+
+    img.post-image {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 25px;
+      border-bottom: 4px solid #ff0000;
+    }
+
+    .warning {
+      background: rgba(255, 0, 0, 0.2);
+      border-left: 5px solid #ff0000;
+      padding: 15px;
+      margin: 20px 0;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      margin-top: 30px;
+      border-radius: 10px;
+      border: 1px solid #444;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    a.back-link {
+      display: inline-block;
+      margin-bottom: 10px;
+      color: #ff4444;
+      text-decoration: none;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      transition: 0.3s;
+    }
+
+    a.back-link:hover {
+      color: #fff;
+      transform: translateX(-5px);
+    }
+
+    footer {
+      text-align: center;
+      color: #999;
+      margin-top: 50px;
+      padding: 20px;
+      font-size: 0.9em;
+    }
+
+    #google_translate_element {
+      margin-bottom: 20px;
+    }
+  </style>
 </head>
 <body>
-<header>
-<a href="../index.html" class="back-link">&larr; Back to blog</a>
-<h1>What happens if you delete Windows System32?</h1>
-<p class="date">Date: 2025-08-20</p>
-<p class="Author">Author: Dog Expert Tech</p>
-</header>
-<main>
-<img src="/gallery/assets/wallpapers/Nebula-2.png" alt="Blog post image" class="post-image" />
-<h1>What happens if you delete Windows System32?</h1>
-<p class="date">Date: 2025-08-20</p>
 
-<p class="warning">⚠️ WARNING: DO NOT DO THIS!!! Deleting the Windows <code>System32</code> folder will render your system unusable and may cause permanent data loss.</p>
+  <header>
+    <a href="../index.html" class="back-link">&larr; Back to Blog</a>
+    <h1>What happens if you delete Windows System32?</h1>
+    <p class="date-author">August 20, 2025 | By Dog Expert Tech</p>
+  </header>
 
-<p>System32 contains core Windows files, drivers, and services. If you remove this folder, your system will not boot or will crash immediately. Usually, the only way out is to perform a clean reinstall of Windows.</p>
+  <main>
+    <img src="/gallery/assets/wallpapers/Nebula-2.png" alt="System32 Blog" class="post-image" />
 
-<p>This post and the video below are for <strong>educational purposes only</strong>. <strong>Never try</strong> to delete System32 on a real computer.</p>
+    <p class="warning">⚠️ WARNING: DO NOT DO THIS! Deleting the Windows System32 folder will render your system unusable and may cause permanent data loss.</p>
 
-<p>If you want to do this, ONLY do it in a VM. Watch the video below</p>
+    <p>System32 contains core Windows files, drivers, and services. If you remove this folder, your system will not boot or will crash immediately. Usually, the only way out is to perform a clean reinstall of Windows.</p>
 
-<img src="/blog/b1089010/assets/rdcmd.png" />
+    <p>This post and the video below are for <strong>educational purposes only</strong>. Never try to delete System32 on a real computer.</p>
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/XYor-ML__iE?si=LqpnKvVN5cPx_PKK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <p>If you want to test this, <strong>ONLY</strong> do it in a Virtual Machine (VM). Watch the video below to see what happens:</p>
 
-</main>
-<footer>
-&copy; 2025 Dog Expert Blog
+    <div class="video-container">
+      <iframe src="https://www.youtube-nocookie.com/embed/XYor-ML__iE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
 
-<!-- Google Translate language selection -->
-<div id="google_translate_element" style="position: fixed; top: 10px; right: 10px; z-index: 1000;"></div>
+    <img src="/blog/b1089010/assets/rdcmd.png" style="width: 100%; margin-top: 20px; border-radius: 10px;" />
+  </main>
 
-<script type="text/javascript"> 
-function googleTranslateElementInit() { 
-new google.translate.TranslateElement({ 
-pageLanguage: 'en', 
-includedLanguages: 'en,et,ru', 
-layout: google.translate.TranslateElement.InlineLayout.SIMPLE 
-}, 'google_translate_element'); 
-}
-</script>
+  <footer>
+    <div id="google_translate_element"></div>
+    &copy; 2026 Dog Expert Tech
+  </footer>
 
-<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> 
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,et,ru',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-</footer>
 </body>
 </html>
