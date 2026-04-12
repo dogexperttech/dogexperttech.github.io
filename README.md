@@ -5,7 +5,7 @@ Welcome to the official repository for **Dog Expert Tech**. This website serves 
 ## 🌐 Website Sections
 
 - **[Blog](https://dogexperttech.github.io/blog):** In-depth technical guides, including AMD driver stability fixes and Windows OS optimization.
-- **[Software](https://dogexperttech.github.io/software):** A curated collection of utility scripts and tools (e.g., Hyper-V/VBS management).
+- **[Software](https://dogexperttech.github.io/software):** A curated collection of utility scripts and tools 
 - **[Gallery](https://dogexperttech.github.io/gallery):** High-quality wallpapers and visual assets used across my projects.
 - **[About](https://dogexperttech.github.io/about):** Information regarding my journey in tech and content creation.
 
@@ -20,7 +20,6 @@ Stay connected and updated through my official channels:
 
 ## 📝 Recent Updates
 - **December 12, 2025:** Added critical BIOS update documentation to the AMD stability guide.
-- **April 2026:** Launched the styled real-time emergency information bar.
 
 ---
 *© 2026 Dog Expert Tech. All rights reserved.*

@@ -1,11 +1,11 @@
 async function fetchSoftwareList() {
   try {
     const response = await fetch('software.json');
-    if (!response.ok) throw new Error('Ei saanud JSON-i laadida');
+    if (!response.ok) throw new Error('Could not load JSON data from api');
     const data = await response.json();
 
     const tbody = document.getElementById('software-body');
-    tbody.innerHTML = ""; // tühjenda enne
+    tbody.innerHTML = "";
 
     data.malwarewatch.forEach(item => {
       const row = document.createElement('tr');
@@ -13,14 +13,14 @@ async function fetchSoftwareList() {
         <td>${item.name}</td>
         <td>${item.size}</td>
         <td>${item.date}</td>
-        <td><a href="${item.url}" target="_blank" rel="noopener noreferrer">Laadi alla</a></td>
+        <td><a href="${item.url}" target="_blank" rel="noopener noreferrer">Download</a></td>
       `;
       tbody.appendChild(row);
     });
   } catch (err) {
-    console.error('Tõrge:', err);
+    console.error('Error:', err);
     const tbody = document.getElementById('software-body');
-    tbody.innerHTML = `<tr><td colspan="4">❌ Failide laadimisel tekkis viga.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="4">❌ An error occurred while loading the files!</td></tr>`;
   }
 }
 
