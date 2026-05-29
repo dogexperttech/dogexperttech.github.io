@@ -1,0 +1,293 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Blog">
+  <div class="blog-container">
+    <h1>Blog</h1>
+    <p class="subtitle">Thoughts, tutorials, and insights about technology</p>
+
+    <div class="blog-actions">
+      <input id="blogSearch" type="search" placeholder="Search posts by title or description..." aria-label="Search blog posts" />
+      <a class="rss-button" href="/rss.xml" target="_blank" rel="noopener noreferrer">Subscribe RSS</a>
+    </div>
+
+    <div class="blog-list">
+      <article class="blog-card">
+        <a href="/blog/b1002787/" class="blog-link">
+          <div class="blog-image">
+            <img src="/gallery/assets/wallpapers/Waves.jpg" alt="Fixing AMD Driver Crashes" loading="lazy" />
+          </div>
+          <div class="blog-content">
+            <h3>Fixing AMD Driver Crashes</h3>
+            <p>Step-by-step fixes for AMD driver issues, including Hyper-V and VBS settings.</p>
+            <span class="blog-date">August 24, 2025</span>
+          </div>
+        </a>
+      </article>
+
+      <article class="blog-card">
+        <a href="/blog/b1089010/" class="blog-link">
+          <div class="blog-image">
+            <img src="/gallery/assets/wallpapers/Nebula-2.png" alt="Windows System32 warning" loading="lazy" />
+          </div>
+          <div class="blog-content">
+            <h3>What Happens if You Delete Windows System32?</h3>
+            <p>Learn why System32 is critical and why deleting it will break Windows.</p>
+            <span class="blog-date">August 20, 2025</span>
+          </div>
+        </a>
+      </article>
+
+      <article class="blog-card">
+        <a href="/blog/b7891085/" class="blog-link">
+          <div class="blog-image">
+            <img src="/gallery/assets/wallpapers/Mountain.png" alt="Hello World welcome post" loading="lazy" />
+          </div>
+          <div class="blog-content">
+            <h3>Hello World!</h3>
+            <p>A first post from Dog Expert Tech with a friendly introduction and welcome.</p>
+            <span class="blog-date">August 2, 2025</span>
+          </div>
+        </a>
+      </article>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .blog-container {
+    padding: 60px 20px;
+    width: 100%;
+    max-width: 1100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+    margin-top: 0.5em;
+    margin-bottom: 0.2em;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #005f73;
+  }
+
+  body.dark h1 {
+    color: #94d2bd;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 4em;
+    text-align: center;
+    max-width: 750px;
+    color: #666;
+  }
+
+  body.dark .subtitle {
+    color: #aaa;
+  }
+
+  .blog-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 35px;
+    width: 100%;
+  }
+
+  .blog-card {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  body.dark .blog-card {
+    background: rgba(30, 30, 30, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  }
+
+  .blog-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  body.dark .blog-card:hover {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.7);
+  }
+
+  .blog-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .blog-image {
+    width: 100%;
+    height: 220px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 4px solid #ff0000;
+  }
+
+  .blog-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .blog-content {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .blog-content h3 {
+    margin: 0 0 15px 0;
+    font-size: 1.6rem;
+    color: #005f73;
+  }
+
+  body.dark .blog-content h3 {
+    color: #94d2bd;
+  }
+
+  .blog-content p {
+    color: #666;
+    font-size: 1.05rem;
+    margin-bottom: 25px;
+    flex-grow: 1;
+  }
+
+  body.dark .blog-content p {
+    color: #ccc;
+  }
+
+  .blog-date {
+    color: #999;
+    font-size: 0.9em;
+    font-style: italic;
+  }
+
+  body.dark .blog-date {
+    color: #777;
+  }
+
+  .blog-actions {
+    width: 100%;
+    max-width: 900px;
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .blog-actions input {
+    width: 100%;
+    max-width: 520px;
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 1px solid #ccc;
+    background: var(--site-card);
+    color: var(--site-text);
+    font-size: 1rem;
+  }
+
+  .blog-actions input:focus {
+    outline: none;
+    border-color: #ff0000;
+  }
+
+  .rss-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 20px;
+    border-radius: 14px;
+    background: #ff0000;
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s ease;
+  }
+
+  .rss-button:hover {
+    background: #cc0000;
+  }
+
+  @media (max-width: 768px) {
+    .blog-container {
+      padding: 40px 10px;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+    }
+
+    .blog-actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .blog-list {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .blog-content {
+      padding: 20px;
+    }
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function () {
+    const searchInput = document.getElementById('blogSearch');
+    const cards = Array.from(document.querySelectorAll('.blog-card'));
+    if (!searchInput || !cards.length) return;
+
+    searchInput.addEventListener('input', function () {
+      const query = this.value.toLowerCase().trim();
+      let matches = 0;
+
+      cards.forEach((card) => {
+        const text = card.textContent.toLowerCase();
+        const visible = query === '' || text.includes(query);
+        card.style.display = visible ? '' : 'none';
+        if (visible) matches += 1;
+      });
+
+      if (matches === 0) {
+        if (!document.getElementById('noBlogResults')) {
+          const message = document.createElement('p');
+          message.id = 'noBlogResults';
+          message.style.marginTop = '1.5rem';
+          message.style.textAlign = 'center';
+          message.textContent = 'No posts match your search. Try another keyword.';
+          document.querySelector('.blog-container').appendChild(message);
+        }
+      } else {
+        const existing = document.getElementById('noBlogResults');
+        if (existing) existing.remove();
+      }
+    });
+  });
+</script>

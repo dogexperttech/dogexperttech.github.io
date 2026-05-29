@@ -1,0 +1,362 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Home"
+  notice="As of November 17th, I have decided that I will not be streaming! Maybe someday we will see each other on streams again, but right now is not the time. Thank you for reading!"
+  noticeType="error"
+>
+  <section class="hero">
+    <h1>Welcome!</h1>
+    <p>This is my personal website where I share my projects, files, and thoughts.</p>
+  </section>
+
+  <section class="video-section">
+    <h2>Watch my content</h2>
+    <div class="tab-buttons">
+      <button type="button" class="tab-btn" data-tab="streams">🎥 Streams</button>
+      <button type="button" class="tab-btn active" data-tab="videos">📺 Videos</button>
+    </div>
+
+    <div id="streams" class="tab-content">
+      <p>Live streams and real-time content:</p>
+      <p><em>No active streams at the moment.</em></p>
+    </div>
+
+    <div id="videos" class="tab-content active">
+      <p>My latest YouTube videos:</p>
+      <div class="video-grid">
+        <div class="video-placeholder" data-src="https://www.youtube-nocookie.com/embed/ux272IvbQtw" data-title="Windows 7 Upgrading to Windows 11 2025">
+          <button type="button" class="video-load-btn">
+            <img src="https://img.youtube.com/vi/ux272IvbQtw/hqdefault.jpg" alt="Windows 7 Upgrading to Windows 11 2025 thumbnail" loading="lazy" />
+            <div class="video-play-overlay"><span>▶</span></div>
+            <p>Windows 7 Upgrading to Windows 11 2025</p>
+          </button>
+        </div>
+        <div class="video-placeholder" data-src="https://www.youtube-nocookie.com/embed/f7qaCa6JG-s" data-title="How to remove Green Petya Ransomware">
+          <button type="button" class="video-load-btn">
+            <img src="https://img.youtube.com/vi/f7qaCa6JG-s/hqdefault.jpg" alt="How to remove Green Petya Ransomware thumbnail" loading="lazy" />
+            <div class="video-play-overlay"><span>▶</span></div>
+            <p>How to remove Green Petya Ransomware</p>
+          </button>
+        </div>
+        <div class="video-placeholder" data-src="https://www.youtube-nocookie.com/embed/Lcrd4yJMMPk" data-title="Windows 11 Installing on VMWare">
+          <button type="button" class="video-load-btn">
+            <img src="https://img.youtube.com/vi/Lcrd4yJMMPk/hqdefault.jpg" alt="Windows 11 Installing on VMWare thumbnail" loading="lazy" />
+            <div class="video-play-overlay"><span>▶</span></div>
+            <p>Windows 11 Installing on VMWare</p>
+          </button>
+        </div>
+        <div class="video-placeholder" data-src="https://www.youtube-nocookie.com/embed/XYor-ML__iE" data-title="What happens if you delete Windows System32?">
+          <button type="button" class="video-load-btn">
+            <img src="https://img.youtube.com/vi/XYor-ML__iE/hqdefault.jpg" alt="What happens if you delete Windows System32? thumbnail" loading="lazy" />
+            <div class="video-play-overlay"><span>▶</span></div>
+            <p>What happens if you delete Windows System32?</p>
+          </button>
+        </div>
+        <div class="video-placeholder" data-src="https://www.youtube.com/embed/zMhClDw1rus" data-title="How to remove MEMZ Trojan?">
+          <button type="button" class="video-load-btn">
+            <img src="https://img.youtube.com/vi/zMhClDw1rus/hqdefault.jpg" alt="How to remove MEMZ Trojan? thumbnail" loading="lazy" />
+            <div class="video-play-overlay"><span>▶</span></div>
+            <p>How to remove MEMZ Trojan?</p>
+          </button>
+        </div>
+        <div class="video-placeholder" data-src="https://www.youtube-nocookie.com/embed/_JmN_8R7TUs" data-title="Checking my Windows 10 PE. Dog10PE">
+          <button type="button" class="video-load-btn">
+            <img src="https://img.youtube.com/vi/_JmN_8R7TUs/hqdefault.jpg" alt="Checking my Windows 10 PE. Dog10PE thumbnail" loading="lazy" />
+            <div class="video-play-overlay"><span>▶</span></div>
+            <p>Checking my Windows 10 PE. Dog10PE</p>
+          </button>
+        </div>
+        <div class="video-placeholder" data-src="https://www.youtube-nocookie.com/embed/nERXMlLxlak" data-title="How to Dualboot Windows 8.1 and Windows 7">
+          <button type="button" class="video-load-btn">
+            <img src="https://img.youtube.com/vi/nERXMlLxlak/hqdefault.jpg" alt="How to Dualboot Windows 8.1 and Windows 7 thumbnail" loading="lazy" />
+            <div class="video-play-overlay"><span>▶</span></div>
+            <p>How to Dualboot Windows 8.1 and Windows 7</p>
+          </button>
+        </div>
+        <div class="video-placeholder" data-src="https://www.youtube-nocookie.com/embed/h10CaAq7fTU" data-title="Destroying Windows 7 Installer and fixing it">
+          <button type="button" class="video-load-btn">
+            <img src="https://img.youtube.com/vi/h10CaAq7fTU/hqdefault.jpg" alt="Destroying Windows 7 Installer and fixing it thumbnail" loading="lazy" />
+            <div class="video-play-overlay"><span>▶</span></div>
+            <p>Destroying Windows 7 Installer and fixing it</p>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="social-media">
+    <h2>Join my channels</h2>
+    <div class="social-links">
+      <a href="/go/youtube/" class="icon-link">
+        <img src="/assets/expertyoutube.jpg" alt="YouTube" width="100" height="100" loading="lazy" />
+        <span>Dog Expert</span>
+      </a>
+      <a href="/go/youtubeextra/" class="icon-link">
+        <img src="/assets/expertextrayoutube.jpg" alt="YouTube Extra" width="100" height="100" loading="lazy" />
+        <span>Expert Extra</span>
+      </a>
+      <a href="/go/discord/" class="icon-link">
+        <img src="/assets/discord.png" alt="Discord" width="100" height="100" loading="lazy" />
+        <span>Discord Server</span>
+      </a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .video-section {
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .video-section h2 {
+    font-size: 2em;
+    margin-bottom: 30px;
+    color: var(--site-heading);
+  }
+
+  .tab-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+  }
+
+  .tab-buttons button {
+    background: var(--site-card);
+    color: var(--site-text);
+    border: 1px solid var(--site-border);
+    border: none;
+    padding: 10px 25px;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .tab-buttons button:hover {
+    background: #ff0000;
+    color: white;
+    transform: scale(1.05);
+  }
+
+  .tab-buttons button.active {
+    background: #ff0000;
+    font-weight: bold;
+  }
+
+  .tab-content {
+    display: none;
+    animation: fadeIn 0.4s ease;
+  }
+
+  .tab-content.active {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .video-placeholder,
+  .video-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    min-height: 200px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  .video-placeholder button {
+    width: 100%;
+    height: 100%;
+    border: none;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .video-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .video-play-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.35);
+    transition: background 0.2s ease;
+  }
+
+  .video-placeholder:hover .video-play-overlay {
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .video-play-overlay span {
+    font-size: 3rem;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.65);
+  }
+
+  .video-placeholder p {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 12px 14px;
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 700;
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.7) 100%);
+  }
+
+  .video-frame iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .social-media {
+    padding: 40px 20px;
+    text-align: center;
+    background: var(--site-card);
+    border: 1px solid var(--site-border);
+    border-radius: 12px;
+    margin: 2em 0;
+  }
+
+  .social-media h2 {
+    font-size: 2em;
+    margin-bottom: 30px;
+    color: var(--site-heading);
+  }
+
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+
+  .icon-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    background: #222;
+    padding: 20px;
+    border-radius: 15px;
+    width: 180px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .icon-link:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.6);
+  }
+
+  .icon-link img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    object-fit: cover;
+  }
+
+  .icon-link span {
+    font-weight: 600;
+    font-size: 1.1em;
+  }
+
+  @media (max-width: 768px) {
+    .icon-link {
+      width: 150px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const closeBtn = document.querySelector('.closebtn');
+    const alertBox = document.getElementById('streaming-alert');
+
+    if (closeBtn && alertBox) {
+      closeBtn.addEventListener('click', () => {
+        alertBox.style.opacity = '0';
+        setTimeout(() => {
+          alertBox.style.display = 'none';
+        }, 600);
+      });
+    }
+
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        tabButtons.forEach((btn) => btn.classList.remove('active'));
+        tabContents.forEach((content) => content.classList.remove('active'));
+
+        button.classList.add('active');
+        const targetId = button.getAttribute('data-tab');
+        const targetContent = targetId ? document.getElementById(targetId) : null;
+
+        if (targetContent) {
+          targetContent.classList.add('active');
+        }
+      });
+    });
+
+    const placeholders = document.querySelectorAll('.video-placeholder');
+    placeholders.forEach((placeholder) => {
+      placeholder.addEventListener('click', () => {
+        if (placeholder.dataset.loaded === 'true') return;
+
+        const iframe = document.createElement('iframe');
+        iframe.src = placeholder.dataset.src;
+        iframe.title = placeholder.dataset.title || 'YouTube video';
+        iframe.loading = 'lazy';
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        iframe.allowFullscreen = true;
+        iframe.className = 'video-frame';
+
+        placeholder.innerHTML = '';
+        placeholder.appendChild(iframe);
+        placeholder.dataset.loaded = 'true';
+      });
+    });
+  });
+</script>

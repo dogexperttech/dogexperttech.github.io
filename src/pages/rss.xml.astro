@@ -1,0 +1,49 @@
+---
+const site = Astro.site || 'http://localhost';
+const posts = [
+  {
+    title: 'Fixing AMD Driver Crashes',
+    slug: '/blog/b1002787/',
+    date: '2025-08-24',
+    description: 'Fix AMD driver crashes with driver cleanup, VBS/Hyper-V fixes, and an automated batch script.'
+  },
+  {
+    title: 'What Happens if You Delete Windows System32?',
+    slug: '/blog/b1089010/',
+    date: '2025-08-20',
+    description: 'Learn why deleting System32 breaks Windows and why this experiment is dangerous.'
+  },
+  {
+    title: 'Hello World!',
+    slug: '/blog/b7891085/',
+    date: '2025-08-02',
+    description: 'Introducing Dog Expert Tech and the blog journey ahead.'
+  }
+];
+const updated = new Date().toUTCString();
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dog Expert Tech</title>
+    <link>{site}</link>
+    <description>Technology tutorials, downloads, and guides from Dog Expert Tech.</description>
+    <language>en-us</language>
+    <lastBuildDate>{updated}</lastBuildDate>
+    <atom:link href="{site}/rss.xml" rel="self" type="application/rss+xml" />
+    <managingEditor>dog.expert900@gmail.com (Dog Expert Tech)</managingEditor>
+    <webMaster>dog.expert900@gmail.com (Dog Expert Tech)</webMaster>
+    <generator>Astro RSS Generator</generator>
+    <ttl>1440</ttl>
+    {posts.map(post => (
+      <item>
+        <title><![CDATA[{post.title}]]></title>
+        <link>{site}{post.slug}</link>
+        <guid isPermaLink="true">{site}{post.slug}</guid>
+        <pubDate>{new Date(post.date).toUTCString()}</pubDate>
+        <description><![CDATA[{post.description}]]></description>
+        <author>dog.expert900@gmail.com (Dog Expert Tech)</author>
+      </item>
+    ))}
+  </channel>
+</rss>

@@ -1,0 +1,63 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Page Not Found" description="The requested page could not be found.">
+  <main class="error-page">
+    <h1>404</h1>
+    <p>Sorry, this page does not exist.</p>
+    <a class="home-link" href="/">Return to Home</a>
+    <p class="hint">If a link failed, try adding a trailing slash (e.g. <code>/blog/b1002787/</code>).</p>
+  </main>
+</Layout>
+
+<style>
+  .error-page {
+    max-width: 700px;
+    margin: 5rem auto;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .error-page h1 {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    color: #005f73;
+  }
+
+  .error-page p {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    color: #444;
+  }
+
+  .home-link {
+    display: inline-block;
+    padding: 0.85rem 1.5rem;
+    border-radius: 999px;
+    background: #005f73;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  .home-link:hover {
+    background: #094d56;
+  }
+
+  .hint {
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+    color: #666;
+  }
+
+  body.dark .hint {
+    color: #aaa;
+  }
+
+  .hint code {
+    background: rgba(0, 0, 0, 0.06);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+  }
+</style>
