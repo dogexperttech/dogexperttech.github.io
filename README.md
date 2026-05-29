@@ -1,25 +1,57 @@
-# Dog Expert Tech - Personal Portfolio & Technical Hub
+# Astro Starter Kit: Basics
 
-Welcome to the official repository for **Dog Expert Tech**. This website serves as a central resource for hardware troubleshooting guides, custom software scripts, and content creation updates.
+```sh
+npm create astro@latest -- --template basics
+```
 
-## 🌐 Website Sections
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-- **[Blog](https://dogexperttech.github.io/blog):** In-depth technical guides, including AMD driver stability fixes and Windows OS optimization.
-- **[Software](https://dogexperttech.github.io/software):** A curated collection of utility scripts and tools 
-- **[Gallery](https://dogexperttech.github.io/gallery):** High-quality wallpapers and visual assets used across my projects.
-- **[About](https://dogexperttech.github.io/about):** Information regarding my journey in tech and content creation.
+## 🚀 Project Structure
 
-## 🛠️ Key Technical Solutions
-- **Multi-language Accessibility:** Integrated support for English, Estonian, and Russian via Google Translate.
+Inside of your Astro project, you'll see the following folders and files:
 
-## 📢 Community & Content
+```text
+/
+├── public/
+│   └── favicon.svg
+├── src
+│   ├── assets
+│   │   └── astro.svg
+│   ├── components
+│   │   └── Welcome.astro
+│   ├── layouts
+│   │   └── Layout.astro
+│   └── pages
+│       └── index.astro
+└── package.json
+```
 
-Stay connected and updated through my official channels:
-- **YouTube:** [Dog Expert](https://dogexperttech.github.io/go/youtube/) & [Dog Expert Extra](https://dogexperttech.github.io/go/youtubeextra/)
-- **Discord:** [Join the Community Server](https://dogexperttech.github.io/go/discord/)
+To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
 
-## 📝 Recent Updates
-- **December 12, 2025:** Added critical BIOS update documentation to the AMD stability guide.
+## 🧞 Commands
 
----
-*© 2026 Dog Expert Tech. All rights reserved.*
+All commands are run from the root of the project, from a terminal:
+
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | Installs dependencies                            |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run deploy`          | Build the site for deployment                    |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro -- --help` | Get help using the Astro CLI                     |
+
+## 📦 Deploy to GitHub Pages
+
+This project is already configured for GitHub Pages using Astro.
+
+1. Push your changes to `main`.
+2. GitHub Actions will automatically build and deploy the site.
+3. Your site will be published at `https://dogexperttech.github.io`.
+
+If you need to update the deployment branch or page settings, open your repository's Pages settings and confirm that GitHub Pages is enabled.
+
+## 👀 Want to learn more?
+
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

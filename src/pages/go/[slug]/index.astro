@@ -1,0 +1,17 @@
+---
+import { goRedirects, goRedirectSlugs } from '../../../data/go-redirects';
+
+export function getStaticPaths() {
+  return goRedirectSlugs.map((slug) => ({
+    params: { slug },
+  }));
+}
+
+const { slug } = Astro.params;
+
+if (!slug || !(slug in goRedirects)) {
+  return Astro.redirect('/404/');
+}
+
+return Astro.redirect(goRedirects[slug], 302);
+---

@@ -1,0 +1,288 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const softwareItems = [
+  {
+    name: "Visual Studio Code",
+    category: "Editor",
+    description: "Advanced code editor",
+    link: "https://code.visualstudio.com/"
+  },
+  {
+    name: "OBS Studio",
+    category: "Streaming",
+    description: "Open Broadcaster Software",
+    link: "https://obsproject.com/"
+  },
+  {
+    name: "VirtualBox",
+    category: "Virtualization",
+    description: "Virtual machine platform",
+    link: "https://www.virtualbox.org/"
+  },
+  {
+    name: "GIMP",
+    category: "Graphics",
+    description: "Image manipulation program",
+    link: "https://www.gimp.org/"
+  },
+  {
+    name: "Blender",
+    category: "3D",
+    description: "3D modeling and animation",
+    link: "https://www.blender.org/"
+  },
+  {
+    name: "Audacity",
+    category: "Audio",
+    description: "Audio editing software",
+    link: "https://www.audacityteam.org/"
+  },
+  {
+    name: "FFmpeg",
+    category: "Conversion",
+    description: "Multimedia framework",
+    link: "https://ffmpeg.org/"
+  },
+  {
+    name: "Node.js",
+    category: "Development",
+    description: "JavaScript runtime",
+    link: "https://nodejs.org/"
+  },
+];
+---
+
+<Layout title="Software">
+  <main class="software-main">
+    <h1>Software Recommendations</h1>
+    <p class="description">A collection of useful free and open-source software I recommend.</p>
+
+    <div class="software-grid">
+      {softwareItems.map(item => (
+        <a href={item.link} target="_blank" rel="noopener noreferrer" class="software-card">
+          <h3>{item.name}</h3>
+          <span class="category">{item.category}</span>
+          <p>{item.description}</p>
+          <span class="cta">Visit Website →</span>
+        </a>
+      ))}
+    </div>
+
+    <section class="social-media">
+      <h2>Join my channels</h2>
+      <div class="social-links">
+        <a href="/go/youtube/" class="icon-link">
+          <img src="/assets/expertyoutube.jpg" alt="YouTube" loading="lazy" />
+          <span>Dog Expert</span>
+        </a>
+
+        <a href="/go/youtubeextra/" class="icon-link">
+          <img src="/assets/expertextrayoutube.jpg" alt="YouTube Extra" loading="lazy" />
+          <span>Expert Extra</span>
+        </a>
+
+        <a href="/go/discord/" class="icon-link">
+          <img src="/assets/discord.png" alt="Discord" loading="lazy" />
+          <span>Discord Server</span>
+        </a>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .software-main {
+    padding: 40px 20px;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: 2.5em;
+    color: #005f73;
+    margin-bottom: 0.5em;
+  }
+
+  body.dark h1 {
+    color: #94d2bd;
+  }
+
+  .description {
+    color: #666;
+    font-size: 1.1em;
+    margin-bottom: 2em;
+  }
+
+  body.dark .description {
+    color: #aaa;
+  }
+
+  .software-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    margin: 2em 0;
+  }
+
+  .software-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    border-left: 4px solid transparent;
+  }
+
+  body.dark .software-card {
+    background: #1e1e1e;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .software-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    border-left-color: #ff0000;
+  }
+
+  body.dark .software-card:hover {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+  }
+
+  .software-card h3 {
+    font-size: 1.4em;
+    margin: 0 0 0.5em 0;
+    color: #005f73;
+  }
+
+  body.dark .software-card h3 {
+    color: #94d2bd;
+  }
+
+  .category {
+    display: inline-block;
+    background: #005f73;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    font-weight: 600;
+    margin-bottom: 1em;
+    width: fit-content;
+  }
+
+  body.dark .category {
+    background: #1e6e7e;
+  }
+
+  .software-card p {
+    color: #666;
+    margin: 1em 0;
+    flex-grow: 1;
+  }
+
+  body.dark .software-card p {
+    color: #ccc;
+  }
+
+  .cta {
+    display: inline-block;
+    color: #ff0000;
+    font-weight: 600;
+    margin-top: 1em;
+    transition: transform 0.2s;
+  }
+
+  .software-card:hover .cta {
+    transform: translateX(5px);
+  }
+
+  /* Social Media Section */
+  .social-media {
+    padding: 60px 20px;
+    background: #f5f5f5;
+    border-radius: 12px;
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  body.dark .social-media {
+    background: #1e1e1e;
+  }
+
+  .social-media h2 {
+    font-size: 2em;
+    margin-bottom: 30px;
+    color: #005f73;
+  }
+
+  body.dark .social-media h2 {
+    color: #94d2bd;
+  }
+
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+
+  .icon-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    background: #222;
+    padding: 20px;
+    border-radius: 15px;
+    width: 160px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .icon-link:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+  }
+
+  .icon-link img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    object-fit: cover;
+  }
+
+  .icon-link span {
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    .software-main {
+      padding: 20px 10px;
+    }
+
+    h1 {
+      font-size: 1.8em;
+    }
+
+    .software-grid {
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
+
+    .social-links {
+      gap: 20px;
+    }
+
+    .icon-link {
+      width: 140px;
+    }
+  }
+</style>
