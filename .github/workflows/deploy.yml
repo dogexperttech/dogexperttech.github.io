@@ -33,12 +33,10 @@ jobs:
         run: npm run build
 
       - name: Upload Pages artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-pages-artifact@v3
         with:
-          name: pages
           path: ./dist
 
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v1
-        with:
-          wait-for-deployment: true
+        id: deployment
+        uses: actions/deploy-pages@v4
