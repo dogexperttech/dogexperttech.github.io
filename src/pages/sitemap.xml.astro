@@ -1,0 +1,29 @@
+---
+const site = Astro.site || 'http://localhost';
+const pages = [
+  { path: '/', priority: '1.0', changefreq: 'daily' },
+  { path: '/about', priority: '0.8', changefreq: 'monthly' },
+  { path: '/blog', priority: '0.9', changefreq: 'weekly' },
+  { path: '/files/', priority: '0.7', changefreq: 'monthly' },
+  { path: '/isos/', priority: '0.7', changefreq: 'monthly' },
+  { path: '/gallery/', priority: '0.7', changefreq: 'monthly' },
+  { path: '/software', priority: '0.7', changefreq: 'monthly' },
+  { path: '/contact', priority: '0.6', changefreq: 'monthly' },
+  { path: '/blog/b1002787/', priority: '0.6', changefreq: 'monthly' },
+  { path: '/blog/b1089010/', priority: '0.6', changefreq: 'monthly' },
+  { path: '/blog/b7891085/', priority: '0.6', changefreq: 'monthly' },
+  { path: '/Dog10PE/', priority: '0.6', changefreq: 'monthly' },
+];
+const today = new Date().toISOString().split('T')[0];
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {pages.map(page => (
+    <url>
+      <loc>{site}{page.path}</loc>
+      <lastmod>{today}</lastmod>
+      <changefreq>{page.changefreq}</changefreq>
+      <priority>{page.priority}</priority>
+    </url>
+  ))}
+</urlset>

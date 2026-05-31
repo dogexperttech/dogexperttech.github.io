@@ -1,0 +1,396 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const issueOptions = [
+  'Website',
+  'Software',
+  'Discord',
+  'YouTube',
+  'Malware',
+  'Wallpapers',
+  'ISO / Operating System',
+  'Other',
+];
+---
+
+<Layout title="Contact">
+  <main class="contact-main">
+    <h1>Contact Me</h1>
+    <p class="contact-intro">
+      Fill in every required field below. Choose an issue type from the dropdown so I know how to help.
+    </p>
+
+    <form action="https://formspree.io/f/xwpqnbre" method="POST" class="contact-form" target="formspree-target">
+      <input type="hidden" name="_subject" value="New contact form message from Dog Expert site" />
+      <input type="hidden" name="_format" value="plain" />
+
+      <div class="field">
+        <label for="name">Your Full Name *</label>
+        <input
+          type="text"
+          name="name"
+          id="name"
+          placeholder="Enter your full name"
+          autocomplete="name"
+          required
+        />
+      </div>
+
+      <div class="field">
+        <label for="email">Email address *</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="your@email.com"
+          autocomplete="email"
+          required
+        />
+        <input type="hidden" name="_replyto" id="replytoField" />
+      </div>
+
+      <div class="field">
+        <label for="problem">What is the issue? *</label>
+        <select name="problem" id="problem" required>
+          <option value="" disabled selected>Click to choose an issue…</option>
+          {issueOptions.map((option) => (
+            <option value={option}>{option}</option>
+          ))}
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="details">Additional details</label>
+        <textarea
+          name="message"
+          id="details"
+          rows="5"
+          placeholder="Describe your issue in detail…"
+        ></textarea>
+      </div>
+
+      <div class="field">
+        <label for="link">Related link (optional)</label>
+        <input type="url" name="link" id="link" placeholder="https://..." autocomplete="url" />
+      </div>
+
+      <button type="submit">Send Message</button>
+      <div class="contact-status" id="contactStatus" aria-live="polite"></div>
+
+      <div class="form-iframe-wrapper" id="formIframeWrapper" aria-hidden="true">
+        <div class="iframe-top-bar">
+          <p class="iframe-status">Preparing submission…</p>
+          <button type="button" class="close-iframe" id="closeIframeButton">Close</button>
+        </div>
+        <iframe
+          id="formResponseFrame"
+          name="formspree-target"
+          title="Formspree response frame"
+          hidden
+          srcdoc="<p style='font-family:sans-serif;padding:20px;'>Submitting your message…</p>"
+        ></iframe>
+      </div>
+
+      <div class="form-footer">
+        <p>Feel free to reach out if you have questions or need help. I will reply as soon as possible.</p>
+        <p>
+          Direct email:
+          <a href="mailto:dog.expert900@gmail.com">dog.expert900@gmail.com</a>
+        </p>
+      </div>
+    </form>
+
+    <section class="social-media">
+      <h2>Join my channels</h2>
+      <div class="social-links">
+        <a href="/go/youtube/" class="icon-link">
+          <img src="/assets/expertyoutube.jpg" alt="YouTube" width="80" height="80" loading="lazy" />
+          <span>Dog Expert</span>
+        </a>
+        <a href="/go/youtubeextra/" class="icon-link">
+          <img src="/assets/expertextrayoutube.jpg" alt="YouTube Extra" width="80" height="80" loading="lazy" />
+          <span>Expert Extra</span>
+        </a>
+        <a href="/go/discord/" class="icon-link">
+          <img src="/assets/discord.png" alt="Discord" width="80" height="80" loading="lazy" />
+          <span>Discord Server</span>
+        </a>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .contact-main {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 12px;
+    font-size: 2.5em;
+    color: var(--site-heading);
+  }
+
+  .contact-intro {
+    text-align: center;
+    color: var(--site-muted);
+    margin-bottom: 28px;
+    line-height: 1.6;
+  }
+
+  .contact-form {
+    background: var(--site-card);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--site-border);
+  }
+
+  html[data-theme='dark'] .contact-form {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  }
+
+  .field {
+    margin-bottom: 4px;
+  }
+
+  label {
+    display: block;
+    margin-top: 18px;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 1.05em;
+    color: var(--site-text);
+  }
+
+  input[type='email'],
+  input[type='url'],
+  input[type='text'],
+  select,
+  textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--site-border);
+    background: var(--site-bg);
+    color: var(--site-text);
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: border-color 0.3s, background 0.3s;
+    font-family: inherit;
+  }
+
+  select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23666' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 40px;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--site-muted);
+    opacity: 0.85;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline: none;
+    border-color: #ff0000;
+  }
+
+  button[type='submit'] {
+    width: 100%;
+    padding: 15px;
+    margin-top: 28px;
+    background: #ff0000;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+  }
+
+  button[type='submit']:hover {
+    background: #cc0000;
+    transform: translateY(-2px);
+  }
+
+  .form-footer {
+    margin-top: 20px;
+    text-align: center;
+    color: var(--site-muted);
+    font-size: 0.9em;
+  }
+
+  .form-footer a {
+    color: #ff0000;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .form-iframe-wrapper {
+    display: none;
+    margin-top: 20px;
+    border: 1px solid var(--site-border);
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--site-card);
+  }
+
+  .iframe-top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 16px;
+    background: rgba(255, 0, 0, 0.05);
+  }
+
+  .iframe-status {
+    margin: 0;
+    color: var(--site-text);
+    font-weight: 600;
+  }
+
+  .close-iframe {
+    background: transparent;
+    border: 1px solid var(--site-border);
+    color: var(--site-text);
+    padding: 10px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+
+  .close-iframe:hover {
+    background: rgba(255, 0, 0, 0.08);
+  }
+
+  .form-iframe-wrapper iframe {
+    width: 100%;
+    min-height: 280px;
+    border: 0;
+  }
+  .form-footer a:hover {
+    text-decoration: underline;
+  }
+
+  .social-media {
+    padding: 50px 20px;
+    background: var(--site-card);
+    border: 1px solid var(--site-border);
+    border-radius: 12px;
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  .social-media h2 {
+    font-size: 2em;
+    margin-bottom: 30px;
+    color: var(--site-heading);
+  }
+
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+
+  .icon-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    background: #222;
+    padding: 20px;
+    border-radius: 15px;
+    width: 160px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  html[data-theme='light'] .icon-link {
+    background: #2a2a2a;
+  }
+
+  .icon-link:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+  }
+
+  .icon-link img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    object-fit: cover;
+  }
+
+  .icon-link span {
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    .contact-main {
+      padding: 10px;
+    }
+
+    h1 {
+      font-size: 1.8em;
+    }
+
+    .contact-form {
+      padding: 20px;
+    }
+
+    .icon-link {
+      width: 140px;
+    }
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector('.contact-form');
+    const iframeWrapper = document.getElementById('formIframeWrapper');
+    const iframe = document.getElementById('formResponseFrame');
+    const status = iframeWrapper?.querySelector('.iframe-status');
+    const closeButton = document.getElementById('closeIframeButton');
+    const submitButton = form?.querySelector('button[type="submit"]');
+    const replyToField = document.getElementById('replytoField');
+    const emailInput = form?.querySelector('input[name="email"]');
+
+    if (!form || !iframeWrapper || !iframe || !status || !closeButton || !replyToField || !emailInput) return;
+
+    form.addEventListener('submit', function () {
+      replyToField.value = emailInput.value;
+      iframeWrapper.style.display = 'block';
+      iframe.hidden = false;
+      iframeWrapper.setAttribute('aria-hidden', 'false');
+      status.textContent = 'Submitting your message... If a captcha appears, complete it inside the box below.';
+      submitButton?.setAttribute('disabled', 'disabled');
+      iframe.srcdoc = '<!doctype html><html><body style="font-family:sans-serif;padding:20px;"><h2>Sending message…</h2><p>Please wait while the form is submitted.</p></body></html>';
+    });
+
+    iframe.addEventListener('load', function () {
+      status.textContent = 'Response loaded. Complete any captcha or message form shown in the iframe, then close this box when finished.';
+      submitButton?.removeAttribute('disabled');
+    });
+
+    closeButton.addEventListener('click', function () {
+      iframeWrapper.style.display = 'none';
+      iframe.hidden = true;
+      iframeWrapper.setAttribute('aria-hidden', 'true');
+    });
+  });
+</script>
