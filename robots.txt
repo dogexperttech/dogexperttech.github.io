@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /
+
+# Note: robots.txt blocks well-behaved crawlers like Google.
+# Malicious crawlers may ignore this file.

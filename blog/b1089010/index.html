@@ -1,164 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>What happens if you delete Windows System32? - Dog Expert Tech</title>
-  <link rel="icon" type="image/x-icon" href="/assets/favicon.jpg">
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      margin: 0;
-      padding: 40px 20px;
-      min-height: 100vh;
-      background-image: url('/blog/b1089010/assets/win10walp.jpg');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      color: #f0f0f0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    header {
-      background: rgba(10, 10, 10, 0.85);
-      padding: 30px;
-      text-align: center;
-      border-radius: 15px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      margin-bottom: 30px;
-      width: 100%;
-      max-width: 750px;
-      box-sizing: border-box;
-    }
-
-    h1 {
-      margin: 10px 0 0 0;
-      color: #fff;
-      font-size: 2.2rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .date-author {
-      color: #ff4444;
-      font-size: 0.9em;
-      font-weight: bold;
-      margin-top: 10px;
-      text-transform: uppercase;
-    }
-
-    main {
-      max-width: 750px;
-      width: 100%;
-      background: rgba(10, 10, 10, 0.85);
-      padding: 40px;
-      border-radius: 15px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-      box-sizing: border-box;
-    }
-
-    img.post-image {
-      width: 100%;
-      border-radius: 10px;
-      margin-bottom: 25px;
-      border-bottom: 4px solid #ff0000;
-    }
-
-    .warning {
-      background: rgba(255, 0, 0, 0.2);
-      border-left: 5px solid #ff0000;
-      padding: 15px;
-      margin: 20px 0;
-      font-weight: bold;
-      color: #fff;
-    }
-
-    .video-container {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
-      margin-top: 30px;
-      border-radius: 10px;
-      border: 1px solid #444;
-    }
-
-    .video-container iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-
-    a.back-link {
-      display: inline-block;
-      margin-bottom: 10px;
-      color: #ff4444;
-      text-decoration: none;
-      font-weight: bold;
-      text-transform: uppercase;
-      font-size: 0.85rem;
-      transition: 0.3s;
-    }
-
-    a.back-link:hover {
-      color: #fff;
-      transform: translateX(-5px);
-    }
-
-    footer {
-      text-align: center;
-      color: #999;
-      margin-top: 50px;
-      padding: 20px;
-      font-size: 0.9em;
-    }
-
-    #google_translate_element {
-      margin-bottom: 20px;
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    <a href="../index.html" class="back-link">&larr; Back to Blog</a>
-    <h1>What happens if you delete Windows System32?</h1>
-    <p class="date-author">August 20, 2025 | By Dog Expert Tech</p>
-  </header>
-
-  <main>
-    <img src="/gallery/assets/wallpapers/Nebula-2.png" alt="System32 Blog" class="post-image" />
-
-    <p class="warning">⚠️ WARNING: DO NOT DO THIS! Deleting the Windows System32 folder will render your system unusable and may cause permanent data loss.</p>
-
-    <p>System32 contains core Windows files, drivers, and services. If you remove this folder, your system will not boot or will crash immediately. Usually, the only way out is to perform a clean reinstall of Windows.</p>
-
-    <p>This post and the video below are for <strong>educational purposes only</strong>. Never try to delete System32 on a real computer.</p>
-
-    <p>If you want to test this, <strong>ONLY</strong> do it in a Virtual Machine (VM). Watch the video below to see what happens:</p>
-
-    <div class="video-container">
-      <iframe src="https://www.youtube-nocookie.com/embed/XYor-ML__iE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    </div>
-
-    <img src="/blog/b1089010/assets/rdcmd.png" style="width: 100%; margin-top: 20px; border-radius: 10px;" />
-  </main>
-
-  <footer>
-    <div id="google_translate_element"></div>
-    &copy; 2026 Dog Expert Tech
-  </footer>
-
-  <script type="text/javascript">
+<!DOCTYPE html><html lang="en"> <head><script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme');
+          var dark =
+            stored === 'dark' ||
+            (stored !== 'light' &&
+              window.matchMedia('(prefers-color-scheme: dark)').matches);
+          document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+          document.documentElement.style.colorScheme = dark ? 'dark' : 'light';
+          if (dark) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
+    </script><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Learn why deleting System32 breaks Windows and why it's not a safe experiment."><meta name="theme-color" content="#005f73"><link rel="icon" type="image/svg+xml" href="/assets/favicon.svg"><link rel="shortcut icon" href="/assets/favicon.ico"><link rel="icon" type="image/jpeg" sizes="32x32" href="/assets/favicon.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon.svg"><link rel="manifest" href="/site.webmanifest"><meta property="og:type" content="website"><meta property="og:url" content="https://dogexperttech.github.io//blog/b1089010/"><meta property="og:title" content="What happens if you delete Windows System32? - Dog Expert Tech"><meta property="og:description" content="Learn why deleting System32 breaks Windows and why it's not a safe experiment."><meta property="og:site_name" content="Dog Expert Tech"><meta property="og:image" content="/assets/favicon.jpg"><meta property="og:image:type" content="image/jpeg"><meta property="og:image:alt" content="Dog Expert Tech"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="What happens if you delete Windows System32? - Dog Expert Tech"><meta name="twitter:description" content="Learn why deleting System32 breaks Windows and why it's not a safe experiment."><meta name="twitter:image" content="/assets/favicon.jpg"><link rel="alternate" type="application/rss+xml" title="Dog Expert Tech RSS Feed" href="/rss.xml"><link rel="alternate" type="application/atom+xml" title="Dog Expert Tech Atom Feed" href="/rss.xml"><link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml"><meta name="generator" content="Astro v6.3.3"><title>What happens if you delete Windows System32? - Dog Expert Tech</title><style>.post-container[data-astro-cid-wq2h2bao]{max-width:900px;margin:2rem auto;padding:0 1rem}.post-header[data-astro-cid-wq2h2bao]{margin-bottom:1.5rem}.back-link[data-astro-cid-wq2h2bao]{display:inline-block;margin-bottom:.75rem;text-decoration:none;color:#005f73;font-weight:700}.post-header[data-astro-cid-wq2h2bao] h1[data-astro-cid-wq2h2bao]{font-size:2.5rem;margin:0}.post-meta[data-astro-cid-wq2h2bao]{color:#666;margin-top:.5rem}.post-image[data-astro-cid-wq2h2bao]{width:100%;border-radius:16px;margin:1.5rem 0;border:1px solid #ddd}.post-body[data-astro-cid-wq2h2bao]{background:#fff;padding:2rem;border-radius:18px;box-shadow:0 10px 30px #0000000d}body.dark .post-body[data-astro-cid-wq2h2bao]{background:#161616;color:#ddd;box-shadow:0 10px 30px #ffffff0d}.warning[data-astro-cid-wq2h2bao]{background:#fff4f4;border-left:4px solid #ff4444;padding:1rem 1.25rem;border-radius:12px;margin-bottom:1.5rem;font-weight:700}body.dark .warning[data-astro-cid-wq2h2bao]{background:#3b1d1d;color:#f3d3d3;border-left-color:#f77}.video-container[data-astro-cid-wq2h2bao]{margin:1.5rem 0}iframe[data-astro-cid-wq2h2bao]{width:100%;min-height:360px;border:none;border-radius:14px}h2[data-astro-cid-wq2h2bao]{color:#005f73;margin-top:2rem}.post-footer[data-astro-cid-wq2h2bao]{text-align:center;margin-top:2rem;color:#666}body.dark .post-footer[data-astro-cid-wq2h2bao]{color:#aaa}@media(max-width:768px){.post-header[data-astro-cid-wq2h2bao] h1[data-astro-cid-wq2h2bao]{font-size:2rem}}
+:root,html[data-theme=light]{--site-bg: #f9f9f9;--site-text: #222222;--site-muted: #555555;--site-card: #ffffff;--site-border: #dddddd;--site-nav-bg: #005f73;--site-footer-bg: #005f73;--site-heading: #005f73;--site-accent: #94d2bd}html[data-theme=dark],body.dark{--site-bg: #121212;--site-text: #dddddd;--site-muted: #aaaaaa;--site-card: #1e1e1e;--site-border: #333333;--site-nav-bg: #1e1e1e;--site-footer-bg: #1e1e1e;--site-heading: #94d2bd;--site-accent: #94d2bd}*{margin:0;padding:0;box-sizing:border-box}html,body{width:100%;height:auto}body{font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif;background:var(--site-bg);color:var(--site-text);transition:background .3s ease,color .3s ease;line-height:1.6}.navbar{display:flex;justify-content:space-between;align-items:center;background:var(--site-nav-bg);padding:1em 2em;box-shadow:0 2px 8px #0000001a;transition:background .3s ease}html[data-theme=dark] .navbar{box-shadow:0 2px 8px #ffffff14}.nav-left{color:#fff;font-weight:700;font-size:1.5em;text-decoration:none}.nav-links{list-style:none;display:flex;gap:1.5em;margin:0;padding:0;flex-wrap:wrap}.nav-links a{text-decoration:none;color:#e0e0e0;font-weight:600;transition:color .2s,border-bottom .2s;padding-bottom:5px}.site-notice{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin:0 auto;max-width:1200px;padding:1rem 1.5rem;border-radius:14px;border:1px solid transparent;background:#eaf8ff;color:#003a6d;box-shadow:0 8px 24px #00000014}.site-notice-warning{background:#fff4e5;color:#783f04;border-color:#f7c46f}.site-notice-error{background:#ffeeef;color:#7a1b1b;border-color:#f28b82}.site-notice-success{background:#e6ffed;color:#15491b;border-color:#95d5a9}.site-notice-content{display:flex;flex-direction:column;gap:.35rem;font-size:.96rem}.notice-close{border:none;background:transparent;color:inherit;font-size:1.25rem;cursor:pointer;padding:.2rem .5rem}@media(max-width:768px){.site-notice{flex-direction:column;align-items:flex-start}}.nav-links a:hover,.nav-links a[aria-current=page]{color:var(--site-accent);border-bottom:2px solid var(--site-accent)}#theme-toggle{font-size:1.5em;background:transparent;border:none;color:#e0e0e0;cursor:pointer;transition:transform .3s;padding:5px 10px}#theme-toggle:hover{transform:scale(1.2)}main{max-width:1200px;margin:0 auto;padding:2em}.hero{text-align:center;padding:3em 1em;margin:1em 0}.hero h1{font-size:2.5em;margin-bottom:.5em;color:var(--site-heading)}.card{background:var(--site-card);color:var(--site-text);padding:1.5em;border-radius:12px;box-shadow:0 4px 12px #0000001a;margin:1.5em 0;transition:transform .3s,box-shadow .3s,background .3s;border:1px solid var(--site-border)}html[data-theme=dark] .card{box-shadow:0 4px 12px #00000059}.card:hover{transform:translateY(-5px);box-shadow:0 8px 16px #00000026}footer{text-align:center;padding:2em;background:var(--site-footer-bg);color:#fff;margin-top:3em;transition:background .3s ease}footer a{color:var(--site-accent)}@media(max-width:768px){.navbar{flex-direction:column;gap:1em}.nav-links{gap:.8em;font-size:.9em}.hero h1{font-size:1.8em}main{padding:1em}}
+</style></head> <body> <header> <nav class="navbar"> <a href="/" class="nav-left">Dog Expert Tech</a> <ul class="nav-links"> <li> <a href="/"> Home </a> </li><li> <a href="/about/"> About </a> </li><li> <a href="/files/"> Files </a> </li><li> <a href="/isos/"> ISOs </a> </li><li> <a href="/gallery/"> Gallery </a> </li><li> <a href="/software/"> Software </a> </li><li> <a href="/contact/"> Contact </a> </li><li> <a href="/blog/" aria-current="page"> Blog </a> </li> </ul> <button id="theme-toggle" type="button" aria-label="Toggle theme">🌙</button> </nav> </header> <div id="siteNotice" class="site-notice site-notice-info" hidden> <div class="site-notice-content"> <strong>Notice:</strong> <span></span> </div> <button id="siteNoticeClose" class="notice-close" type="button" aria-label="Close notification">×</button> </div> <main>  <article class="post-container" data-astro-cid-wq2h2bao> <header class="post-header" data-astro-cid-wq2h2bao> <a class="back-link" href="/blog/" data-astro-cid-wq2h2bao>← Back to Blog</a> <h1 data-astro-cid-wq2h2bao>What Happens if You Delete Windows System32?</h1> <p class="post-meta" data-astro-cid-wq2h2bao>August 20, 2025 | By Dog Expert Tech</p> </header> <img src="/gallery/assets/wallpapers/Nebula-2.png" alt="System32 Blog" class="post-image" loading="lazy" data-astro-cid-wq2h2bao> <div class="post-body" data-astro-cid-wq2h2bao> <p class="warning" data-astro-cid-wq2h2bao>⚠️ WARNING: DO NOT DO THIS! Deleting the Windows System32 folder will render your system unusable and may cause permanent data loss.</p> <p data-astro-cid-wq2h2bao>System32 contains core Windows files, drivers, and services. If you remove this folder, your system will not boot and may crash immediately. Usually, the only recovery option is a clean reinstall of Windows.</p> <p data-astro-cid-wq2h2bao>This post and the video below are for <strong data-astro-cid-wq2h2bao>educational purposes only</strong>. Never try this on a real machine.</p> <p data-astro-cid-wq2h2bao>If you want to experiment safely, do it in a Virtual Machine.</p> <div class="video-container" data-astro-cid-wq2h2bao> <iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/XYor-ML__iE" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen data-astro-cid-wq2h2bao></iframe> </div> <img src="/blog/b1089010/assets/rdcmd.png" alt="Remote command screenshot" class="post-image" loading="lazy" data-astro-cid-wq2h2bao> <h2 data-astro-cid-wq2h2bao>Why This Breaks Windows</h2> <p data-astro-cid-wq2h2bao>The System32 folder includes drivers, core libraries, and utilities that Windows relies on every second. Removing it corrupts the operating system and interrupts startup.</p> </div> <footer class="post-footer" data-astro-cid-wq2h2bao> <div id="google_translate_element" data-astro-cid-wq2h2bao></div> <p data-astro-cid-wq2h2bao>&copy; 2026 Dog Expert Tech</p> </footer> </article> <script type="text/javascript">
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
         pageLanguage: 'en',
@@ -166,8 +25,77 @@
         layout: google.translate.TranslateElement.InlineLayout.SIMPLE
       }, 'google_translate_element');
     }
-  </script>
-  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  </script> <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async defer></script>  </main> <footer> <p>&copy; 2024-2026 Dog Expert Tech. All rights reserved.</p> <p>Built with <a href="https://astro.build" style="color: #94d2bd;">Astro</a></p> </footer> <script>
+      (function () {
+        function getStoredTheme() {
+          return localStorage.getItem('theme');
+        }
 
-</body>
-</html>
+        function setStoredTheme(value) {
+          localStorage.setItem('theme', value);
+        }
+
+        function applyTheme(theme) {
+          const isDark = theme === 'dark';
+          document.documentElement.dataset.theme = theme;
+          document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
+          document.documentElement.classList.toggle('dark', isDark);
+          document.body.classList.toggle('dark', isDark);
+          const themeToggleBtn = document.getElementById('theme-toggle');
+          if (themeToggleBtn) {
+            themeToggleBtn.textContent = isDark ? '☀️' : '🌙';
+            themeToggleBtn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+          }
+        }
+
+        function initTheme() {
+          const storedTheme = getStoredTheme();
+          const theme = storedTheme === 'dark' || storedTheme === 'light'
+            ? storedTheme
+            : window.matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light';
+          applyTheme(theme);
+        }
+
+        function initSiteNotice() {
+          const noticeEl = document.getElementById('siteNotice');
+          const closeBtn = document.getElementById('siteNoticeClose');
+          if (!noticeEl || !closeBtn) return;
+
+          if (localStorage.getItem('siteNoticeClosed') === 'true') {
+            noticeEl.hidden = true;
+            noticeEl.style.display = 'none';
+          }
+
+          closeBtn.addEventListener('click', function () {
+            localStorage.setItem('siteNoticeClosed', 'true');
+            noticeEl.hidden = true;
+            noticeEl.style.display = 'none';
+          });
+
+          window.showSiteNotice = function (message, type = 'info') {
+            noticeEl.className = 'site-notice site-notice-' + type;
+            noticeEl.querySelector('span').textContent = message;
+            noticeEl.hidden = false;
+            noticeEl.style.display = '';
+          };
+
+          window.hideSiteNotice = function () {
+            noticeEl.hidden = true;
+            noticeEl.style.display = 'none';
+          };
+        }
+
+        function initApp() {
+          initTheme();
+          initSiteNotice();
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initApp);
+        } else {
+          initApp();
+        }
+      })();
+    </script> <script src="/script.js" defer></script> </body> </html>

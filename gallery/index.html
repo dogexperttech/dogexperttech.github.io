@@ -1,40 +1,152 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gallery - Dog Expert Tech</title>
-  <link rel="icon" type="image/x-icon" href="/assets/favicon.jpg">
-  <link rel="stylesheet" href="style.css" />
-  <script src="/assets/sweetalert2.js"></script>
-</head>
-<body class="dark">
-  <header>
-    <nav class="navbar">
-      <div class="nav-left">Dog Expert Tech</div>
-      <ul class="nav-links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/files">Files</a></li>
-        <li><a href="/software">Software</a></li>
-        <li><a href="/gallery" aria-current="page">Gallery</a></li>
-        <li><a href="/contact">Contact</a></li>
-        <li><a href="/blog">Blog</a></li>
-      </ul>
-      <div style="width: 20px;"></div>
-    </nav>
-  </header>
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Gallery - Dog Expert Tech</title><link rel="icon" type="image/x-icon" href="/assets/favicon.jpg"><script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script><style>body{margin:0;font-family:Segoe UI,Tahoma,sans-serif;background:#121212;color:#ddd;overflow-x:hidden}.navbar{display:flex;justify-content:space-between;background:#1e1e1e;padding:1em 2em;align-items:center;border-bottom:2px solid #ff0000}.nav-left{color:#fff;font-weight:700;font-size:1.3em}.nav-links{list-style:none;display:flex;gap:1.3em;margin:0;padding:0}.nav-links a{text-decoration:none;color:#aaa;font-weight:600;transition:color .2s}.nav-links a:hover,.nav-links a[aria-current=page]{color:#79c2b0}.hero{max-width:900px;margin:3em auto 2em;text-align:center}.counter-section{margin-top:15px;display:flex;flex-direction:column;align-items:center;gap:10px}.total-count{color:#fff;font-weight:600;font-size:1.1em}.control-btn{background:#1a1a1a;color:#ccc;border:1px solid #333;padding:10px 20px;font-weight:600;border-radius:8px;cursor:pointer;transition:all .2s ease}.control-btn:hover{background:#252525;color:#fff;border-color:#444}.shadow-btn{box-shadow:0 4px 6px #0000004d}.gallery-card.loaded .gallery-img{opacity:1!important}.gallery-card:hover{transform:translateY(-5px)!important;box-shadow:0 10px 25px #ff00004d!important}.load-more-section{display:flex!important;flex-direction:column!important;align-items:center!important;gap:12px!important;margin:3em 0 5em!important}.progress-text{color:#888!important;font-size:.95em!important;font-weight:500}.swal-img-container{width:100%!important;display:flex!important;justify-content:center!important;align-items:center!important;margin:10px 0!important;background:#0a0a0a!important;border-radius:8px;padding:10px}.swal-compact-img{max-width:100%!important;max-height:70vh!important;border-radius:6px!important;object-fit:contain!important;display:block}.swal-actions-container{display:flex!important;flex-direction:column!important;align-items:center!important;gap:15px!important;width:100%!important;margin-top:15px}.swal2-close{color:#f44!important;font-size:32px!important}.download-btn{display:inline-block!important;padding:12px 28px!important;background:linear-gradient(135deg,#4f46e5,#6366f1)!important;color:#fff!important;font-weight:600!important;text-decoration:none!important;border-radius:8px!important;box-shadow:0 4px 12px #4f46e566!important}.nav-container{display:flex!important;gap:12px!important;justify-content:center!important}.nav-btn{background:#252525!important;color:#fff!important;border:1px solid #444!important;padding:10px 20px!important;border-radius:6px!important;cursor:pointer!important;font-weight:600}@media(max-width:768px){.navbar{flex-direction:column!important;gap:1em!important}.swal-compact-img{max-height:50vh!important}}
+</style></head> <body class="dark"> <header> <nav class="navbar"> <div class="nav-left">Dog Expert Tech</div> <ul class="nav-links"> <li><a href="/">Home</a></li> <li><a href="/about">About</a></li> <li><a href="/files">Files</a></li> <li><a href="/software">Software</a></li> <li><a href="/gallery" aria-current="page">Gallery</a></li> <li><a href="/contact">Contact</a></li> <li><a href="/blog">Blog</a></li> </ul> <div style="width: 20px;"></div> </nav> </header> <main> <div class="hero"> <h1>Wallpaper Gallery</h1> <p>Click any wallpaper to preview and download in full quality.</p> <div class="counter-section"> <div id="total-counter" class="total-count">Total images: 121</div> <button id="reset-filters-btn" class="control-btn shadow-btn">Reset filters</button> </div> </div> <div id="gallery-grid" class="gallery-grid" data-images="[&quot;/gallery/assets/wallpapers/Angry Sun.png&quot;,&quot;/gallery/assets/wallpapers/Antarctic.jpg&quot;,&quot;/gallery/assets/wallpapers/Aurora.jpg&quot;,&quot;/gallery/assets/wallpapers/Autumn.png&quot;,&quot;/gallery/assets/wallpapers/Black-Dog.jpg&quot;,&quot;/gallery/assets/wallpapers/Blacky.jpg&quot;,&quot;/gallery/assets/wallpapers/Bliss.png&quot;,&quot;/gallery/assets/wallpapers/Breeze.png&quot;,&quot;/gallery/assets/wallpapers/Bright Moon.jpg&quot;,&quot;/gallery/assets/wallpapers/Bright Sky.jpg&quot;,&quot;/gallery/assets/wallpapers/Brightest Hour.jpg&quot;,&quot;/gallery/assets/wallpapers/Canes.jpg&quot;,&quot;/gallery/assets/wallpapers/Chill Night.png&quot;,&quot;/gallery/assets/wallpapers/CityKity.jpg&quot;,&quot;/gallery/assets/wallpapers/CityLity.jpg&quot;,&quot;/gallery/assets/wallpapers/Clean.png&quot;,&quot;/gallery/assets/wallpapers/Clouds.png&quot;,&quot;/gallery/assets/wallpapers/Cloudy Mountain.jpg&quot;,&quot;/gallery/assets/wallpapers/Dandelion.jpg&quot;,&quot;/gallery/assets/wallpapers/Dark Clouds.png&quot;,&quot;/gallery/assets/wallpapers/Dark Flower.png&quot;,&quot;/gallery/assets/wallpapers/Darkest Hour.jpg&quot;,&quot;/gallery/assets/wallpapers/Deep Forest.jpg&quot;,&quot;/gallery/assets/wallpapers/Doremon.jpg&quot;,&quot;/gallery/assets/wallpapers/Enderman.png&quot;,&quot;/gallery/assets/wallpapers/Evening Clouds.jpg&quot;,&quot;/gallery/assets/wallpapers/Evening Mountain.jpg&quot;,&quot;/gallery/assets/wallpapers/Flower 1.jpg&quot;,&quot;/gallery/assets/wallpapers/Flower 2.jpg&quot;,&quot;/gallery/assets/wallpapers/Flower 3.jpg&quot;,&quot;/gallery/assets/wallpapers/Flower 4.jpg&quot;,&quot;/gallery/assets/wallpapers/Flower.jpg&quot;,&quot;/gallery/assets/wallpapers/Flower.png&quot;,&quot;/gallery/assets/wallpapers/Foggy Evening.jpg&quot;,&quot;/gallery/assets/wallpapers/Foggy Island.jpg&quot;,&quot;/gallery/assets/wallpapers/Foresty Mountain.jpg&quot;,&quot;/gallery/assets/wallpapers/Gradient.png&quot;,&quot;/gallery/assets/wallpapers/Ice.png&quot;,&quot;/gallery/assets/wallpapers/Into the Trees.jpg&quot;,&quot;/gallery/assets/wallpapers/Kitty.jpg&quot;,&quot;/gallery/assets/wallpapers/Milky Way 2.png&quot;,&quot;/gallery/assets/wallpapers/Milky Way 3.png&quot;,&quot;/gallery/assets/wallpapers/Milky Way 4.png&quot;,&quot;/gallery/assets/wallpapers/Milky Way 5.png&quot;,&quot;/gallery/assets/wallpapers/Milky Way.png&quot;,&quot;/gallery/assets/wallpapers/Moon.jpg&quot;,&quot;/gallery/assets/wallpapers/Moonlight.png&quot;,&quot;/gallery/assets/wallpapers/Mountain.png&quot;,&quot;/gallery/assets/wallpapers/Mountan.jpg&quot;,&quot;/gallery/assets/wallpapers/MyImage.jpg&quot;,&quot;/gallery/assets/wallpapers/Nebula-2.png&quot;,&quot;/gallery/assets/wallpapers/Nebula-3.jpg&quot;,&quot;/gallery/assets/wallpapers/Nebula.jpg&quot;,&quot;/gallery/assets/wallpapers/Night Mountains.png&quot;,&quot;/gallery/assets/wallpapers/Northern Forest.png&quot;,&quot;/gallery/assets/wallpapers/Ocean Rocks.jpg&quot;,&quot;/gallery/assets/wallpapers/Peaceful River.png&quot;,&quot;/gallery/assets/wallpapers/Peak.jpg&quot;,&quot;/gallery/assets/wallpapers/Plants.jpg&quot;,&quot;/gallery/assets/wallpapers/Polar Night.jpg&quot;,&quot;/gallery/assets/wallpapers/Port City.jpg&quot;,&quot;/gallery/assets/wallpapers/Purple Sky.png&quot;,&quot;/gallery/assets/wallpapers/Reflection 2.jpg&quot;,&quot;/gallery/assets/wallpapers/Reflection.jpg&quot;,&quot;/gallery/assets/wallpapers/Rementerendermanch.png&quot;,&quot;/gallery/assets/wallpapers/Rin.png&quot;,&quot;/gallery/assets/wallpapers/Rocks.jpg&quot;,&quot;/gallery/assets/wallpapers/Sad Tree.jpg&quot;,&quot;/gallery/assets/wallpapers/Sky High.png&quot;,&quot;/gallery/assets/wallpapers/Sky.jpg&quot;,&quot;/gallery/assets/wallpapers/Sky.png&quot;,&quot;/gallery/assets/wallpapers/Snowy Forest.jpg&quot;,&quot;/gallery/assets/wallpapers/Snowy Spruce.jpg&quot;,&quot;/gallery/assets/wallpapers/Starry Horizon.jpg&quot;,&quot;/gallery/assets/wallpapers/Sunlight.jpg&quot;,&quot;/gallery/assets/wallpapers/Sunrise.png&quot;,&quot;/gallery/assets/wallpapers/Sunset.png&quot;,&quot;/gallery/assets/wallpapers/Surface Family_1.jpg&quot;,&quot;/gallery/assets/wallpapers/Surface Family_2.jpg&quot;,&quot;/gallery/assets/wallpapers/Surface Laptop 3_1.jpg&quot;,&quot;/gallery/assets/wallpapers/Surface Laptop 3_2.jpg&quot;,&quot;/gallery/assets/wallpapers/Surface Laptop Blue_1.jpg&quot;,&quot;/gallery/assets/wallpapers/Surface Laptop Blue_2.jpg&quot;,&quot;/gallery/assets/wallpapers/Surface Laptop Platinum_1.jpg&quot;,&quot;/gallery/assets/wallpapers/Surface Laptop Platinum_2.jpg&quot;,&quot;/gallery/assets/wallpapers/Surface Laptop Sandstone_1.jpg&quot;,&quot;/gallery/assets/wallpapers/Surface Laptop Sandstone_2.jpg&quot;,&quot;/gallery/assets/wallpapers/Surface Neo_1.jpg&quot;,&quot;/gallery/assets/wallpapers/Surface Neo_2.jpg&quot;,&quot;/gallery/assets/wallpapers/Surface Pro 7_1.jpg&quot;,&quot;/gallery/assets/wallpapers/Surface Pro 7_2.jpg&quot;,&quot;/gallery/assets/wallpapers/Surface Pro X_1.jpg&quot;,&quot;/gallery/assets/wallpapers/Surface Pro X_2.jpg&quot;,&quot;/gallery/assets/wallpapers/Surface_1.jpg&quot;,&quot;/gallery/assets/wallpapers/Surface_2.jpg&quot;,&quot;/gallery/assets/wallpapers/Tent.png&quot;,&quot;/gallery/assets/wallpapers/The Ninth Wave.png&quot;,&quot;/gallery/assets/wallpapers/Torn.jpg&quot;,&quot;/gallery/assets/wallpapers/Tulip.png&quot;,&quot;/gallery/assets/wallpapers/Watch.jpeg&quot;,&quot;/gallery/assets/wallpapers/Waves.jpg&quot;,&quot;/gallery/assets/wallpapers/Wheat.jpg&quot;,&quot;/gallery/assets/wallpapers/White Nebula.jpg&quot;,&quot;/gallery/assets/wallpapers/Windows 10 cloud pc.jpg&quot;,&quot;/gallery/assets/wallpapers/Windows 7.png&quot;,&quot;/gallery/assets/wallpapers/Windows-Bombob-theme.jpg&quot;,&quot;/gallery/assets/wallpapers/Windows9-wm0.jpg&quot;,&quot;/gallery/assets/wallpapers/Winter.jpg&quot;,&quot;/gallery/assets/wallpapers/Yellow Moon.png&quot;,&quot;/gallery/assets/wallpapers/expert.png&quot;,&quot;/gallery/assets/wallpapers/flower (dark).jpg&quot;,&quot;/gallery/assets/wallpapers/img41.jpg&quot;,&quot;/gallery/assets/wallpapers/peakpx (4).jpg&quot;,&quot;/gallery/assets/wallpapers/planets (dark).jpg&quot;,&quot;/gallery/assets/wallpapers/planets (light).jpg&quot;,&quot;/gallery/assets/wallpapers/wallpaperbetter.jpg&quot;,&quot;/gallery/assets/wallpapers/windows-10-green-wallpaper.jpg&quot;,&quot;/gallery/assets/wallpapers/windows-7-red-wallpapers-lerteer.jpg&quot;,&quot;/gallery/assets/wallpapers/windows-7-red-wallpapers.jpg&quot;,&quot;/gallery/assets/wallpapers/windows11-light-red.jpg&quot;,&quot;/gallery/assets/wallpapers/windows11-red-dark.jpg&quot;]"></div> <div class="load-more-section"> <button id="load-more-btn" class="control-btn shadow-btn">Load more</button> <div id="progress-counter" class="progress-text">0 of 121 images</div> </div> </main> <script type="module">
+    const grid = document.getElementById('gallery-grid');
+    const images = JSON.parse(grid?.getAttribute('data-images') || '[]');
+    
+    let currentIndex = 0;
+    const itemsPerLoad = 12; 
+    
+    const totalCounter = document.getElementById('total-counter');
+    const progressCounter = document.getElementById('progress-counter');
+    const loadMoreBtn = document.getElementById('load-more-btn');
+    const resetBtn = document.getElementById('reset-filters-btn');
 
-  <main>
-    <div class="hero">
-      <h1>Wallpaper Gallery</h1>
-      <p>Click any wallpaper to preview and download in full quality.</p>
-    </div>
-    <div id="gallery-grid" class="gallery-grid"></div>
-  </main>
+    function cleanTitle(src) {
+      if (!src) return "Wallpaper";
+      const fileName = src.split('/').pop().split('.')[0];
+      return decodeURIComponent(fileName).replace(/[_-]/g, ' ');
+    }
 
+    // Sujuva laadimise IntersectionObserver
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const card = entry.target;
+          const img = card.querySelector('.gallery-img');
+          if (img && img.dataset.src) {
+            img.src = img.dataset.src;
+            img.onload = () => {
+              card.classList.add('loaded');
+            };
+          }
+          obs.unobserve(card);
+        }
+      });
+    }, { rootMargin: '400px' });
 
-  <script src="files.js"></script>
-  <script src="script.js"></script>
-</body>
-</html>
+    function loadMoreImages() {
+      if (!images || images.length === 0) return;
+
+      const nextBatch = images.slice(currentIndex, currentIndex + itemsPerLoad);
+      
+      nextBatch.forEach((src, i) => {
+        const absoluteIndex = currentIndex + i;
+        const displayTitle = cleanTitle(src);
+
+        const card = document.createElement('div');
+        card.className = 'gallery-card';
+        card.setAttribute('data-index', absoluteIndex);
+        
+        card.style.cssText = "position: relative !important; width: 100% !important; aspect-ratio: 16 / 9 !important; border-radius: 12px !important; overflow: hidden !important; background: #1a1a1a !important; cursor: pointer !important; box-shadow: 0 4px 12px rgba(0,0,0,0.5) !important; transition: transform 0.3s ease, box-shadow 0.3s ease !important;";
+        
+        card.innerHTML = `
+          <img 
+            data-src="${src}" 
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" 
+            alt="${displayTitle}" 
+            class="gallery-img"
+            loading="lazy"
+            decoding="async"
+            style="width: 100% !important; height: 100% !important; object-fit: cover !important; display: block !important; opacity: 0; transition: opacity 0.4s ease-in-out !important;"
+          />
+          <div class="image-overlay-info" style="position: absolute !important; bottom: 0 !important; left: 0 !important; right: 0 !important; background: linear-gradient(transparent, rgba(0,0,0,0.85)) !important; padding: 25px 15px 12px 15px !important; pointer-events: none !important; z-index: 2 !important;">
+            <div class="img-title" style="color: #fff !important; font-weight: 700 !important; font-size: 0.9em !important; white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;">${displayTitle}</div>
+          </div>
+        `;
+
+        grid.appendChild(card);
+        observer.observe(card);
+      });
+
+      currentIndex += nextBatch.length;
+      updateCounters();
+    }
+
+    function updateCounters() {
+      if (progressCounter) progressCounter.textContent = `${currentIndex} of ${images.length} images`;
+      
+      if (loadMoreBtn) {
+        // FIX: style.style asendati korrekselt style.display-ga
+        if (currentIndex >= images.length) {
+          loadMoreBtn.style.display = 'none';
+        } else {
+          loadMoreBtn.style.display = 'inline-block';
+        }
+      }
+    }
+
+    window.openGallery = function(index) {
+      if (index < 0) index = images.length - 1;
+      if (index >= images.length) index = 0;
+
+      const src = images[index];
+      const displayTitle = cleanTitle(src);
+      
+      Swal.fire({
+        title: 'Loading...',
+        background: '#121212',
+        color: '#fff',
+        didOpen: () => { Swal.showLoading(); }
+      });
+
+      const preload = new Image();
+      preload.src = src;
+      preload.onload = () => {
+        Swal.fire({
+          title: displayTitle,
+          background: '#121212',
+          color: '#fff',
+          showCloseButton: true,
+          showConfirmButton: false,
+          width: '85%',
+          html: `
+            <div class="swal-img-container">
+              <img src="${src}" alt="${displayTitle}" class="swal-compact-img" />
+            </div>
+            <div class="swal-actions-container">
+              <a href="${src}" download class="download-btn">⬇️ Download Wallpaper</a>
+              <div class="nav-container">
+                <button id="prev-btn" class="nav-btn">⬅️ Prev</button>
+                <button id="next-btn" class="nav-btn">Next ➡️</button>
+              </div>
+            </div>
+          `,
+          didOpen: () => {
+            document.getElementById('prev-btn')?.addEventListener('click', () => window.openGallery(index - 1));
+            document.getElementById('next-btn')?.addEventListener('click', () => window.openGallery(index + 1));
+          }
+        });
+      };
+    }
+
+    if (grid && images.length > 0) {
+      grid.style.cssText = "display: grid !important; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important; gap: 20px !important; max-width: 1200px !important; margin: 2em auto !important; padding: 0 20px !important; box-sizing: border-box !important;";
+
+      loadMoreImages();
+      loadMoreBtn?.addEventListener('click', loadMoreImages);
+
+      resetBtn?.addEventListener('click', () => {
+        grid.innerHTML = '';
+        currentIndex = 0;
+        loadMoreImages();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      grid.addEventListener('click', (e) => {
+        const card = e.target.closest('.gallery-card');
+        if (!card) return;
+        const idx = parseInt(card.getAttribute('data-index'), 10);
+        if (!isNaN(idx)) window.openGallery(idx);
+      });
+    }
+  </script> </body> </html>
