@@ -8,9 +8,9 @@ on:
       channel_id:
         description: 'YouTube Channel ID (optional). If omitted, set repository variable or run manually with input.'
         required: false
-        publish_target:
-          description: 'Optional: set to "docs" or "gh-pages" to copy ./dist into the repo (commits to main/docs or force-pushes gh-pages).'
-          required: false
+      publish_target:
+        description: 'Optional: set to "docs" or "gh-pages" to copy ./dist into the repo (commits to main/docs or force-pushes gh-pages).'
+        required: false
 
 jobs:
   update-content:
@@ -30,15 +30,24 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
+          cache: 'npm' # 💡 Lisatud puhverdamine, et kiirem oleks
+
+      - name: Install dependencies
+        run: npm ci # 💡 Tõstetud ettepoole, et skriptidel oleks ligipääs vajalikele pakettidele
 
       - name: Fetch YouTube videos
         env:
           YT_CHANNEL_ID: ${{ github.event.inputs.channel_id }}
         run: |
-          if [ -z "$YT_CHANNEL_ID" ]; then
-            echo "No channel id provided via workflow_dispatch input. Please set repository variable 'YT_CHANNEL_ID' or provide 'channel_id' when running manually.";
-            exit 0;
+          # Kui manuaalselt ei sisestatud, vaadatakse, kas on olemas salvestatud var (vars.YT_CHANNEL_ID)
+          CHANNEL="${YT_CHANNEL_ID:-${{ vars.YT_CHANNEL_ID }}}"
+          
+          if [ -z "$CHANNEL" ]; then
+            echo "Error: No channel id provided via workflow_dispatch input or repository variable 'YT_CHANNEL_ID'."
+            exit 1 # Muudetud exit 1-ks, et tühja jooksuga mitte aega raisata
           fi
+          
+          export YT_CHANNEL_ID="$CHANNEL"
           node scripts/fetch-youtube-videos.js
 
       - name: Commit updated videos.json
@@ -59,31 +68,24 @@ jobs:
           git commit -m "chore: generate video pages (auto)" || echo "no new video pages"
           git push || echo "push failed"
 
-      - name: Install dependencies
-        run: |
-          npm ci
-
       - name: Build site
         run: |
           npm run build
 
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3 # 👈 PARANDATUD: v1 -> v3
         with:
           path: ./dist
 
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v1
-        with:
-          artifact_name: pages
+        uses: actions/deploy-pages@v4 # 👈 PARANDATUD: v1 -> v4
 
       - name: Optionally publish dist to repo
-        if: ${{ github.event.inputs.publish_target != '' || env.PUBLISH_TARGET != '' }}
+        if: ${{ github.event.inputs.publish_target != '' }}
         env:
           PUBLISH_TARGET: ${{ github.event.inputs.publish_target }}
         run: |
           TARGET=${PUBLISH_TARGET}
-          if [ -z "$TARGET" ]; then TARGET=${{ env.PUBLISH_TARGET }}; fi
           echo "Publish target: $TARGET"
           if [ "$TARGET" = "docs" ]; then
             rm -rf docs || true
