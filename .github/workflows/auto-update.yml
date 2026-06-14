@@ -11,6 +11,12 @@ on:
       publish_target:
         description: 'Optional: set to "docs" or "gh-pages" to copy ./dist into the repo (commits to main/docs or force-pushes gh-pages).'
         required: false
+  push:
+    branches:
+      - main # 💡 Triggers on pushing to the main branch ONLY. This prevents broken runs on the gh-pages branch!
+    paths-ignore:
+      - 'src/data/videos.json'
+      - 'src/pages/blog/video/**' # 💡 Prevents the bot's own commits from triggering an infinite workflow loop
 
 jobs:
   update-content:
@@ -31,24 +37,21 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-          cache: 'npm' # 💡 Lisatud puhverdamine, et kiirem oleks
+          cache: 'npm' # 💡 Added caching for faster build execution
 
       - name: Install dependencies
-        run: npm ci # 💡 Tõstetud ettepoole, et skriptidel oleks ligipääs vajalikele pakettidele
+        run: npm ci # 💡 Moved up so scripts have full access to node_modules immediately
 
       - name: Fetch YouTube videos
         env:
-          YT_CHANNEL_ID: ${{ github.event.inputs.channel_id }}
+          # 💡 Clean fallback: uses manual input if provided, otherwise defaults to the repository variable
+          YT_CHANNEL_ID: ${{ github.event.inputs.channel_id || vars.YT_CHANNEL_ID }}
         run: |
-          # Kui manuaalselt ei sisestatud, vaadatakse, kas on olemas salvestatud var (vars.YT_CHANNEL_ID)
-          CHANNEL="${YT_CHANNEL_ID:-${{ vars.YT_CHANNEL_ID }}}"
-          
-          if [ -z "$CHANNEL" ]; then
+          if [ -z "$YT_CHANNEL_ID" ]; then
             echo "Error: No channel id provided via workflow_dispatch input or repository variable 'YT_CHANNEL_ID'."
-            exit 1 # Muudetud exit 1-ks, et tühja jooksuga mitte aega raisata
+            exit 1
           fi
           
-          export YT_CHANNEL_ID="$CHANNEL"
           node scripts/fetch-youtube-videos.js
 
       - name: Commit updated videos.json
@@ -74,12 +77,12 @@ jobs:
           npm run build
 
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3 # 👈 PARANDATUD: v1 -> v3
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
 
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4 # 👈 PARANDATUD: v1 -> v4
+        uses: actions/deploy-pages@v4
 
       - name: Optionally publish dist to repo
         if: ${{ github.event.inputs.publish_target != '' }}
@@ -104,4 +107,3 @@ jobs:
           else
             echo "Unknown publish target: $TARGET"
           fi
-
