@@ -6,7 +6,6 @@
 *.aac filter=lfs diff=lfs merge=lfs -text
 *.m4a filter=lfs diff=lfs merge=lfs -text
 *.ogg filter=lfs diff=lfs merge=lfs -text
-
 # Video Files
 *.mp4 filter=lfs diff=lfs merge=lfs -text
 *.mkv filter=lfs diff=lfs merge=lfs -text
@@ -27,3 +26,12 @@
 *.exe filter=lfs diff=lfs merge=lfs -text
 *.dll filter=lfs diff=lfs merge=lfs -text
 *.so filter=lfs diff=lfs merge=lfs -text
+src/data/videos.json filter=lfs diff=lfs merge=lfs -text
+src/**/*.png filter=lfs diff=lfs merge=lfs -text
+src/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+src/**/*.jpeg filter=lfs diff=lfs merge=lfs -text
+src/**/*.webp filter=lfs diff=lfs merge=lfs -text
+src/pages/gallery/assets/wallpapers/*.png filter=lfs diff=lfs merge=lfs -text
+src/pages/gallery/assets/wallpapers/*.jpg filter=lfs diff=lfs merge=lfs -text
+src/pages/gallery/assets/wallpapers/*.jpeg filter=lfs diff=lfs merge=lfs -text
+src/pages/gallery/assets/wallpapers/*.webp filter=lfs diff=lfs merge=lfs -text
