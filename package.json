@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && node -e \"require('fs').copyFileSync('dist/sitemap-index.xml','dist/sitemap.xml')\"",
+    "build": "astro build",
     "preview": "astro preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
