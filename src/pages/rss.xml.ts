@@ -1,5 +1,7 @@
----
-const site = Astro.site || 'http://localhost';
+import type { APIRoute } from 'astro';
+
+const site = 'https://dogexperttech.github.io';
+
 const posts = [
   {
     title: 'Fixing AMD Driver Crashes',
@@ -20,30 +22,38 @@ const posts = [
     description: 'Introducing Dog Expert Tech and the blog journey ahead.'
   }
 ];
-const updated = new Date().toUTCString();
----
-<?xml version="1.0" encoding="UTF-8"?>
+
+export const GET: APIRoute = async () => {
+  const updated = new Date().toUTCString();
+  const items = posts.map(post => `
+    <item>
+      <title><![CDATA[${post.title}]]></title>
+      <link>${site}${post.slug}</link>
+      <guid isPermaLink="true">${site}${post.slug}</guid>
+      <pubDate>${new Date(post.date).toUTCString()}</pubDate>
+      <description><![CDATA[${post.description}]]></description>
+      <author>dog.expert900@gmail.com (Dog Expert Tech)</author>
+    </item>
+  `).join('');
+
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Dog Expert Tech</title>
-    <link>{site}</link>
+    <link>${site}</link>
     <description>Technology tutorials, downloads, and guides from Dog Expert Tech.</description>
     <language>en-us</language>
-    <lastBuildDate>{updated}</lastBuildDate>
-    <atom:link href="{site}/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>${updated}</lastBuildDate>
+    <atom:link href="${site}/rss.xml" rel="self" type="application/rss+xml" />
     <managingEditor>dog.expert900@gmail.com (Dog Expert Tech)</managingEditor>
     <webMaster>dog.expert900@gmail.com (Dog Expert Tech)</webMaster>
     <generator>Astro RSS Generator</generator>
     <ttl>1440</ttl>
-    {posts.map(post => (
-      <item>
-        <title><![CDATA[{post.title}]]></title>
-        <link>{site}{post.slug}</link>
-        <guid isPermaLink="true">{site}{post.slug}</guid>
-        <pubDate>{new Date(post.date).toUTCString()}</pubDate>
-        <description><![CDATA[{post.description}]]></description>
-        <author>dog.expert900@gmail.com (Dog Expert Tech)</author>
-      </item>
-    ))}
+    ${items}
   </channel>
-</rss>
+</rss>`;
+
+  return new Response(xml, {
+    headers: { 'Content-Type': 'application/rss+xml; charset=utf-8' }
+  });
+};

@@ -5,13 +5,13 @@
     <link>https://dogexperttech.github.io</link>
     <description>Technology tutorials, downloads, and guides from Dog Expert Tech.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 15 Jun 2026 07:53:51 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 24 Jun 2026 14:41:37 GMT</lastBuildDate>
     <atom:link href="https://dogexperttech.github.io/rss.xml" rel="self" type="application/rss+xml" />
     <managingEditor>dog.expert900@gmail.com (Dog Expert Tech)</managingEditor>
     <webMaster>dog.expert900@gmail.com (Dog Expert Tech)</webMaster>
-    <generator>Auto RSS Generator</generator>
+    <generator>Astro RSS Generator</generator>
     <ttl>1440</ttl>
-
+    
     <item>
       <title><![CDATA[Fixing AMD Driver Crashes]]></title>
       <link>https://dogexperttech.github.io/blog/b1002787/</link>
@@ -20,7 +20,7 @@
       <description><![CDATA[Fix AMD driver crashes with driver cleanup, VBS/Hyper-V fixes, and an automated batch script.]]></description>
       <author>dog.expert900@gmail.com (Dog Expert Tech)</author>
     </item>
-
+  
     <item>
       <title><![CDATA[What Happens if You Delete Windows System32?]]></title>
       <link>https://dogexperttech.github.io/blog/b1089010/</link>
@@ -29,7 +29,7 @@
       <description><![CDATA[Learn why deleting System32 breaks Windows and why this experiment is dangerous.]]></description>
       <author>dog.expert900@gmail.com (Dog Expert Tech)</author>
     </item>
-
+  
     <item>
       <title><![CDATA[Hello World!]]></title>
       <link>https://dogexperttech.github.io/blog/b7891085/</link>
@@ -38,86 +38,6 @@
       <description><![CDATA[Introducing Dog Expert Tech and the blog journey ahead.]]></description>
       <author>dog.expert900@gmail.com (Dog Expert Tech)</author>
     </item>
-
-    <item>
-      <title><![CDATA[Windows 7 Upgrading to Windows 11 2025]]></title>
-      <link>https://dogexperttech.github.io/blog/video/ux272IvbQtw/</link>
-      <guid isPermaLink="true">https://dogexperttech.github.io/blog/video/ux272IvbQtw/</guid>
-      <pubDate>Mon, 01 Sep 2025 00:00:00 GMT</pubDate>
-      <description><![CDATA[Video: Windows 7 Upgrading to Windows 11 2025]]></description>
-      <author>dog.expert900@gmail.com (Dog Expert Tech)</author>
-    </item>
-
-    <item>
-      <title><![CDATA[How to remove Green Petya Ransomware]]></title>
-      <link>https://dogexperttech.github.io/blog/video/f7qaCa6JG-s/</link>
-      <guid isPermaLink="true">https://dogexperttech.github.io/blog/video/f7qaCa6JG-s/</guid>
-      <pubDate>Thu, 28 Aug 2025 00:00:00 GMT</pubDate>
-      <description><![CDATA[Video: How to remove Green Petya Ransomware]]></description>
-      <author>dog.expert900@gmail.com (Dog Expert Tech)</author>
-    </item>
-
-    <item>
-      <title><![CDATA[Windows 11 Installing on VMWare]]></title>
-      <link>https://dogexperttech.github.io/blog/video/Lcrd4yJMMPk/</link>
-      <guid isPermaLink="true">https://dogexperttech.github.io/blog/video/Lcrd4yJMMPk/</guid>
-      <pubDate>Mon, 25 Aug 2025 00:00:00 GMT</pubDate>
-      <description><![CDATA[Video: Windows 11 Installing on VMWare]]></description>
-      <author>dog.expert900@gmail.com (Dog Expert Tech)</author>
-    </item>
-
-    <item>
-      <title><![CDATA[What happens if you delete Windows System32?]]></title>
-      <link>https://dogexperttech.github.io/blog/video/XYor-ML__iE/</link>
-      <guid isPermaLink="true">https://dogexperttech.github.io/blog/video/XYor-ML__iE/</guid>
-      <pubDate>Thu, 21 Aug 2025 00:00:00 GMT</pubDate>
-      <description><![CDATA[Video: What happens if you delete Windows System32?]]></description>
-      <author>dog.expert900@gmail.com (Dog Expert Tech)</author>
-    </item>
-
-    <item>
-      <title><![CDATA[How to remove MEMZ Trojan?]]></title>
-      <link>https://dogexperttech.github.io/blog/video/zMhClDw1rus/</link>
-      <guid isPermaLink="true">https://dogexperttech.github.io/blog/video/zMhClDw1rus/</guid>
-      <pubDate>Sun, 10 Aug 2025 00:00:00 GMT</pubDate>
-      <description><![CDATA[Video: How to remove MEMZ Trojan?]]></description>
-      <author>dog.expert900@gmail.com (Dog Expert Tech)</author>
-    </item>
-
-    <item>
-      <title><![CDATA[Checking my Windows 10 PE. Dog10PE]]></title>
-      <link>https://dogexperttech.github.io/blog/video/_JmN_8R7TUs/</link>
-      <guid isPermaLink="true">https://dogexperttech.github.io/blog/video/_JmN_8R7TUs/</guid>
-      <pubDate>Wed, 30 Jul 2025 00:00:00 GMT</pubDate>
-      <description><![CDATA[Video: Checking my Windows 10 PE. Dog10PE]]></description>
-      <author>dog.expert900@gmail.com (Dog Expert Tech)</author>
-    </item>
-
-    <item>
-      <title><![CDATA[How to Dualboot Windows 8.1 and Windows 7]]></title>
-      <link>https://dogexperttech.github.io/blog/video/nERXMlLxlak/</link>
-      <guid isPermaLink="true">https://dogexperttech.github.io/blog/video/nERXMlLxlak/</guid>
-      <pubDate>Sat, 12 Jul 2025 00:00:00 GMT</pubDate>
-      <description><![CDATA[Video: How to Dualboot Windows 8.1 and Windows 7]]></description>
-      <author>dog.expert900@gmail.com (Dog Expert Tech)</author>
-    </item>
-
-    <item>
-      <title><![CDATA[Destroying Windows 7 Installer and fixing it]]></title>
-      <link>https://dogexperttech.github.io/blog/video/h10CaAq7fTU/</link>
-      <guid isPermaLink="true">https://dogexperttech.github.io/blog/video/h10CaAq7fTU/</guid>
-      <pubDate>Mon, 30 Jun 2025 00:00:00 GMT</pubDate>
-      <description><![CDATA[Video: Destroying Windows 7 Installer and fixing it]]></description>
-      <author>dog.expert900@gmail.com (Dog Expert Tech)</author>
-    </item>
-
-    <item>
-      <title><![CDATA[Windows 11 and 7 destroying with Malware]]></title>
-      <link>https://dogexperttech.github.io/blog/video/B9njvp7YMG0/</link>
-      <guid isPermaLink="true">https://dogexperttech.github.io/blog/video/B9njvp7YMG0/</guid>
-      <pubDate>Wed, 01 Oct 2025 00:00:00 GMT</pubDate>
-      <description><![CDATA[Video: Windows 11 and 7 destroying with Malware]]></description>
-      <author>dog.expert900@gmail.com (Dog Expert Tech)</author>
-    </item>
+  
   </channel>
 </rss>
