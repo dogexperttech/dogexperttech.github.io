@@ -11,12 +11,7 @@ on:
       publish_target:
         description: 'Optional: set to "docs" or "gh-pages" to copy ./dist into the repo (commits to main/docs or force-pushes gh-pages).'
         required: false
-  push:
-    branches:
-      - main # 💡 Triggers on pushing to the main branch ONLY. This prevents broken runs on the gh-pages branch!
-    paths-ignore:
-      - 'src/data/videos.json'
-      - 'src/pages/blog/video/**' # 💡 Prevents the bot's own commits from triggering an infinite workflow loop
+  # Removed push trigger - astro.yml handles deployment on push to main
 
 jobs:
   update-content:
