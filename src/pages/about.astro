@@ -83,16 +83,15 @@ const devices = [
 ];
 
 const software = [
-  'Windows 11 Pro',
-  'Visual Studio Code',
-  'Adobe Photoshop',
-  'OBS Studio',
-  'Blender',
-  'Discord',
-  'Google Chrome',
-  'Git & GitHub',
-  'PowerShell',
-  'Node.js',
+  { name: 'Windows 11 Pro', link: 'https://www.microsoft.com/en-us/software-download/windows11' },
+  { name: 'Visual Studio Code', link: 'https://code.visualstudio.com/' },
+  { name: 'Paint.NET', link: 'https://www.getpaint.net/' },
+  { name: 'OBS Studio', link: 'https://obsproject.com/' },
+  { name: 'Discord', link: 'https://discord.com/' },
+  { name: 'Google Chrome', link: 'https://www.google.com/chrome/' },
+  { name: 'Git & GitHub', link: 'https://github.com/' },
+  { name: 'PowerShell', link: 'https://github.com/PowerShell/PowerShell' },
+  { name: 'Node.js', link: 'https://nodejs.org/' },
 ];
 ---
 
@@ -149,11 +148,13 @@ const software = [
     <section class="software-section">
       <h2>Software I Use</h2>
       <p class="section-note">Core apps and tools used across my devices.</p>
-      <ul class="software-list">
+      <div class="software-list">
         {software.map((app) => (
-          <li>{app}</li>
+          <a href={app.link} target="_blank" rel="noopener noreferrer" class="software-item">
+            {app.name} <span class="software-arrow">↗</span>
+          </a>
         ))}
-      </ul>
+      </div>
     </section>
 
     <section class="screenshot-section">
@@ -422,12 +423,13 @@ const software = [
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 12px;
-    list-style: none;
-    padding: 0;
     margin: 1rem 0 2rem;
   }
 
-  .software-list li {
+  .software-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background: var(--site-card);
     border: 1px solid var(--site-border);
     border-radius: 14px;
@@ -435,6 +437,24 @@ const software = [
     font-weight: 600;
     color: var(--site-text);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    text-decoration: none;
+    transition: all 0.25s ease;
+  }
+
+  .software-item:hover {
+    transform: translateY(-3px);
+    border-color: #ff0000;
+    box-shadow: 0 8px 24px rgba(255, 0, 0, 0.15);
+  }
+
+  .software-arrow {
+    color: #ff0000;
+    font-size: 1.1em;
+    transition: transform 0.2s;
+  }
+
+  .software-item:hover .software-arrow {
+    transform: translateX(3px);
   }
 
   .screenshot-section {

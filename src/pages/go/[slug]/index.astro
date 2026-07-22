@@ -1,5 +1,7 @@
 ---
 import { goRedirects, goRedirectSlugs } from '../../../data/go-redirects';
+import type { MirrorLink } from '../../../data/go-redirects';
+import Layout from '../../../layouts/Layout.astro';
 
 export function getStaticPaths() {
   return goRedirectSlugs.map((slug) => ({
@@ -13,5 +15,83 @@ if (!slug || !(slug in goRedirects)) {
   return Astro.redirect('/404/');
 }
 
-return Astro.redirect(goRedirects[slug], 302);
+const target = goRedirects[slug];
+
+if (typeof target === 'string') {
+  return Astro.redirect(target, 302);
+}
+
+const mirrors: MirrorLink[] = target;
+const title = `Download - ${slug}`;
 ---
+
+<Layout title={title} description={`Download options for ${slug}`}>
+  <article class="mirror-page">
+    <h1>Download Options</h1>
+    <p class="mirror-subtitle">Choose a mirror to download from:</p>
+    <div class="mirror-list">
+      {mirrors.map((m) => (
+        <a href={m.url} class="mirror-link" target="_blank" rel="noopener noreferrer">
+          <span class="mirror-label">{m.label}</span>
+          <span class="mirror-arrow">↗</span>
+        </a>
+      ))}
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .mirror-page {
+    max-width: 600px;
+    margin: 3rem auto;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .mirror-page h1 {
+    font-size: 2em;
+    color: var(--site-heading);
+    margin-bottom: 0.5em;
+  }
+
+  .mirror-subtitle {
+    color: var(--site-muted);
+    margin-bottom: 2em;
+    font-size: 1.1em;
+  }
+
+  .mirror-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .mirror-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background: var(--site-card);
+    border: 1px solid var(--site-border);
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--site-text);
+    transition: all 0.2s ease;
+  }
+
+  .mirror-link:hover {
+    border-color: #ff0000;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 0, 0, 0.15);
+  }
+
+  .mirror-label {
+    font-weight: 600;
+    font-size: 1.1em;
+  }
+
+  .mirror-arrow {
+    font-size: 1.3em;
+    color: #ff0000;
+  }
+</style>

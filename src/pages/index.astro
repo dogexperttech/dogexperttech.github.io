@@ -66,6 +66,7 @@ import Layout from '../layouts/Layout.astro';
           <p>Destroying Windows 7 Installer and fixing it</p>
         </a>
       </div>
+      <a href="/blog/" class="new-video-btn">View All Videos →</a>
     </div>
   </section>
 
@@ -87,40 +88,6 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
-  <section class="downloads-section">
-    <h2>Windows ISOs</h2>
-    <div class="downloads-grid">
-      <div class="download-group">
-        <h3>Windows 11</h3>
-        <a href="/go/GWIN11ENVG/" class="download-link">Windows 11 English</a>
-        <a href="/go/GWIN11ESVT/" class="download-link">Windows 11 Estonian</a>
-      </div>
-      <div class="download-group">
-        <h3>Windows 10</h3>
-        <a href="/go/GWIN10X64/" class="download-link">Windows 10 x64</a>
-        <a href="/go/GWIN10X86/" class="download-link">Windows 10 x86</a>
-      </div>
-      <div class="download-group">
-        <h3>Windows 8.1</h3>
-        <a href="/go/GWIN81X64/" class="download-link">Windows 8.1 x64</a>
-        <a href="/go/GWIN81X86/" class="download-link">Windows 8.1 x86</a>
-      </div>
-      <div class="download-group">
-        <h3>Windows 8</h3>
-        <a href="/go/GWIN8X64/" class="download-link">Windows 8 x64</a>
-        <a href="/go/GWIN8X86/" class="download-link">Windows 8 x86</a>
-      </div>
-      <div class="download-group">
-        <h3>Windows 7</h3>
-        <a href="/go/GWIN7X64/" class="download-link">Windows 7 x64</a>
-        <a href="/go/GWIN7X86/" class="download-link">Windows 7 x86</a>
-      </div>
-      <div class="download-group">
-        <h3>Windows XP</h3>
-        <a href="/go/GWINXP/" class="download-link">Windows XP x64</a>
-      </div>
-    </div>
-  </section>
 </Layout>
 
 <style>
@@ -301,61 +268,32 @@ import Layout from '../layouts/Layout.astro';
     font-size: 1.1em;
   }
 
+  .new-video-btn {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 12px 32px;
+    background: #ff0000;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1.05em;
+    transition: all 0.25s ease;
+  }
+
+  .new-video-btn:hover {
+    background: #cc0000;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 0, 0, 0.3);
+  }
+
   @media (max-width: 768px) {
     .icon-link {
       width: 150px;
     }
   }
 
-  .downloads-section {
-    padding: 40px 20px;
-    text-align: center;
-  }
 
-  .downloads-section h2 {
-    font-size: 2em;
-    margin-bottom: 30px;
-    color: var(--site-heading);
-  }
-
-  .downloads-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-  .download-group {
-    background: var(--site-card);
-    border: 1px solid var(--site-border);
-    border-radius: 12px;
-    padding: 20px;
-  }
-
-  .download-group h3 {
-    margin: 0 0 15px 0;
-    color: var(--site-heading);
-    font-size: 1.2em;
-  }
-
-  .download-link {
-    display: block;
-    padding: 8px 12px;
-    margin: 8px 0;
-    background: var(--site-bg);
-    border: 1px solid var(--site-border);
-    border-radius: 6px;
-    color: var(--site-text);
-    text-decoration: none;
-    transition: all 0.2s ease;
-  }
-
-  .download-link:hover {
-    background: #ff0000;
-    color: white;
-    transform: translateY(-2px);
-  }
 </style>
 
 <script>
