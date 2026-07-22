@@ -6,20 +6,14 @@ on:
   workflow_dispatch:
     inputs:
       channel_id:
-        description: 'YouTube Channel ID (optional). If omitted, set repository variable or run manually with input.'
+        description: 'YouTube Channel ID (optional). If omitted, use repository variable.'
         required: false
-      publish_target:
-        description: 'Optional: set to "docs" or "gh-pages" to copy ./dist into the repo (commits to main/docs or force-pushes gh-pages).'
-        required: false
-  # Removed push trigger - astro.yml handles deployment on push to main
 
 jobs:
   update-content:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      pages: write
-      id-token: write
 
     steps:
       - name: Checkout
@@ -32,73 +26,30 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-          cache: 'npm' # 💡 Added caching for faster build execution
+          cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci # 💡 Moved up so scripts have full access to node_modules immediately
+        run: npm ci
 
       - name: Fetch YouTube videos
         env:
-          # 💡 Clean fallback: uses manual input if provided, otherwise defaults to the repository variable
           YT_CHANNEL_ID: ${{ github.event.inputs.channel_id || vars.YT_CHANNEL_ID }}
         run: |
           if [ -z "$YT_CHANNEL_ID" ]; then
             echo "Error: No channel id provided via workflow_dispatch input or repository variable 'YT_CHANNEL_ID'."
             exit 1
           fi
-          
           node scripts/fetch-youtube-videos.js
-
-      - name: Commit updated videos.json
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add src/data/videos.json
-          git commit -m "chore: update videos.json (auto)" || echo "no changes"
-          git push || echo "push failed"
 
       - name: Generate per-video pages
         run: |
           node scripts/generate-video-pages.js
 
-      - name: Commit generated video pages
+      - name: Commit and push changes
         run: |
-          git add src/pages/blog/video || true
-          git commit -m "chore: generate video pages (auto)" || echo "no new video pages"
-          git push || echo "push failed"
-
-      - name: Build site
-        run: |
-          npm run build
-
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./dist
-
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
-
-      - name: Optionally publish dist to repo
-        if: ${{ github.event.inputs.publish_target != '' }}
-        env:
-          PUBLISH_TARGET: ${{ github.event.inputs.publish_target }}
-        run: |
-          TARGET=${PUBLISH_TARGET}
-          echo "Publish target: $TARGET"
-          if [ "$TARGET" = "docs" ]; then
-            rm -rf docs || true
-            mkdir -p docs
-            cp -R dist/. docs/
-            git add docs
-            git commit -m "ci: update docs (dist)" || echo "no changes"
-            git push || echo "push failed"
-          elif [ "$TARGET" = "gh-pages" ]; then
-            git checkout --orphan gh-pages
-            git --work-tree=dist add --all
-            git --work-tree=dist commit -m "chore: publish dist to gh-pages" || echo "no changes"
-            git push origin gh-pages --force
-            git checkout -
-          else
-            echo "Unknown publish target: $TARGET"
-          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet && echo "no changes" && exit 0
+          git commit -m "chore: auto-update videos and pages (auto)"
+          git push
