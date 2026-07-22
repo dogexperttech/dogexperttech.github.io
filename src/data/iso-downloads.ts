@@ -31,13 +31,13 @@ export const isoDownloads: IsoDownload[] = [
     title: 'Windows 7 Ultimate x64',
     description: 'Windows 7 SP1 x64 ISO mirror.',
     badge: 'Windows',
-    href: '/go/GSW764/',
+    href: '/go/GWIN7X64/',
   },
   {
     title: 'Windows 7 Ultimate x86',
     description: 'Windows 7 SP1 x86 ISO mirror.',
     badge: 'Windows',
-    href: '/go/GSW732/',
+    href: '/go/GWIN7X86/',
   },
   {
     title: 'Bob Omb Win10 PE',

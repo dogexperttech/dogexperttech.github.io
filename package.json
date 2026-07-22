@@ -9,6 +9,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "prebuild": "node scripts/compress-images.js",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
     "astro": "astro"
