@@ -67,61 +67,42 @@ import Layout from '../layouts/Layout.astro';
   }
 
   h1 {
-    font-size: 3.5rem;
+    font-size: 3rem;
     margin-top: 0.5em;
-    margin-bottom: 0.2em;
+    margin-bottom: 0.15em;
     font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: 3px;
-    color: #005f73;
-  }
-
-  body.dark h1 {
-    color: #94d2bd;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: 2px;
+    color: var(--site-heading);
   }
 
   .subtitle {
-    font-size: 1.3rem;
-    margin-bottom: 4em;
+    font-size: 1.2rem;
+    margin-bottom: 3.5em;
     text-align: center;
-    max-width: 750px;
-    color: #666;
-  }
-
-  body.dark .subtitle {
-    color: #aaa;
+    max-width: 700px;
+    color: var(--site-muted);
   }
 
   .blog-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 35px;
+    gap: 28px;
     width: 100%;
   }
 
   .blog-card {
-    background: #fff;
-    border-radius: 20px;
+    background: var(--site-card);
+    border-radius: 16px;
     overflow: hidden;
-    border: 1px solid #ddd;
-    transition: all 0.4s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-
-  body.dark .blog-card {
-    background: rgba(30, 30, 30, 0.95);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--site-border);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
   }
 
   .blog-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-  }
-
-  body.dark .blog-card:hover {
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.7);
+    transform: translateY(-6px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
   }
 
   .blog-link {
@@ -134,10 +115,9 @@ import Layout from '../layouts/Layout.astro';
 
   .blog-image {
     width: 100%;
-    height: 220px;
+    height: 200px;
     position: relative;
     overflow: hidden;
-    border-bottom: 4px solid #ff0000;
   }
 
   .blog-image img {
@@ -145,44 +125,38 @@ import Layout from '../layouts/Layout.astro';
     height: 100%;
     object-fit: cover;
     display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .blog-card:hover .blog-image img {
+    transform: scale(1.05);
   }
 
   .blog-content {
-    padding: 30px;
+    padding: 24px;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
   }
 
   .blog-content h3 {
-    margin: 0 0 15px 0;
-    font-size: 1.6rem;
-    color: #005f73;
-  }
-
-  body.dark .blog-content h3 {
-    color: #94d2bd;
+    margin: 0 0 10px 0;
+    font-size: 1.4rem;
+    color: var(--site-heading);
   }
 
   .blog-content p {
-    color: #666;
-    font-size: 1.05rem;
-    margin-bottom: 25px;
+    color: var(--site-muted);
+    font-size: 1rem;
+    margin-bottom: 20px;
     flex-grow: 1;
-  }
-
-  body.dark .blog-content p {
-    color: #ccc;
+    line-height: 1.6;
   }
 
   .blog-date {
-    color: #999;
-    font-size: 0.9em;
-    font-style: italic;
-  }
-
-  body.dark .blog-date {
-    color: #777;
+    color: var(--site-muted);
+    font-size: 0.85em;
+    opacity: 0.7;
   }
 
   .blog-actions {
@@ -199,12 +173,13 @@ import Layout from '../layouts/Layout.astro';
   .blog-actions input {
     width: 100%;
     max-width: 520px;
-    padding: 14px 16px;
-    border-radius: 14px;
-    border: 1px solid #ccc;
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 1px solid var(--site-border);
     background: var(--site-card);
     color: var(--site-text);
     font-size: 1rem;
+    transition: border-color 0.2s;
   }
 
   .blog-actions input:focus {
@@ -216,17 +191,19 @@ import Layout from '../layouts/Layout.astro';
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 14px 20px;
-    border-radius: 14px;
+    padding: 12px 20px;
+    border-radius: 10px;
     background: #ff0000;
     color: white;
     font-weight: 700;
+    font-size: 0.95rem;
     text-decoration: none;
-    transition: background 0.2s ease;
+    transition: background 0.2s ease, transform 0.2s;
   }
 
   .rss-button:hover {
     background: #cc0000;
+    transform: translateY(-1px);
   }
 
   @media (max-width: 768px) {
@@ -235,11 +212,11 @@ import Layout from '../layouts/Layout.astro';
     }
 
     h1 {
-      font-size: 2.2rem;
+      font-size: 2rem;
     }
 
     .subtitle {
-      font-size: 1.1rem;
+      font-size: 1rem;
     }
 
     .blog-actions {

@@ -4,19 +4,18 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout
   title="Home"
-  notice="As of November 17th, I have decided that I will not be streaming! Maybe someday we will see each other on streams again, but right now is not the time. Thank you for reading!"
-  noticeType="error"
+  description="Dog Expert Tech - Tutorials, downloads, guides, and projects."
 >
   <section class="hero">
     <h1>Welcome!</h1>
-    <p>This is my personal website where I share my projects, files, and thoughts.</p>
+    <p>Tech tutorials, downloads, guides, and projects — all in one place.</p>
   </section>
 
   <section class="video-section">
     <h2>Watch my content</h2>
     <div class="tab-buttons">
-      <button type="button" class="tab-btn" data-tab="streams">🎥 Streams</button>
       <button type="button" class="tab-btn active" data-tab="videos">📺 Videos</button>
+      <button type="button" class="tab-btn" data-tab="streams">🎥 Streams</button>
     </div>
 
     <div id="streams" class="tab-content">
@@ -25,7 +24,6 @@ import Layout from '../layouts/Layout.astro';
     </div>
 
     <div id="videos" class="tab-content active">
-      <p>My latest YouTube videos:</p>
       <div class="video-grid">
         <div class="video-placeholder" data-src="https://www.youtube-nocookie.com/embed/ux272IvbQtw" data-title="Windows 7 Upgrading to Windows 11 2025">
           <button type="button" class="video-load-btn">
@@ -310,18 +308,6 @@ import Layout from '../layouts/Layout.astro';
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const closeBtn = document.querySelector('.closebtn');
-    const alertBox = document.getElementById('streaming-alert');
-
-    if (closeBtn && alertBox) {
-      closeBtn.addEventListener('click', () => {
-        alertBox.style.opacity = '0';
-        setTimeout(() => {
-          alertBox.style.display = 'none';
-        }, 600);
-      });
-    }
-
     const tabButtons = document.querySelectorAll('.tab-btn');
     const tabContents = document.querySelectorAll('.tab-content');
 
