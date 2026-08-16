@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dog Expert Tech</title>
+    <link>https://dogexperttech.github.io</link>
+    <description>Technology tutorials, downloads, and guides from Dog Expert Tech.</description>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 24 Jun 2026 15:41:16 GMT</lastBuildDate>
+    <atom:link href="https://dogexperttech.github.io/rss.xml" rel="self" type="application/rss+xml" />
+    <managingEditor>dog.expert900@gmail.com (Dog Expert Tech)</managingEditor>
+    <webMaster>dog.expert900@gmail.com (Dog Expert Tech)</webMaster>
+    <generator>Astro RSS Generator</generator>
+    <ttl>1440</ttl>
+    
+    <item>
+      <title><![CDATA[Fixing AMD Driver Crashes]]></title>
+      <link>https://dogexperttech.github.io/blog/b1002787/</link>
+      <guid isPermaLink="true">https://dogexperttech.github.io/blog/b1002787/</guid>
+      <pubDate>Sun, 24 Aug 2025 00:00:00 GMT</pubDate>
+      <description><![CDATA[Fix AMD driver crashes with driver cleanup, VBS/Hyper-V fixes, and an automated batch script.]]></description>
+      <author>dog.expert900@gmail.com (Dog Expert Tech)</author>
+    </item>
+  
+    <item>
+      <title><![CDATA[What Happens if You Delete Windows System32?]]></title>
+      <link>https://dogexperttech.github.io/blog/b1089010/</link>
+      <guid isPermaLink="true">https://dogexperttech.github.io/blog/b1089010/</guid>
+      <pubDate>Wed, 20 Aug 2025 00:00:00 GMT</pubDate>
+      <description><![CDATA[Learn why deleting System32 breaks Windows and why this experiment is dangerous.]]></description>
+      <author>dog.expert900@gmail.com (Dog Expert Tech)</author>
+    </item>
+  
+    <item>
+      <title><![CDATA[Hello World!]]></title>
+      <link>https://dogexperttech.github.io/blog/b7891085/</link>
+      <guid isPermaLink="true">https://dogexperttech.github.io/blog/b7891085/</guid>
+      <pubDate>Sat, 02 Aug 2025 00:00:00 GMT</pubDate>
+      <description><![CDATA[Introducing Dog Expert Tech and the blog journey ahead.]]></description>
+      <author>dog.expert900@gmail.com (Dog Expert Tech)</author>
+    </item>
+  
+  </channel>
+</rss>

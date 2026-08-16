@@ -1,0 +1,829 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Files">
+  <div class="files-main">
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <h1>Download Files</h1>
+      <p>
+        Browse software, firmware, ZIP archives, utilities and tools. For ISOs and operating systems,
+        see the <a href="/isos/">ISOs page</a>.
+      </p>
+    </section>
+
+    <p id="filesCount" class="files-count" aria-live="polite"></p>
+
+    <!-- CONTROLS & FILTER MENU -->
+    <section class="controls">
+      <div class="search-box">
+        <svg viewBox="0 0 24 24" fill="none" class="search-icon">
+          <path
+            d="M21 21L16.65 16.65M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+        </svg>
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search files..."
+          aria-label="Search files"
+        />
+      </div>
+
+      <div class="filters">
+        <div class="select-wrapper">
+          <select id="categoryFilter" aria-label="Filter by type">
+            <option value="all">All Types</option>
+            <option value="ISO">ISO</option>
+            <option value="ZIP">ZIP</option>
+            <option value="7Z">7Z</option>
+            <option value="EXE">EXE</option>
+            <option value="APK">APK</option>
+            <option value="PS1">PS1</option>
+          </select>
+        </div>
+
+        <div class="select-wrapper">
+          <select id="sortSelect" aria-label="Sort files">
+            <option value="name">Sort: Name</option>
+            <option value="size">Sort: Size</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- DATA TABLE -->
+    <div class="table-container">
+      <table class="files-table">
+        <thead>
+          <tr>
+            <th>File Name</th>
+            <th>Type</th>
+            <th>Size</th>
+            <th class="text-right">Action</th>
+          </tr>
+        </thead>
+        <tbody id="filesBody">
+          <tr>
+            <td colspan="4" class="empty">
+              <div class="loader"></div>
+              <p>Loading files...</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- PAGINATION -->
+    <div class="pagination" id="pagination"></div>
+
+    <!-- SOCIAL MEDIA -->
+    <section class="social-media">
+      <h2>Join my channels</h2>
+      <div class="social-links">
+        <a href="/go/youtube/" class="icon-link">
+          <div class="img-container">
+            <img src="/assets/expertyoutube.jpg" alt="YouTube" loading="lazy" />
+          </div>
+          <span>Dog Expert</span>
+        </a>
+
+        <a href="/go/youtubeextra/" class="icon-link">
+          <div class="img-container">
+            <img src="/assets/expertextrayoutube.jpg" alt="YouTube Extra" loading="lazy" />
+          </div>
+          <span>Expert Extra</span>
+        </a>
+
+        <a href="/go/discord/" class="icon-link">
+          <div class="img-container">
+            <img src="/assets/discord.png" alt="Discord" loading="lazy" />
+          </div>
+          <span>Discord Server</span>
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // File listing from /assets/files.json
+    let allFiles = [];
+    let currentPage = 1;
+    const perPage = 10;
+
+    const filesBody = document.getElementById('filesBody');
+    const searchInput = document.getElementById('searchInput');
+    const categoryFilter = document.getElementById('categoryFilter');
+    const sortSelect = document.getElementById('sortSelect');
+    const pagination = document.getElementById('pagination');
+    const filesCount = document.getElementById('filesCount');
+
+    const escapeHtml = (text) => {
+      const el = document.createElement('span');
+      el.textContent = text;
+      return el.innerHTML;
+    };
+
+    const formatBytes = (bytes) => {
+      const value = Number(bytes);
+      if (Number.isNaN(value)) return 'N/A';
+
+      const units = ['B', 'KB', 'MB', 'GB', 'TB'];
+      let index = 0;
+      let size = value;
+
+      while (size >= 1024 && index < units.length - 1) {
+        size /= 1024;
+        index++;
+      }
+      return `${size.toFixed(1)} ${units[index]}`;
+    };
+
+    const getExtension = (name) => {
+      const match = name.match(/\.([a-z0-9]+)$/i);
+      return match ? match[1].toUpperCase() : '';
+    };
+
+    const getFileType = (file) => {
+      const ext = getExtension(file.name);
+      const mime = (file.mimeType || '').toLowerCase();
+
+      if (ext === 'ISO' || mime.includes('iso9660')) return 'ISO';
+      if (ext === '7Z' || mime.includes('7z') || mime.includes('x-compressed')) return '7Z';
+      if (ext === 'ZIP' || mime.includes('zip')) return 'ZIP';
+      if (ext === 'PS1') return 'PS1';
+      if (ext === 'EXE') return 'EXE';
+      if (ext === 'APK') return 'APK';
+      if (ext) return ext;
+
+      return 'FILE';
+    };
+
+    const getIcon = (type) => {
+      const icons = {
+        'ISO': '💿',
+        'ZIP': '🗜️',
+        '7Z': '📦',
+        'EXE': '⚙️',
+        'APK': '📱',
+        'PS1': '🖥️'
+      };
+      return icons[type] || '📄';
+    };
+
+    const isNewFile = (file) => {
+      const keywords = ['2025', '2026', 'new', 'latest', 'v2', '2023'];
+      return keywords.some(keyword =>
+        file.name.toLowerCase().includes(keyword.toLowerCase())
+      );
+    };
+
+    function renderFiles() {
+      let filtered = [...allFiles];
+      const search = searchInput.value.toLowerCase();
+      const category = categoryFilter.value;
+      const sort = sortSelect.value;
+
+      filtered = filtered.filter((file) => file.name.toLowerCase().includes(search));
+
+      if (category !== 'all') {
+        filtered = filtered.filter((file) => getFileType(file) === category);
+      }
+
+      if (sort === 'size') {
+        filtered.sort((a, b) => Number(b.size) - Number(a.size));
+      } else {
+        filtered.sort((a, b) => a.name.localeCompare(b.name));
+      }
+
+      const total = filtered.length;
+      const pages = Math.max(1, Math.ceil(total / perPage));
+      if (currentPage > pages) currentPage = pages;
+
+      const start = (currentPage - 1) * perPage;
+      const paginated = filtered.slice(start, start + perPage);
+
+      if (filesCount) {
+        filesCount.textContent =
+          total === 0
+            ? 'No files match your filters.'
+            : `Showing ${start + 1}–${start + paginated.length} of ${total} files`;
+      }
+
+      filesBody.innerHTML = '';
+
+      if (!paginated.length) {
+        filesBody.innerHTML = `
+          <tr>
+            <td colspan="4" class="empty">
+              <p>No files found matching your criteria.</p>
+            </td>
+          </tr>
+        `;
+        pagination.innerHTML = '';
+        return;
+      }
+
+      paginated.forEach((file) => {
+        const type = getFileType(file);
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td class="file-name-cell">
+            <div class="file-info">
+              <span class="file-icon" aria-hidden="true">${getIcon(type)}</span>
+              <div class="file-meta">
+                <span class="file-title">${escapeHtml(file.name)}</span>
+                ${isNewFile(file) ? '<span class="new-badge">NEW</span>' : ''}
+              </div>
+            </div>
+          </td>
+          <td><span class="file-type">${type}</span></td>
+          <td class="file-size">${formatBytes(file.size)}</td>
+          <td class="text-right">
+            <a href="${escapeHtml(file.webContentLink)}" target="_blank" rel="noopener noreferrer" class="download-link">
+              Download
+            </a>
+          </td>
+        `;
+        filesBody.appendChild(row);
+      });
+
+      renderPagination(pages);
+    }
+
+    function renderPagination(pages) {
+      pagination.innerHTML = '';
+      if (pages <= 1) return;
+
+      const addBtn = (label, page, disabled = false) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = `pagination-btn${page === currentPage ? ' active' : ''}`;
+        btn.textContent = label;
+        btn.disabled = disabled;
+        if (!disabled && page !== currentPage) {
+          btn.addEventListener('click', () => {
+            currentPage = page;
+            renderFiles();
+            document.querySelector('.controls')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          });
+        }
+        pagination.appendChild(btn);
+      };
+
+      addBtn('←', Math.max(1, currentPage - 1), currentPage === 1);
+      for (let i = 1; i <= pages; i++) addBtn(String(i), i);
+      addBtn('→', Math.min(pages, currentPage + 1), currentPage === pages);
+    }
+
+    function initFilesPage() {
+      if (!filesBody || !searchInput) return;
+      searchInput.addEventListener('input', () => { currentPage = 1; renderFiles(); });
+      categoryFilter.addEventListener('change', () => { currentPage = 1; renderFiles(); });
+      sortSelect.addEventListener('change', renderFiles);
+      fetch('/assets/files.json')
+        .then((r) => r.json())
+        .then((data) => { allFiles = data.files || []; renderFiles(); })
+        .catch((err) => {
+          console.error('Error loading files:', err);
+          filesBody.innerHTML = `<tr><td colspan="4" class="empty error-msg"><p>⚠️ Failed to load files.</p></td></tr>`;
+        });
+    }
+
+    initFilesPage();
+    document.addEventListener('astro:page-load', initFilesPage);
+  </script>
+</Layout>
+
+<style is:global>
+  .files-main {
+    --primary: #58c4b7;
+    --primary-hover: #47b2a5;
+    --accent: #1a56db;
+    --accent-hover: #2563eb;
+    --bg-dark: #0a0a0a;
+    --bg-card: #121212;
+    --border-color: #222222;
+    --text-main: #ffffff;
+    --text-muted: #a0a0a0;
+    --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 60px 24px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+  }
+
+  html[data-theme='light'] .files-main {
+    --bg-dark: #f3f5f5;
+    --bg-card: #ffffff;
+    --border-color: #d8dede;
+    --text-main: #1a1a1a;
+    --text-muted: #5c5c5c;
+  }
+
+  html[data-theme='light'] .files-main .table-container {
+    background: #ffffff;
+  }
+
+  html[data-theme='light'] .files-main .files-table th {
+    background: #eef4f3;
+    color: #0d5c55;
+  }
+
+  html[data-theme='light'] .files-main .files-table td {
+    border-color: #e8ecec;
+    color: #333;
+  }
+
+  html[data-theme='light'] .files-main .library-tab {
+    background: #e8e8e8;
+    color: #222;
+    border-color: #ccc;
+  }
+
+  /* --- HERO SECTION --- */
+  .hero {
+    margin-bottom: 50px;
+    text-align: left;
+    animation: fadeIn 0.6s ease-out;
+  }
+
+  .hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 16px;
+    color: var(--primary);
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, #58c4b7 0%, #1a56db 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .files-main .hero p {
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    max-width: 600px;
+    line-height: 1.6;
+  }
+
+  .files-main .hero a {
+    color: var(--primary);
+    font-weight: 600;
+  }
+
+  .files-main .library-tabs {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .files-main .library-tab {
+    background: #1a1a1a;
+    color: #fff;
+    border: 1px solid var(--border-color);
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+
+  .files-main .library-tab:hover,
+  .files-main .library-tab.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+
+  .files-main .files-count {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+  }
+
+  /* --- CONTROLS / MENÜÜD --- */
+  .files-main .controls {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+  }
+
+  .search-box {
+    flex: 1;
+    min-width: 300px;
+    position: relative;
+  }
+
+  .search-icon {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    transform: translateY(-50%);
+    color: #555;
+    transition: var(--transition);
+    pointer-events: none;
+  }
+
+  .search-box input {
+    width: 100%;
+    padding: 16px 16px 16px 48px;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-card);
+    color: var(--text-main);
+    font-size: 1rem;
+    transition: var(--transition);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  .search-box input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(88, 196, 183, 0.15);
+  }
+
+  .search-box input:focus + .search-icon {
+    color: var(--primary);
+  }
+
+  .filters {
+    display: flex;
+    gap: 16px;
+  }
+
+  .select-wrapper {
+    position: relative;
+  }
+
+  .filters select {
+    appearance: none;
+    padding: 16px 40px 16px 18px;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-card);
+    color: var(--text-main);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    min-width: 180px;
+    transition: var(--transition);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  .filters select:focus {
+    outline: none;
+    border-color: var(--primary);
+  }
+
+  .select-wrapper::after {
+    content: "↓";
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+
+  /* --- TABELI LIIDES --- */
+  .table-container {
+    overflow-x: auto;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    background: #0d0d0d;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+
+  .files-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 850px;
+    text-align: left;
+  }
+
+  .files-table th {
+    padding: 20px;
+    color: var(--primary);
+    background: #141414;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+  }
+
+  .files-table td {
+    padding: 20px;
+    border-bottom: 1px solid #161616;
+    color: #e0e0e0;
+    vertical-align: middle;
+    transition: var(--transition);
+  }
+
+  .files-table tbody tr {
+    transition: var(--transition);
+  }
+
+  .files-table tbody tr:hover {
+    background: rgba(88, 196, 183, 0.03);
+  }
+
+  .file-name-cell {
+    width: 50%;
+  }
+
+  .file-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .file-icon {
+    font-size: 1.6rem;
+    background: #181818;
+    width: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+  }
+
+  .file-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .file-title {
+    font-weight: 600;
+    color: var(--text-main);
+    font-size: 1.05rem;
+  }
+
+  .file-size {
+    font-family: monospace;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+  }
+
+  .text-right {
+    text-align: right;
+  }
+
+  /* --- MÄRGID (BADGES) --- */
+  .files-main .file-type {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 14px;
+    border-radius: 10px;
+    background: rgba(88, 196, 183, 0.08);
+    color: var(--primary);
+    font-size: 0.8rem;
+    font-weight: 700;
+    border: 1px solid rgba(88, 196, 183, 0.15);
+  }
+
+  .new-badge {
+    background: linear-gradient(135deg, var(--accent) 0%, #3b82f6 100%);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 8px;
+    letter-spacing: 0.05em;
+    box-shadow: 0 2px 8px rgba(26, 86, 219, 0.4);
+  }
+
+  /* --- ALLALAADIMISE NUPP --- */
+  .files-main .download-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 22px;
+    border-radius: 14px;
+    background: var(--accent);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: var(--transition);
+    box-shadow: 0 4px 12px rgba(26, 86, 219, 0.2);
+  }
+
+  .files-main .download-link:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(26, 86, 219, 0.4);
+  }
+
+  .files-main .download-link:active {
+    transform: translateY(0);
+  }
+
+  /* --- PAGINATION --- */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+
+  .files-main .pagination-btn {
+    min-width: 44px;
+    height: 44px;
+    padding: 0 12px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-card);
+    color: var(--text-main);
+    font-weight: 600;
+    font-family: inherit;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+
+  .files-main .pagination-btn:hover:not(:disabled) {
+    background: #1c1c1c;
+    border-color: #444;
+  }
+
+  .files-main .pagination-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  .files-main .pagination-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    box-shadow: 0 4px 12px rgba(26, 86, 219, 0.3);
+  }
+
+  /* --- LAADIMISINDIKAATOR & TÜHI SEISUND --- */
+  .empty {
+    text-align: center;
+    padding: 60px !important;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+  }
+
+  .error-msg {
+    color: #ef4444;
+  }
+
+  .loader {
+    width: 32px;
+    height: 32px;
+    border: 3px solid rgba(88, 196, 183, 0.1);
+    border-radius: 50%;
+    border-top-color: var(--primary);
+    margin: 0 auto 16px auto;
+    animation: spin 0.8s linear infinite;
+  }
+
+  /* --- SOTSIAALMEEDIA BLOKK --- */
+  .social-media {
+    margin-top: 100px;
+    padding: 60px 30px;
+    background: linear-gradient(180deg, #111111 0%, #070707 100%);
+    border-radius: 30px;
+    border: 1px solid var(--border-color);
+    text-align: center;
+  }
+
+  .social-media h2 {
+    color: var(--primary);
+    margin-bottom: 40px;
+    font-size: 2.2rem;
+    font-weight: 800;
+  }
+
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .icon-link {
+    width: 240px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    padding: 26px;
+    text-decoration: none;
+    color: white;
+    transition: var(--transition);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  }
+
+  .icon-link:hover {
+    transform: translateY(-6px);
+    border-color: var(--primary);
+    box-shadow: 0 12px 28px rgba(88, 196, 183, 0.15);
+  }
+
+  .img-container {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 16px auto;
+    overflow: hidden;
+    border-radius: 20px;
+    border: 2px solid #222;
+    transition: var(--transition);
+  }
+
+  .icon-link:hover .img-container {
+    border-color: var(--primary);
+  }
+
+  .icon-link img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .icon-link span {
+    display: block;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: -0.01em;
+  }
+
+  /* --- ANIMATSIOONID --- */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  /* --- RESPONSIVSUUS (MOBIILID) --- */
+  @media (max-width: 768px) {
+    .files-main {
+      padding: 40px 16px;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+
+    .controls {
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .filters {
+      width: 100%;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .filters select, .select-wrapper {
+      width: 100%;
+    }
+
+    .files-table {
+      min-width: 100%;
+    }
+    
+    .files-table th:nth-child(2), 
+    .files-table td:nth-child(2),
+    .files-table th:nth-child(3),
+    .files-table td:nth-child(3) {
+      display: none;
+    }
+    
+    .file-name-cell {
+      width: 70%;
+    }
+
+    .social-media {
+      padding: 40px 20px;
+    }
+
+    .icon-link {
+      width: 100%;
+    }
+  }
+</style>

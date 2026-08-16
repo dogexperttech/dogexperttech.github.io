@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /
+
+Sitemap: https://dogexperttech.github.io/sitemap-index.xml

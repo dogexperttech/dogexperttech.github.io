@@ -1,0 +1,272 @@
+---
+import Layout from '../layouts/Layout.astro';
+import videos from '../data/videos.json';
+
+const sortedVideos = [...videos]
+  .sort((a, b) => new Date(b.published) - new Date(a.published))
+  .slice(0, 9);
+---
+
+<Layout
+  title="Home"
+  description="Dog Expert Tech - Tutorials, downloads, guides, and projects."
+>
+  <section class="hero">
+    <h1>Welcome!</h1>
+    <p>Tech tutorials, downloads, guides, and projects — all in one place.</p>
+  </section>
+
+  <section class="video-section">
+    <h2>Watch my content</h2>
+    <div class="tab-buttons">
+      <button type="button" class="tab-btn active" data-tab="videos">📺 Videos</button>
+      <button type="button" class="tab-btn" data-tab="streams">🎥 Streams</button>
+    </div>
+
+    <div id="streams" class="tab-content"></div>
+
+    <div id="videos" class="tab-content active">
+      <div class="video-grid">
+        {
+          sortedVideos.map((video) => (
+            <a href={`/blog/video/${video.id}/`} class="video-card">
+              <img src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`} alt={`${video.title} thumbnail`} loading="lazy" />
+              <div class="video-play-overlay"><span>▶</span></div>
+              <p>{video.title}</p>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+
+    </div>
+  </section>
+
+  <section class="social-media">
+    <h2>Join my channels</h2>
+    <div class="social-links">
+      <a href="/go/youtube/" class="icon-link">
+        <img src="/assets/expertyoutube.jpg" alt="YouTube" width="100" height="100" loading="lazy" />
+        <span>Dog Expert</span>
+      </a>
+      <a href="/go/youtubeextra/" class="icon-link">
+        <img src="/assets/expertextrayoutube.jpg" alt="YouTube Extra" width="100" height="100" loading="lazy" />
+        <span>Expert Extra</span>
+      </a>
+      <a href="/go/discord/" class="icon-link">
+        <img src="/assets/discord.png" alt="Discord" width="100" height="100" loading="lazy" />
+        <span>Discord Server</span>
+      </a>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .video-section {
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .video-section h2 {
+    font-size: 2em;
+    margin-bottom: 30px;
+    color: var(--site-heading);
+  }
+
+  .tab-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+  }
+
+  .tab-buttons button {
+    background: var(--site-card);
+    color: var(--site-text);
+    border: none;
+    padding: 10px 25px;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .tab-buttons button:hover {
+    background: #ff0000;
+    color: white;
+    transform: scale(1.05);
+  }
+
+  .tab-buttons button.active {
+    background: #ff0000;
+    font-weight: bold;
+  }
+
+  .tab-content {
+    display: none;
+    animation: fadeIn 0.4s ease;
+  }
+
+  .tab-content.active {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .video-card {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    min-height: 200px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .video-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .video-play-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.35);
+    transition: background 0.2s ease;
+  }
+
+  .video-card:hover .video-play-overlay {
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .video-play-overlay span {
+    font-size: 3rem;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.65);
+  }
+
+  .video-card p {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 12px 14px;
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 700;
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.7) 100%);
+  }
+
+  .social-media {
+    padding: 40px 20px;
+    text-align: center;
+    background: var(--site-card);
+    border: 1px solid var(--site-border);
+    border-radius: 12px;
+    margin: 2em 0;
+  }
+
+  .social-media h2 {
+    font-size: 2em;
+    margin-bottom: 30px;
+    color: var(--site-heading);
+  }
+
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+
+  .icon-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    background: #222;
+    padding: 20px;
+    border-radius: 15px;
+    width: 180px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .icon-link:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.6);
+  }
+
+  .icon-link img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    object-fit: cover;
+  }
+
+  .icon-link span {
+    font-weight: 600;
+    font-size: 1.1em;
+  }
+
+  @media (max-width: 768px) {
+    .icon-link {
+      width: 150px;
+    }
+  }
+
+
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        tabButtons.forEach((btn) => btn.classList.remove('active'));
+        tabContents.forEach((content) => content.classList.remove('active'));
+
+        button.classList.add('active');
+        const targetId = button.getAttribute('data-tab');
+        const targetContent = targetId ? document.getElementById(targetId) : null;
+
+        if (targetContent) {
+          targetContent.classList.add('active');
+        }
+      });
+    });
+  });
+</script>

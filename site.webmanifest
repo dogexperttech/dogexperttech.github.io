@@ -1,0 +1,21 @@
+{
+  "name": "Dog Expert Tech",
+  "short_name": "DogExpert",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#005f73",
+  "theme_color": "#005f73",
+  "description": "Technology tutorials, downloads and guides from Dog Expert Tech.",
+  "icons": [
+    {
+      "src": "/assets/favicon.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "/assets/favicon.ico",
+      "sizes": "48x48 72x72 96x96 128x128 256x256",
+      "type": "image/x-icon"
+    }
+  ]
+}
